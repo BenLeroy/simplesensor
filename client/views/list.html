@@ -1,8 +1,8 @@
 <div class='col-sm-10 col-xs-12 list-group' ng-controller='ListCtrl as List'>
   <div class='list-group-item'>
     <h1>Liste des sondes</h1>
-    <ul class="list-group">
-      <li class="list-group-item" ng-repeat='sensor in List.sensors' ui-sref='sensorEdit({id: sensor.id})'>
+    <div ng-repeat='sensor in List.sensors' class="list-group">
+      <a ui-sref='sensorEdit({id: sensor.id})' class="list-group-item">
         <span>ID : {{sensor.id}}</span>
         <br/>
         <span>Key : {{sensor.key}}</span>
@@ -10,6 +10,6 @@
         <span>Nom : {{sensor.name}}</span>
         <br/>
         <span ng-class="{'label label-danger': sensor.status == 'Offline', 'label label-success': sensor.status == 'Online'}">{{sensor.status}}</span>
-      </li>
-    </ul>
+      </a>
+    </div>
 

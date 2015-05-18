@@ -2,7 +2,8 @@
 
 ## Sensor monitoring
 
-## Create a simple interface to manage sensors informations
+Create a simple interface to manage sensors informations
+
 
 ## Requirements :
 
@@ -22,7 +23,7 @@ $ bower install
 
 ## How to use :
 
-Run : `$ npm start `
+Run : `$ npm start`
 
 Then go with your favorite browser at [http://localhost:3000/](http://localhost:3000/)
 
