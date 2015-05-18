@@ -11,6 +11,10 @@
       "type": "string",
       "required": true
     },
+    "key": {
+      "type": "string",
+      "required": true
+    },
     "name": {
       "type": "string",
       "required": true

@@ -5,15 +5,11 @@
       <li class="list-group-item" ng-repeat='sensor in List.sensors' ui-sref='sensorEdit({id: sensor.id})'>
         <span>ID : {{sensor.id}}</span>
         <br/>
+        <span>Key : {{sensor.key}}</span>
+        <br/>
         <span>Nom : {{sensor.name}}</span>
         <br/>
         <span ng-class="{'label label-danger': sensor.status == 'Offline', 'label label-success': sensor.status == 'Online'}">{{sensor.status}}</span>
       </li>
     </ul>
 
-
-
-        <!--{{sensor.created | date : 'yyyy-mm-dd / hh:mm:ss'}}
-        {{sensor.lastmodified | date : 'yyyy-mm-dd / hh:mm:ss'}}
-        {{sensor.comments}}-->
-   

@@ -6,6 +6,7 @@ var Probe = server.models.sensor;
 var probes = [
   {
     "name": "Probe1"
+    , "key": "abcdef"
     , "status": "Online"
     , "created": "2015-05-10T13:24:20"
     , "lastmodified": new Date()
@@ -14,6 +15,7 @@ var probes = [
   }
  , {
     "name": "Probe2"
+    , "key": "ghijkl"
     , "status": "Offline"
     , "created": "2015-01-10T23:02:05"
     , "lastmodified": "2015-02-10T23:02:05"
@@ -22,6 +24,7 @@ var probes = [
   }
   , {
     "name": "Sensor"
+    , "key": "mnopqr"
     , "status": "Online"
     , "created": "2014-12-17T03:24:00"
     , "lastmodified": new Date()

@@ -53,7 +53,7 @@
     })
 
   .controller('EditCtrl'
-    , function (Sensor, $stateParams, $scope, $filter) {
+    , function (Sensor, $stateParams, $scope) {
 
       var Edit = this;
 
@@ -61,17 +61,6 @@
         , function (data) {
 
         Edit.sensor = data;
-
-        $scope.$watch('myCreationDate', function (value) {
-
-          $scope.sensor.created = $filter('date')(value, 'yyyy/MM/dd HH:mm:ss');
-        });
-
-
-        $scope.$watch('myLastModDate', function (value) {
-
-          $scope.sensor.lastmodified = $filter('date')(value, 'yyyy/MM/dd HH:mm:ss');
-        });
 
       });
 
