@@ -1,0 +1,35 @@
+<h1>Modifier les informations de la sonde</h1>
+<div ng-form='formMod' class='fm' ng-controller='EditCtrl as Edit'>
+	<div class="form-group">
+   	<label for="id">ID</label>
+    <input type="text" class="form-control" ng-model='Edit.sensor.id'>
+  </div>
+  <div class="form-group">
+    <label for="name">Nom</label>
+    <input type="text" class="form-control" ng-model='Edit.sensor.name'>
+  </div>
+  <div class="form-group">
+    <label for="status">Etat</label>
+    <input type="text" class="form-control" ng-model='Edit.sensor.status'>
+  </div>
+  <div class="form-group">
+    <label for="created">Date de création</label>
+    <input type="datetime" class="form-control" ng-model='myCreationDate'>
+  </div>
+  <div class="form-group">
+    <label for="lastmodified">Date de dernière modification</label>
+    <input type="datetime" class="form-control" ng-model='myLastModDate'>
+  </div>
+  <div class="form-group">
+    <label for="comments">Commentaires</label>
+    <textarea class="form-control" ng-model='Edit.sensor.comments'>
+  </div>
+  <div class="form-group">
+    <a type="button" ui-sref='list' ng-click='SaveMod()' class="decal btn btn-success">
+  	 <span class='glyphicon glyphicon-ok' title='Valider'></span>
+    </a>
+    <a type="button" ui-sref='list' class="btn btn-danger">
+      <span class='glyphicon glyphicon-stop' title='Annuler'></span>
+    </a>
+  </div>
+</div>

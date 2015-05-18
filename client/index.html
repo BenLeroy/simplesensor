@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app='sensorList'>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+		<link rel="stylesheet" type="text/css" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script type="text/javascript" src="vendor/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="vendor/angular/angular.min.js"></script>
+	    <script type="text/javascript" src="vendor/angular-resource/angular-resource.min.js"></script>
+		<script type="text/javascript" src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+		<script src="js/lb-services.js"></script>
+		<script type="text/javascript" src='js/app.js'></script>		
+		<title>Interface de gestion des sondes</title>
+	</head>
+	
+	<body>
+		<nav class="barnav navbar navbar-default navbar-static-top">
+	  		<div class="container-fluid">
+			    <div class="navbar-header">
+	      			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+			      	</button>
+			      	<a class="navbar-brand" id="barretitre" ui-sref="index">SimpleSensor</a>
+	  			</div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				      <ul class="nav navbar-nav navbar-right">
+				        <li class="navimenu">
+				        	<a ui-sref="list">Liste des sondes
+				        		<span class="sr-only">(current)</span>
+				        	</a>
+				        </li>
+				       
+				      </ul>
+				</div>
+	  		</div>
+	  	</nav>
+			<div ui-view></div>
+	</body>
+</html>

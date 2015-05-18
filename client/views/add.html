@@ -1,0 +1,25 @@
+<h1>Ajouter une sonde</h1>
+<div ng-form='formAdd' class='fa'>
+	<div class="form-group">
+   		<label for="id">ID</label>
+    	<input type="text" class="form-control" ng-model='sensor.id'>
+  	</div>
+  	<div class="form-group">
+  	  <label for="name">Nom</label>
+  	  <input type="text" class="form-control" ng-model='senssor.name'>
+  	</div>
+  	<div class="form-group">
+  	  <label for="status">Etat</label>
+  	  <input type="text" class="form-control" ng-model='sensor.status'>
+  	</div>
+  	<div class="form-group">
+  	  <label for="created">Date de création</label>
+  	  <input type="date" class="form-control" ng-model='sensor.created'>
+  	</div>
+  	<a type="button" ng-click='newSensor()' class="decal btn btn-success">
+  		<span class='glyphicon glyphicon-ok' aria-hidden='true' title='Valider'></span>
+  	</a>
+  	<a type="button" ui-sref='list' class="btn btn-danger">
+  		<span class='glyphicon glyphicon-stop' aria-hidden='true' title='Annuler'></span>
+  	</a>
+</div>

@@ -1,0 +1,29 @@
+<h1>Retirer une sonde de la liste</h1>
+<div ng-form='formDel' class ='fe' ng-controller='DelCtrl as Del'>
+  <div class="form-group">
+      <label for="id">ID</label>
+      <div type="text" class="form-control">{{Del.sensor.id}}</div>
+    </div>
+    <div class="form-group">
+      <label for="name">Nom</label>
+      <div type="text" class="form-control">{{Del.sensor.name}}</div>
+    </div>
+    <div class="form-group">
+      <label for="status">Etat</label>
+      <div type="text" class="form-control">{{Del.sensor.status}}</div>
+    </div>
+    <div class="form-group">
+      <label for="created">Date de création</label>
+      <div type="text" class="form-control">{{Del.sensor.created}}</div>
+    </div>
+    <div class="form-group">
+      <label for="lastmodified">Date de dernière modification</label>
+      <div type="text" class="form-control">{{Del.sensor.lastmodified}}</div>
+    </div>
+    <a type="button" ng-click='deleteSensor()' class="decal btn btn-success">
+      <span class='glyphicon glyphicon-ok' aria-hidden='true' title='Valider'></span>
+    </a>
+    <a type="button" ui-sref='list' class="btn btn-danger">
+      <span class='glyphicon glyphicon-stop' aria-hidden='true' title='Annuler'></span>
+    </a>
+</div>
