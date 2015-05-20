@@ -66,8 +66,10 @@
 
       $scope.SaveMod = function () {
 
-        Edit.Sensor.$save();
+        Edit.sensor.lastmodified = Date.now();
+        Edit.sensor.$save();
       };
+
     })
 
   .controller('DelCtrl'

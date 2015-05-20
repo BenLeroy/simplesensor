@@ -12,26 +12,31 @@
   </div>
   <div class="form-group">
     <label for="status">Etat</label>
-    <input type="text" class="form-control" ng-model='Edit.sensor.status'>
+    <select id="etat" class="form-control" ng-model='Edit.sensor.status'>
+      <option ng-class="{'selected': sensor.status == 'Online'}" value="Online">Up</option>
+      <option ng-class="{'selected': sensor.status == 'Offline'}" value="Offline">Down</option>
+    </select>
   </div>
-  <div class="form-group">
-    <label for="created">Date de création</label>
+  <div>
+    <label>Date de création</label>
     <p>{{Edit.sensor.created | date:"yyyy-MM-dd HH:mm:ss"}}</p>
   </div>
   <div class="form-group">
-    <label for="lastmodified">Date de dernière modification</label>
-    <p>{{Edit.sensor.lastmodified | date:"yyyy-MM-dd HH:mm:ss"}}</p>
+    <label>Date de dernière modification</label>
+    <p>{{Edit.sensor.lastmodified | date: "yyyy-MM-dd HH:mm:ss"}}</p>
   </div>
   <div class="form-group">
     <label for="comments">Commentaires</label>
-    <textarea class="form-control" ng-model='Edit.sensor.comments'>
+    <textarea class="form-control" ng-model='Edit.sensor.comments'></textarea>
   </div>
-  <div class="form-group">
-    <a type="button" ui-sref='list' ng-click='SaveMod()' class="decal btn btn-success">
-  	 <span class='glyphicon glyphicon-ok' title='Valider'></span>
+
+
+  
+    <a type="button" ng-click='SaveMod()' ui-sref='list' class="decal btn btn-success">
+  	 <span class='glyphicon glyphicon-ok' aria-hidden='true' title='Valider'></span>
     </a>
     <a type="button" ui-sref='list' class="btn btn-danger">
-      <span class='glyphicon glyphicon-stop' title='Annuler'></span>
+      <span class='glyphicon glyphicon-stop' aria-hidden='true' title='Annuler'></span>
     </a>
-  </div>
+  
 </div>
