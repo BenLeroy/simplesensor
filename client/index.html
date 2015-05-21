@@ -26,13 +26,14 @@
 				        <span class="icon-bar"></span>
 				        <span class="icon-bar"></span>
 			      	</button>
-			      	<a class="navbar-brand" id="barretitre" ui-sref="index">SimpleSensor</a>
+			      	<a class="navbar-brand" id="barretitre" ui-sref="list">SimpleSensor</a>
 	  			</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				    <ul class="nav navbar-nav navbar-right" ng-controller="CountCtrl">
-				    	<li ng-init="isUp = false" ng-click="isUp = !isUp" class="btn navbar-btn btn-success ng-class:{'btn': !isUp, 'btn active': isUp};"><b>{{CountUp}}</b> Up</li>
-			    		<li ng-init="isDown = false" ng-click="isDown = !isDown"  class="btn navbar-btn btn-danger ng-class:{'btn': !isDown, 'btn active': isDown};"><b>{{CountDown}}</b> Down</li>
-			    		<li ng-init="isFlap = false" ng-click="isFlap = !isFlap"  class="btn navbar-btn btn-warning ng-class:{'btn': !isFlap, 'btn active': isFlap};"><b>{{CountFlap}}</b> Flapping </li>
+				    <ul class="nav navbar-nav navbar-right btn-toolbar" ng-controller="CountCtrl">
+				    	<li ui-sref="list" class="btn navbar-btn btn-success">Up</li>
+				    	<p class='navbar-text'><strong class='text-success'>{{CountUp}}</strong></p>
+			    		<li ui-sref="list" class="btn navbar-btn btn-danger">Down</li>
+			    		<p class='navbar-text'><strong class='text-danger'>{{CountDown}}</strong></p>
 			        	<li class="navimenu">
 				        	<a ui-sref="list">Liste des sondes
 				        		<span class="sr-only">(current)</span>
