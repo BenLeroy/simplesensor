@@ -12,12 +12,8 @@
       , '$urlRouterProvider'
       , function ($stateProvider, $urlRouterProvider) {
 
-        $stateProvider.state('index', {
+        $stateProvider.state('list', {
           url: '/'
-          , template: '<h1>Index</h1><br/>'
-        })
-        .state('list', {
-          url: '/list'
           , templateUrl: 'views/list.html'
           , controller: 'ListCtrl'
         })
@@ -125,4 +121,6 @@
         });
       };
     });
+
+
 })();

@@ -29,14 +29,16 @@
 			      	<a class="navbar-brand" id="barretitre" ui-sref="index">SimpleSensor</a>
 	  			</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				      <ul class="nav navbar-nav navbar-right">
-				        <li class="navimenu">
+				    <ul class="nav navbar-nav navbar-right" ng-controller="CountCtrl">
+				    	<li ng-init="isUp = false" ng-click="isUp = !isUp" class="btn navbar-btn btn-success ng-class:{'btn': !isUp, 'btn active': isUp};"><b>{{CountUp}}</b> Up</li>
+			    		<li ng-init="isDown = false" ng-click="isDown = !isDown"  class="btn navbar-btn btn-danger ng-class:{'btn': !isDown, 'btn active': isDown};"><b>{{CountDown}}</b> Down</li>
+			    		<li ng-init="isFlap = false" ng-click="isFlap = !isFlap"  class="btn navbar-btn btn-warning ng-class:{'btn': !isFlap, 'btn active': isFlap};"><b>{{CountFlap}}</b> Flapping </li>
+			        	<li class="navimenu">
 				        	<a ui-sref="list">Liste des sondes
 				        		<span class="sr-only">(current)</span>
 				        	</a>
 				        </li>
-				       
-				      </ul>
+				    </ul>
 				</div>
 	  		</div>
 	  	</nav>
