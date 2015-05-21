@@ -17,6 +17,7 @@
     },
     "status": {
       "type": "string",
+      "pattern": "/Up|Down|Flapping/",
       "required": true
     },
     "created": {

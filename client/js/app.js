@@ -39,6 +39,32 @@
         $urlRouterProvider.otherwise('/');
   }])
 
+  .controller('CountCtrl'
+    , function (Sensor, $scope) {
+
+      $scope.CountUp = 0
+        , $scope.CountDown = 0
+        , $scope.CountFlap = 0;
+
+      Sensor.count({where: {status: "Up"}}).$promise.then(function (data) {
+
+        $scope.CountUp = data.count;
+
+      });
+
+      Sensor.count({where: {status: "Down"}}).$promise.then(function (data) {
+
+        $scope.CountDown = data.count;
+
+      });
+
+      Sensor.count({where: {status: "Flapping"}}).$promise.then(function (data) {
+
+        $scope.CountFlap = data.count;
+
+      });
+  })
+
   .controller('ListCtrl'
     , function (Sensor){
 

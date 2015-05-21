@@ -2,8 +2,12 @@ module.exports = function(Sensor) {
 
 	Sensor.newSensor = function (key, status, cb) {
 
+		if(key === undefined | key === "") {
+			return cb('Key cannot be blank');
+		}
+
 		Sensor.findOrCreate(
-			{ where: {key : key}}
+			{ where: {key: key}}
 			, {key: key
 			, name: key + ' non configuré'
 			, status: status
