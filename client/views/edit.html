@@ -13,8 +13,9 @@
   <div class="form-group">
     <label for="status">Etat</label>
     <select id="etat" class="form-control" ng-model='Edit.sensor.status'>
-      <option ng-class="{'selected': sensor.status == 'Online'}" value="Online">Up</option>
-      <option ng-class="{'selected': sensor.status == 'Offline'}" value="Offline">Down</option>
+      <option ng-class="{'selected': sensor.status == 'Up'}" value="Up">Up</option>
+      <option ng-class="{'selected': sensor.status == 'Down'}" value="Down">Down</option>
+      <option ng-class="{'selected': sensor.status == 'Flapping'}" value="Flapping">Flapping</option>
     </select>
   </div>
   <div>
@@ -29,10 +30,7 @@
     <label for="comments">Commentaires</label>
     <textarea class="form-control" ng-model='Edit.sensor.comments'></textarea>
   </div>
-
-
-  
-    <a type="button" ng-click='SaveMod()' ui-sref='list' class="decal btn btn-success">
+    <a type="button" ng-click='SaveMod()' ui-sref='list' class="btn btn-success">
   	 <span class='glyphicon glyphicon-ok' aria-hidden='true' title='Valider'></span>
     </a>
     <a type="button" ui-sref='list' class="btn btn-danger">
