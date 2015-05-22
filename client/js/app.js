@@ -31,6 +31,11 @@
           url: '/sensor/add'
           , templateUrl: 'views/add.html'
           , controller: 'AddCtrl'
+        })
+        .state('events', {
+          url: '/sensor/events/:id'
+          , templateUrl: 'views/events.html'
+          , controller: 'EventCtrl'
         });
         $urlRouterProvider.otherwise('/');
   }])
@@ -71,28 +76,30 @@
       Sensor.find().$promise.then(function (data){
 
         that.sensors = data;
-      });
 
+        /*for(var i = 0; i < that.sensors.length; i++) {
+          setInterval(
+            function (name) {
+              console.log('hello ' + name);
+            }
+            , that.sensors[i].frequency * 2000
+            , that.sensors[i].name
+          )
+        }*/
+      });
     })
 
   .controller('EditCtrl'
     , function (Sensor, $stateParams, $scope) {
-
       var that = this;
-
       Sensor.findById({id: $stateParams.id}
         , function (data) {
-
-        that.sensor = data;
-
-      });
-
+          that.sensor = data;
+        });
       $scope.SaveMod = function () {
-
         that.sensor.lastmodified = Date.now();
         that.sensor.$save();
       };
-
     })
 
   .controller('DelCtrl'
@@ -121,7 +128,14 @@
           $location.path('/list');
         });
       };
-    });
+    })
 
+  .controller('EventCtrl', function (Sensor, $stateParams) {
+    var that = this;
+    Sensor.findById({id: $stateParams.id}
+        , function (data) {
+          that.sensor = data;
+        });
+  });
 
 })();

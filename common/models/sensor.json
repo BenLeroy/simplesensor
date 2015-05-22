@@ -26,8 +26,18 @@
     "lastmodified": {
       "type": "date"
     },
+    "lastchecked": {
+      "type": "date"
+    },
+    "frequency": {
+      "type": "number",
+      "required": true
+    },
     "comments": {
       "type": "string"
+    },
+    "history": {
+      "type": "array"
     }
   },
   "validations": [],

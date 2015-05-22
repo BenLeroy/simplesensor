@@ -10,7 +10,10 @@ var probes = [
     , "status": "Up"
     , "created": "2015-05-10T13:24:20"
     , "lastmodified": new Date()
+    , "lastchecked": new Date()
     , "comments": "I'm the first probe!"
+    , "frequency": 5
+    , "history": []
   }
  , {
     "name": "Probe2"
@@ -18,7 +21,10 @@ var probes = [
     , "status": "Down"
     , "created": "2015-01-10T23:02:05"
     , "lastmodified": "2015-02-10T23:02:05"
+    , "lastchecked": new Date()
     , "comments": "I'm an offline probe"
+    , "frequency": 12
+    , "history": []
   }
   , {
     "name": "Sensor"
@@ -26,7 +32,10 @@ var probes = [
     , "status": "Flapping"
     , "created": "2014-12-17T03:24:00"
     , "lastmodified": new Date()
+    , "lastchecked": new Date()
     , "comments": "I'll not give you informations"
+    , "frequency": 20
+    , "history": []
   }
 ];
 
