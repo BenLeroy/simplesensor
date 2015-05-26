@@ -1,8 +1,34 @@
 module.exports = function(app, cb) {
 
   var sensors = app.models.Sensor;
+
   app.on('started', function(){
-    sensors.find(function (err, data){
+
+    sensors.find(function (era, sensei) {
+
+      sensei.forEach(function (timecheck) {
+        var timed = Date.now() - timecheck.lastchecked.getTime() + timecheck.frequency * 1000;
+
+        console.log(timed);
+
+        if (timed >= timecheck.frequency * 1000 /* + timecheck.lag */) {
+          console.log('houston we have a problem');
+        }
+
+        /*sensors.find({
+          where: {
+            lastchecked: { 
+              lt: timed
+            }
+          }
+        }
+        , function (err, datatime){
+          console.log(datatime);
+        });*/
+      });
+    });
+
+    /*sensors.find(function (err, data){
 
       data.forEach(function (sensor){
         setInterval(
@@ -24,7 +50,7 @@ module.exports = function(app, cb) {
           , sensors
         );
       });
-    });
+    });*/
   });
   cb(null);
 };
