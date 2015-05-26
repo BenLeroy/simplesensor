@@ -18,6 +18,7 @@ module.exports = function(Sensor) {
 			Sensor.upsert(instance, function (err, obj) {
 				obj.status = status;
 				obj.lastmodified = Date.now();
+				obj.lastchecked = Date.now();
 				obj.save({}, function (ert, objt) {
 					cb(
 						null

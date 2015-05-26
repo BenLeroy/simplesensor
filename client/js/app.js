@@ -77,15 +77,6 @@
 
         that.sensors = data;
 
-        /*for(var i = 0; i < that.sensors.length; i++) {
-          setInterval(
-            function (name) {
-              console.log('hello ' + name);
-            }
-            , that.sensors[i].frequency * 2000
-            , that.sensors[i].name
-          )
-        }*/
       });
     })
 
