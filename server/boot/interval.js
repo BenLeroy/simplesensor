@@ -4,7 +4,7 @@ module.exports = function(app, cb) {
 
   app.on('started', function(){
 
-    var checker = setInterval(function (data){
+    setInterval(function (data){
       data.find({
         where: {
           lastchecked: {
