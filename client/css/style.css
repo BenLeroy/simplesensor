@@ -14,7 +14,10 @@ li.navbar-text{
 .decal{
 	margin-left: 10%;
 }
-
+#since{
+	float: right;
+	margin-top: -5em;
+}
 #barretitre{
 	width: 100px;
 }

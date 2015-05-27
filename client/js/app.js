@@ -12,8 +12,13 @@
       , '$urlRouterProvider'
       , function ($stateProvider, $urlRouterProvider) {
 
-        $stateProvider.state('list', {
-          url: '/'
+        $stateProvider.state('index', {
+          url: '/down'
+          , templateUrl: 'views/down.html'
+          , controller: 'ListCtrl'
+        })
+        .state('list', {
+          url: '/list'
           , templateUrl: 'views/list.html'
           , controller: 'ListCtrl'
         })
@@ -37,7 +42,7 @@
           , templateUrl: 'views/events.html'
           , controller: 'EventCtrl'
         });
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/down');
   }])
 
   .controller('CountCtrl'
