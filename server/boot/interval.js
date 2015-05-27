@@ -4,29 +4,52 @@ module.exports = function(app, cb) {
 
   app.on('started', function(){
 
-    sensors.find(function (era, sensei) {
-
-      sensei.forEach(function (timecheck) {
-        var timed = Date.now() - timecheck.lastchecked.getTime() + timecheck.frequency * 1000;
-
-        console.log(timed);
-
-        if (timed >= timecheck.frequency * 1000 /* + timecheck.lag */) {
-          console.log('houston we have a problem');
-        }
-
-        /*sensors.find({
-          where: {
-            lastchecked: { 
-              lt: timed
-            }
+    var checker = setInterval(function (data){
+      data.find({
+        where: {
+          lastchecked: {
+            lt: new Date(Date.now() - 6000)
           }
         }
-        , function (err, datatime){
-          console.log(datatime);
-        });*/
+      }
+      , function (err, datatime){
+        datatime.forEach(function (sensei){
+          if(
+            Date.now() > sensei.lastchecked.getTime() + sensei.frequency * 1000
+             & sensei.status !== 'Down'
+          )
+          {
+            sensei.updateAttributes({status: 'Down', lastmodified: new Date()}
+              , function (erb, instance){
+                console.log(instance.name + ' is down since ' + instance.lastmodified);
+              });
+          }
+        });
       });
-    });
+    }
+    , 3000
+    , sensors
+    );
+
+    //sensors.find(function (era, sensei) {
+
+      //sensei.forEach(function (timecheck) {
+        //var timed = Date.now() - timecheck.lastchecked.getTime() + timecheck.frequency * 1000;
+
+        //console.log('timed');
+        //console.log(timed);
+
+        //if (timed >= timecheck.frequency * 1000 /* + timecheck.lag */) {
+          //console.log('houston we have a problem');
+        //}
+
+        //checker = (timecheck.lastchecked.getTime() + timed);
+        //checker = new Date(checker);
+        //console.log('checker');
+        //console.log(checker);
+
+      //});
+    //});
 
     /*sensors.find(function (err, data){
 
