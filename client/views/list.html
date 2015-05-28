@@ -2,16 +2,17 @@
   <div >
     <h1>Sondes</h1>
     <div ng-repeat='sensor in List.sensors | orderBy:"status"' class="list-group container">
-      <a ui-sref='sensorEdit({id: sensor.id})' class="list-group-item col-md-3">
+      <a ui-sref='consult({id: sensor.id})' class="list-group-item col-md-3">
         <span>ID : {{sensor.id}}</span>
         <br/>
         <span>Key : {{sensor.key}}</span>
         <br/>
         <span>Nom : {{sensor.name}}</span>
         <br/>
-        <span ng-class="{'label label-danger': sensor.status == 'Down', 'label label-success': sensor.status == 'Up', 'label label-warning': sensor.status == 'Flapping' }">{{sensor.status}}</span>
+        <span ng-class="{'label label-danger': sensor.status == 'Down', 'label label-success': sensor.status == 'Up', 'label label-warning': sensor.status == 'Flapping', 'label label-info': sensor.status == 'Missing' }">{{sensor.status}}</span>
       </a><br>
     </div>
   </div>
 </div>
 
+<!--sensorEdit({id: sensor.id})-->

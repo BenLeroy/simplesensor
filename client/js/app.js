@@ -13,13 +13,13 @@
       , function ($stateProvider, $urlRouterProvider) {
 
         $stateProvider.state('index', {
-          url: '/down'
-          , templateUrl: 'views/down.html'
-          , controller: 'ListCtrl'
-        })
-        .state('list', {
           url: '/list'
           , templateUrl: 'views/list.html'
+          , controller: 'ListCtrl'
+        })
+        .state('down', {
+          url: '/down'
+          , templateUrl: 'views/down.html'
           , controller: 'ListCtrl'
         })
         .state('sensorEdit', {
@@ -38,11 +38,16 @@
           , controller: 'AddCtrl'
         })
         .state('events', {
-          url: '/sensor/events/:id'
+          url: '/sensor/events/'
           , templateUrl: 'views/events.html'
           , controller: 'EventCtrl'
+        })
+        .state('consult', {
+          url: '/sensor/consult/:id'
+          , templateUrl: 'views/consult.html'
+          , controller: 'EditCtrl'
         });
-        $urlRouterProvider.otherwise('/down');
+        $urlRouterProvider.otherwise('/list');
   }])
 
   .controller('CountCtrl'

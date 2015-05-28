@@ -46,10 +46,9 @@ module.exports = function(Sensor) {
 			Sensor.upsert(instance, function (ert, obj) {
 				obj.modifiedAt = Date.now();
 				obj.history.push(
-					{"status" : obj.status, "dernière modif": obj.modifiedAt
+					{"status" : obj.status, "lastmodif": obj.modifiedAt
 					}
 				);
-				console.log(obj);
 				obj.save ({}, function (erc, objj) {
 					cb(null, objj);
 				});
@@ -61,7 +60,7 @@ module.exports = function(Sensor) {
 		{
 			accepts: {arg: 'id', type: 'string'},
 			returns: {arg: 'ça donne', type: 'object'},
-			http: {path: '/events'}
+			http: {path: '/events/:id', verb: 'post'}
 		}
 	);
 };
