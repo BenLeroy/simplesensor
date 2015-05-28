@@ -4,7 +4,7 @@ module.exports = function(app, cb) {
 
   var EventEmitter = require('events').EventEmitter;
   var emitter = new EventEmitter();
-  var Checker = require('../../lib/passive-checker.js')(app);
+  var Checker = require('../../lib/passive-checker.js');
 
   app.on('started', function(){
 
@@ -25,10 +25,16 @@ module.exports = function(app, cb) {
     , 3000
     , sensors
     );
-    emitter.on('oneDown', function (key){
-      console.log(key.name + ' ' + key.status);
-    });
 
+    Checker.on('sensor:down', function (key){
+      console.log(key.name + ' is ' + key.status + ' at : ' + key.checkedAt);
+    });
+    Checker.on('sensor:up', function (key){
+      console.log(key.name + ' is ' + key.status + ' at : ' + key.checkedAt);
+    });
+    Checker.on('sensor:missed', function (key){
+      console.log(key.name + ' is ' + key.status + ' at : ' + key.checkedAt);
+    });
 
     //sensors.find(function (era, sensei) {
 
