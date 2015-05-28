@@ -20,13 +20,13 @@
       "pattern": "/Up|Down|Flapping/",
       "required": true
     },
-    "created": {
+    "createdAt": {
       "type": "date"
     },
-    "lastmodified": {
+    "modifiedAt": {
       "type": "date"
     },
-    "lastchecked": {
+    "checkedAt": {
       "type": "date"
     },
     "frequency": {

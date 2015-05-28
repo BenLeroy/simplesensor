@@ -93,7 +93,7 @@
           that.sensor = data;
         });
       $scope.SaveMod = function () {
-        that.sensor.lastmodified = Date.now();
+        that.sensor.modifiedAt = Date.now();
         that.sensor.$save();
       };
     })

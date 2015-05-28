@@ -11,14 +11,14 @@ module.exports = function(Sensor) {
 			, {key: key
 			, name: key + ' non configuré'
 			, status: status
-			, created: Date.now()
+			, createdAt: Date.now()
 			, frequency: 60}
 			, function (err, instance){
 
 			Sensor.upsert(instance, function (err, obj) {
 				obj.status = status;
-				obj.lastmodified = Date.now();
-				obj.lastchecked = Date.now();
+				obj.modifiedAt = Date.now();
+				obj.checkedAt = Date.now();
 				obj.save({}, function (ert, objt) {
 					cb(
 						null
@@ -44,9 +44,9 @@ module.exports = function(Sensor) {
 		Sensor.findById(id, function (err, instance) {
 
 			Sensor.upsert(instance, function (ert, obj) {
-				obj.lastmodified = Date.now();
+				obj.modifiedAt = Date.now();
 				obj.history.push(
-					{"status" : obj.status, "dernière modif": obj.lastmodified
+					{"status" : obj.status, "dernière modif": obj.modifiedAt
 					}
 				);
 				console.log(obj);
