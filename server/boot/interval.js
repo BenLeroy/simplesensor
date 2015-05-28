@@ -2,34 +2,33 @@ module.exports = function(app, cb) {
 
   var sensors = app.models.Sensor;
 
+  var EventEmitter = require('events').EventEmitter;
+  var emitter = new EventEmitter();
+  var Checker = require('../../lib/passive-checker.js')(app);
+
   app.on('started', function(){
 
     setInterval(function (data){
       data.find({
         where: {
-          lastchecked: {
+          checkedAt: {
             lt: new Date(Date.now() - 6000)
           }
         }
       }
       , function (err, datatime){
-        datatime.forEach(function (sensei){
-          if(
-            Date.now() > sensei.lastchecked.getTime() + sensei.frequency * 1000
-             & sensei.status !== 'Down'
-          )
-          {
-            sensei.updateAttributes({status: 'Down', lastmodified: new Date()}
-              , function (erb, instance){
-                console.log(instance.name + ' is down since ' + instance.lastmodified);
-              });
-          }
-        });
+
+        Checker.areAlive(datatime);
+
       });
     }
     , 3000
     , sensors
     );
+    emitter.on('oneDown', function (key){
+      console.log(key.name + ' ' + key.status);
+    });
+
 
     //sensors.find(function (era, sensei) {
 
