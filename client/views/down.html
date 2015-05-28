@@ -1,0 +1,23 @@
+<div ng-controller='ListCtrl as List'>
+  <div >
+    <h1>Sondes en défaut</h1>
+    <div ng-repeat='sensor in List.sensors | filter: sensor.status = "Down"' class="list-group container">
+      <a ui-sref='sensorEdit({id: sensor.id})' class="list-group-item col-md-3">
+        <div>
+          <span>ID : {{sensor.id}}</span>
+          <br/>
+          <span>Key : {{sensor.key}}</span>
+          <br/>
+          <span>Nom : {{sensor.name}}</span>
+          <br/>
+          <span ng-class="{'label label-danger': sensor.status == 'Down', 'label label-success': sensor.status == 'Up', 'label label-warning': sensor.status == 'Flapping' }">{{sensor.status}}</span>
+        </div>
+        <div id='since'>
+          <span>Depuis : </span><br/>
+          <span>{{sensor.checkedAt | date:'short'}}</span>
+        </div>
+      </a><br>
+    </div>
+  </div>
+</div>
+

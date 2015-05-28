@@ -1,0 +1,37 @@
+<h1>Consultation de la sonde</h1>
+<div ng-controller='EditCtrl as Edit'>
+	<div>
+    <label>ID : {{Edit.sensor.id}}</label>
+    <br/>
+   	<label>Key</label>
+    <p>{{Edit.sensor.key}}</p>
+  </div>
+  <div>
+    <label>Nom</label>
+    <p>{{Edit.sensor.name}}</p>
+  </div>
+  <div>
+    <label>Etat</label>
+    <p>{{Edit.sensor.status}}</p>
+  </div>
+  <div>
+    <label>Date de création</label>
+    <p>{{Edit.sensor.createdAt | date:"yyyy-MM-dd HH:mm:ss"}}</p>
+  </div>
+  <div>
+    <label>Date de dernière modification</label>
+    <p>{{Edit.sensor.modifiedAt | date: "yyyy-MM-dd HH:mm:ss"}}</p>
+  </div>
+  <div>
+    <label>Commentaires</label>
+    <p>{{Edit.sensor.comments}}</p>
+  </div>
+   <div>
+   <label>Historique</label>
+    <p ng-repeat='Lines in Edit.sensor.history | orderBy: "lastmodif":true'>
+      <label ng-class="{'label label-danger': Lines.status == 'Down', 'label label-success': Lines.status == 'Up', 'label label-warning': Lines.status == 'Flapping', 'label label-info': Lines.status == 'Missing' }">
+      {{Lines.status}}</label>
+      <span>{{Lines.lastmodif | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+      </p>
+   </div> 
+</div>
