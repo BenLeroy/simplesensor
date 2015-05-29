@@ -29,5 +29,9 @@
   "sensor": {
     "dataSource": "db",
     "public": true
+  },
+  "event": {
+    "dataSource": "db",
+    "public": true
   }
 }

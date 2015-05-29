@@ -17,8 +17,8 @@
     },
     "status": {
       "type": "string",
-      "pattern": "/Up|Down|Flapping/",
-      "required": true
+      "required": true,
+      "pattern": "/Up|Down|Flapping|Mising/"
     },
     "createdAt": {
       "type": "date"
@@ -35,13 +35,16 @@
     },
     "comments": {
       "type": "string"
-    },
-    "history": {
-      "type": "array"
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "logs": {
+      "type": "hasMany",
+      "model": "event",
+      "foreignKey": "sensorId"
+    }
+  },
   "acls": [],
   "methods": []
 }

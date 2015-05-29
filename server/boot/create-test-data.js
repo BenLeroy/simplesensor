@@ -13,7 +13,6 @@ var probes = [
     , "checkedAt": new Date()
     , "comments": "I'm the first probe!"
     , "frequency": 5
-    , "history": []
   }
  , {
     "name": "Probe2"
@@ -24,7 +23,6 @@ var probes = [
     , "checkedAt": new Date()
     , "comments": "I'm an offline probe"
     , "frequency": 12
-    , "history": []
   }
   , {
     "name": "Sensor"
@@ -35,12 +33,12 @@ var probes = [
     , "checkedAt": new Date()
     , "comments": "I'll not give you informations"
     , "frequency": 20
-    , "history": []
   }
 ];
 
+
 var count = probes.length;
-dataSource.automigrate('sensor', function(er) {
+dataSource.automigrate('sensor', function (er) {
   if (er) {throw er; }
   probes.forEach(function (probe) {
     Probe.create(probe, function (err, result) {
@@ -49,8 +47,8 @@ dataSource.automigrate('sensor', function(er) {
       count--;
       if(count === 0) {
         console.log('done');
-        dataSource.disconnect();
       }
     });
   });
 });
+

@@ -1,0 +1,36 @@
+{
+  "name": "event",
+  "plural": "events",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "sensorId": {
+      "type": "string",
+      "required": true
+    },
+    "status": {
+      "type": "string",
+      "required": true
+    },
+    "loggedAt": {
+      "type": "date",
+      "required": true
+    },
+    "upTime": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+  	"sensor": {
+  		"type": "belongsTo",
+    	"model": "sensor",
+    	"foreignKey": ""
+  	}
+  },
+  "acls": [],
+  "methods": []
+}

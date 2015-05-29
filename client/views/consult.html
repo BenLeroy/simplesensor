@@ -28,7 +28,7 @@
   </div>
    <div>
    <label>Historique</label>
-    <p ng-repeat='Lines in Edit.sensor.history | orderBy: "lastmodif":true'>
+    <p ng-repeat='Lines in sensor.history | orderBy: "lastmodif":true'>
       <label ng-class="{'label label-danger': Lines.status == 'Down', 'label label-success': Lines.status == 'Up', 'label label-warning': Lines.status == 'Flapping', 'label label-info': Lines.status == 'Missing' }">
       {{Lines.status}}</label>
       <span>{{Lines.lastmodif | date:"yyyy-MM-dd HH:mm:ss"}}</span>

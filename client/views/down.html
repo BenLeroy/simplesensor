@@ -1,5 +1,5 @@
-<div ng-controller='ListCtrl as List'>
-  <div >
+<div>
+  <div ng-controller='ListCtrl as List'>
     <h1>Sondes en défaut</h1>
     <div ng-repeat='sensor in List.sensors | filter: sensor.status = "Down"' class="list-group container">
       <a ui-sref='sensorEdit({id: sensor.id})' class="list-group-item col-md-3">

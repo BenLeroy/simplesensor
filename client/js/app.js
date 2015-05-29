@@ -38,7 +38,7 @@
           , controller: 'AddCtrl'
         })
         .state('events', {
-          url: '/sensor/events/'
+          url: '/events/'
           , templateUrl: 'views/events.html'
           , controller: 'EventCtrl'
         })
@@ -84,7 +84,6 @@
       that.sensors = [];
 
       Sensor.find().$promise.then(function (data){
-
         that.sensors = data;
 
       });
@@ -131,12 +130,19 @@
       };
     })
 
-  .controller('EventCtrl', function (Sensor, $stateParams) {
-    var that = this;
-    Sensor.findById({id: $stateParams.id}
-        , function (data) {
-          that.sensor = data;
+  .controller('EventCtrl'
+    , function (Event){
+
+      var that = this;
+
+      that.events = [];
+
+      Event.find({ filter: {"include": 'sensor'}}).$promise.then(function (data){
+        console.log(data);
+        that.events = data;
+
         });
-  });
+    });
+
 
 })();

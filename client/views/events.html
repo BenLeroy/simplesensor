@@ -1,9 +1,9 @@
-<div ng-controller='EventCtrl'>
+<div>
   <h1>Sondes</h1>
-  <div>
-    <ul ng-repeat='event in Event.sensors'>
-      <li>
-        
+  <div ng-controller='EventCtrl as Event'>
+    <ul>
+      <li ng-repeat='event in Event.events'>
+        {{event.sensor.key}} is {{event.status}} since {{event.loggedAt}}
       </li>
     </ul>
   </div>

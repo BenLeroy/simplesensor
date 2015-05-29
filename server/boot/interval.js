@@ -1,6 +1,7 @@
 module.exports = function(app, cb) {
 
   var sensors = app.models.Sensor;
+  var events = app.models.Event;
 
   var EventEmitter = require('events').EventEmitter;
   var emitter = new EventEmitter();
@@ -27,13 +28,19 @@ module.exports = function(app, cb) {
     );
 
     Checker.on('sensor:down', function (key){
-      console.log(key.name + ' is ' + key.status + ' at : ' + key.checkedAt);
+      events.create({sensorId: key.id, status: key.status, loggedAt: Date.now(), upTime: 0}, function (err, created) {
+        console.log('event logged');
+      });
     });
     Checker.on('sensor:up', function (key){
-      console.log(key.name + ' is ' + key.status + ' at : ' + key.checkedAt);
+      events.create({sensorId: key.id, status: key.status, loggedAt: Date.now(), upTime: 0}, function (err, created) {
+        console.log('event logged');
+      });
     });
     Checker.on('sensor:missed', function (key){
-      console.log(key.name + ' is ' + key.status + ' at : ' + key.checkedAt);
+      events.create({sensorId: key.id, status: key.status, loggedAt: Date.now(), upTime: 0}, function (err, created) {
+        console.log('event logged');
+      });
     });
 
     //sensors.find(function (era, sensei) {

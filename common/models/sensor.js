@@ -39,28 +39,4 @@ module.exports = function(Sensor) {
 			http: {path: '/newSensor'}
 		}
 	);
-
-	Sensor.events = function (id, cb) {
-		Sensor.findById(id, function (err, instance) {
-
-			Sensor.upsert(instance, function (ert, obj) {
-				obj.modifiedAt = Date.now();
-				obj.history.push(
-					{"status" : obj.status, "lastmodif": obj.modifiedAt
-					}
-				);
-				obj.save ({}, function (erc, objj) {
-					cb(null, objj);
-				});
-			});
-		});
-	};
-
-	Sensor.remoteMethod('events',
-		{
-			accepts: {arg: 'id', type: 'string'},
-			returns: {arg: 'ça donne', type: 'object'},
-			http: {path: '/events/:id', verb: 'post'}
-		}
-	);
 };
