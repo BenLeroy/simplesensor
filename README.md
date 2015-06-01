@@ -9,7 +9,9 @@ Create a simple interface to manage sensors informations
 
 - Node.js from https://nodejs.org/
 
-- Bower, installed with node.js by running : `$ npm install bower -g `
+- Bower, installed with node.js by running : `$ npm install bower -g`
+
+All used dependencies are listed in [package.json](https://github.com/BenLeroy/simplesensor/blob/master/package.json)
 
 
 ###  How to install :
@@ -26,6 +28,8 @@ $ bower install
 Run : `$ npm start`
 
 Then go with your favorite browser at [http://localhost:3000/](http://localhost:3000/)
+
+You can eventually set a custom port using `$ PORT=xxxx npm start`
 
 
 
