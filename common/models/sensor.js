@@ -10,12 +10,25 @@ module.exports = function(Sensor, Event) {
 			{ where: {key: key}}
 			, {key: key
 			, name: key + ' non configuré'
-			, status: status
 			, createdAt: Date.now()
 			, frequency: 60}
 			, function (err, instance){
 
 			Sensor.upsert(instance, function (err, obj) {
+
+				if (instance.status !== status) {
+					console.log('Event status changed ' + instance.name + ' is now ' + status);
+
+					/*Event.create({
+						sensorId: instance.id
+						, status: instance.status
+						, loggedAt: Date.now()
+						, upTime: 0
+					}
+          , function (err, created) {
+            console.log('event down logged');
+					});*/
+				}
 				obj.status = status;
 				obj.modifiedAt = Date.now();
 				obj.checkedAt = Date.now();
