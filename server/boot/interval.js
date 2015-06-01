@@ -27,21 +27,40 @@ module.exports = function(app, cb) {
     , sensors
     );
 
-    Checker.on('sensor:down', function (key){
-      events.create({sensorId: key.id, status: key.status, loggedAt: Date.now(), upTime: 0}, function (err, created) {
-        console.log('event logged');
+    /*Checker.on('sensor:nok', function (key){
+      events.create({
+        sensorId: key.id
+        , status: key.status
+        , loggedAt: Date.now()
+        , upTime: 0
+      }
+      , function (err, created) {
+        console.log('event down logged');
       });
     });
-    Checker.on('sensor:up', function (key){
-      events.create({sensorId: key.id, status: key.status, loggedAt: Date.now(), upTime: 0}, function (err, created) {
-        console.log('event logged');
+    Checker.on('sensor:ok', function (key){
+      console.log('passé par interval.js');
+      events.create({
+        sensorId: key.id
+        , status: key.status
+        , loggedAt: Date.now()
+        , upTime: 0
+      }
+      , function (err, created) {
+        console.log('event up logged');
       });
     });
     Checker.on('sensor:missed', function (key){
-      events.create({sensorId: key.id, status: key.status, loggedAt: Date.now(), upTime: 0}, function (err, created) {
-        console.log('event logged');
+      events.create({
+        sensorId: key.id
+        , status: key.status
+        , loggedAt: Date.now()
+        , upTime: 0
+      }
+      , function (err, created) {
+        console.log('event missed logged');
       });
-    });
+    });*/
 
     //sensors.find(function (era, sensei) {
 

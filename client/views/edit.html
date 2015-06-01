@@ -13,8 +13,8 @@
   <div class="form-group">
     <label for="status">Etat</label>
     <select id="etat" class="form-control" ng-model='Edit.sensor.status'>
-      <option ng-class="{'selected': sensor.status == 'Up'}" value="Up">Up</option>
-      <option ng-class="{'selected': sensor.status == 'Down'}" value="Down">Down</option>
+      <option ng-class="{'selected': sensor.status == 'OK'}" value="OK">Up</option>
+      <option ng-class="{'selected': sensor.status == 'NOK'}" value="NOK">Down</option>
       <option ng-class="{'selected': sensor.status == 'Flapping'}" value="Flapping">Flapping</option>
       <option ng-class="{'selected': sensor.status == 'Missing'}" value="Missing">Missing</option>
     </select>

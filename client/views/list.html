@@ -2,7 +2,7 @@
   <h1>Sondes</h1>
   <div class='row'>
     <div class="col-lg-3" ng-repeat='sensor in List.sensors | orderBy:"status"'>
-      <div ui-sref='consult({id: sensor.id})' ng-class="{'panel panel-danger': sensor.status == 'Down', 'panel panel-success': sensor.status == 'Up', 'panel panel-warning': sensor.status == 'Flapping', 'panel panel-info': sensor.status == 'Missing' }">
+      <div ui-sref='consult({id: sensor.id})' ng-class="{'panel panel-danger': sensor.status == 'NOK', 'panel panel-success': sensor.status == 'OK', 'panel panel-warning': sensor.status == 'Flapping', 'panel panel-info': sensor.status == 'Missing' }">
         <div class='panel-heading'>
           {{sensor.key}}
         </div>

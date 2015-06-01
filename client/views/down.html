@@ -10,7 +10,7 @@
           <br/>
           <span>Nom : {{sensor.name}}</span>
           <br/>
-          <span ng-class="{'label label-danger': sensor.status == 'Down', 'label label-success': sensor.status == 'Up', 'label label-warning': sensor.status == 'Flapping' }">{{sensor.status}}</span>
+          <span ng-class="{'label label-danger': sensor.status == 'NOK', 'label label-success': sensor.status == 'OK', 'label label-warning': sensor.status == 'Flapping' }">{{sensor.status}}</span>
         </div>
         <div id='since'>
           <span>Depuis : </span><br/>

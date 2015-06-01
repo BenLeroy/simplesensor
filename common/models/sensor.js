@@ -1,6 +1,6 @@
-module.exports = function(Sensor) {
+module.exports = function(Sensor, Event) {
 
-	Sensor.newSensor = function (key, status, cb) {
+	Sensor.inCheck = function (key, status, cb) {
 
 		if(key === undefined | key === "") {
 			return cb('Key cannot be blank');
@@ -28,15 +28,28 @@ module.exports = function(Sensor) {
 			});
 		});
 	};
+	Sensor.observe('after save', function(ctx, next) {
 
-	Sensor.remoteMethod('newSensor',
+		if (ctx.instance.status === 'OK') {
+			console.log('passé par sensor.js');
+      console.log(ctx);
+		}
+		next();
+		/*if (sensor.status === 'OK') {
+				Sensor.inCheck.emit('sensor:ok', sensor);
+			}*/
+	});
+
+	Sensor.remoteMethod('inCheck',
 		{
 			accepts: [
 				{arg: 'key', type: 'string'}
 				, {arg: 'status', type: 'string'}
 				],
 			returns: {arg: 'sensor', type: 'object'},
-			http: {path: '/newSensor'}
+			http: {path: '/inCheck'},
+			description: "Update existing model instance or insert a new one if it doesn't exist"
+
 		}
 	);
 };

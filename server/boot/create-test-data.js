@@ -7,7 +7,7 @@ var probes = [
   {
     "name": "Probe1"
     , "key": "abcdef"
-    , "status": "Up"
+    , "status": "OK"
     , "createdAt": "2015-05-10T13:24:20"
     , "modifiedAt": new Date()
     , "checkedAt": new Date()
@@ -17,7 +17,7 @@ var probes = [
  , {
     "name": "Probe2"
     , "key": "ghijkl"
-    , "status": "Down"
+    , "status": "NOK"
     , "createdAt": "2015-01-10T23:02:05"
     , "modifiedAt": "2015-02-10T23:02:05"
     , "checkedAt": new Date()
