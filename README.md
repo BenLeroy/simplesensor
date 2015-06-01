@@ -22,10 +22,11 @@ Once you have node.js & bower installed, run :
 $ npm install
 $ bower install
 ```
+And clone this repo by running : `$ git clone https://github.com/BenLeroy/simplesensor.git` or by downloading the project's [Zip](https://github.com/BenLeroy/simplesensor/archive/master.zip)
 
 ## How to use :
 
-Run : `$ npm start`
+Run : `$ npm start` from project's root (`$ cd simplesensor`)
 
 Then go with your favorite browser at [http://localhost:3000/](http://localhost:3000/)
 
