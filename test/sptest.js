@@ -37,18 +37,18 @@ describe('GET /list', function () {
 	});
 });
 
-describe('POST /newSensor', function () {
+describe('POST /inCheck', function () {
 
 	it('should add a new sensor to the list', function (done) {
 		request(app)
-			.post('/api/sensors/newSensor')
+			.post('/api/sensors/inCheck')
 			.type('form')
 			.send({key: mykey})
-			.send({status: 'Offline'})
+			.send({status: 'NOK'})
 			.expect('Content-Type', /json/)
 			.expect(200)
 			.expect(keydef)
-			.expect(/Offline/)
+			.expect(/NOK/)
 			.end(function (err, res) {
 				if(err) return done(err);
 				done();
@@ -67,12 +67,12 @@ describe('POST /newSensor', function () {
 
 	it('should update new sensor\'s data', function (done) {
 		request(app)
-			.post('/api/sensors/newSensor')
+			.post('/api/sensors/inCheck')
 			.send({key: mykey})
-			.send({status: 'Up'})
+			.send({status: 'OK'})
 			.expect('Content-Type', /json/)
 			.expect(200)
-			.expect(/Up/)
+			.expect(/OK/)
 			.end(function (err, res) {
 				if(err) return done(err);
 				done();
@@ -81,7 +81,7 @@ describe('POST /newSensor', function () {
 
 	it('should send an error if key arg is not sent', function (done) {
 		request(app)
-			.post('/api/sensors/newSensor')
+			.post('/api/sensors/inCheck')
 			.send({status: 'Up'})
 			.expect('Content-Type', /json/)
 			.expect(500)
@@ -94,7 +94,7 @@ describe('POST /newSensor', function () {
 
 	it('should send an error if key arg is empty', function (done) {
 		request(app)
-			.post('/api/sensors/newSensor')
+			.post('/api/sensors/inCheck')
 			.send({key: ''})
 			.expect('Content-Type', /json/)
 			.expect(500)
@@ -140,7 +140,7 @@ describe('Status change', function (done) {
 			.set('Accept', 'application/json')
 			.expect('Content-Type', /json/)
 			.expect(200)
-			.expect(/Down/)
+			.expect(/NOK/)
 			.end(function (err, res) {
 				if(err) return done(err);
 				done();
