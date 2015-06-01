@@ -19,6 +19,7 @@ All used dependencies are listed in [package.json](https://github.com/BenLeroy/s
 Once you have node.js & bower installed, clone this repo by running :
 
 `$ git clone https://github.com/BenLeroy/simplesensor.git`
+
 Or download the project's [Zip](https://github.com/BenLeroy/simplesensor/archive/master.zip)
 
 Then run :
