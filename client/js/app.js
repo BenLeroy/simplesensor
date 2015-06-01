@@ -68,12 +68,6 @@
         $scope.CountDown = data.count;
 
       });
-
-      /*Sensor.count({where: {status: "Flapping"}}).$promise.then(function (data) {
-
-        $scope.CountFlap = data.count;
-
-      });*/
   })
 
   .controller('ListCtrl'

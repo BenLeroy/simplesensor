@@ -1,4 +1,4 @@
-module.exports = function(Sensor, Event) {
+module.exports = function(Sensor) {
 
 	Sensor.inCheck = function (key, status, cb) {
 
@@ -6,33 +6,26 @@ module.exports = function(Sensor, Event) {
 			return cb('Key cannot be blank');
 		}
 
-		Sensor.findOrCreate(
-			{ where: {key: key}}
+		Sensor.findOrCreate({where: {key: key}}
 			, {key: key
 			, name: key + ' non configuré'
 			, createdAt: Date.now()
 			, frequency: 60}
 			, function (err, instance){
 
-			Sensor.upsert(instance, function (err, obj) {
+        Sensor.upsert(instance, function (err, obj) {
 
-				if (instance.status !== status) {
-					console.log('Event status changed ' + instance.name + ' is now ' + status);
-
-					/*Event.create({
-						sensorId: instance.id
-						, status: instance.status
-						, loggedAt: Date.now()
-						, upTime: 0
-					}
-          , function (err, created) {
-            console.log('event down logged');
-					});*/
-				}
-				obj.status = status;
 				obj.modifiedAt = Date.now();
 				obj.checkedAt = Date.now();
+
+        if (instance.status !== status) {
+          obj.status = status;
+          var haveChanged = true;
+        }
 				obj.save({}, function (ert, objt) {
+          if (haveChanged) {
+            Sensor.emit('sensor:' + status, obj);
+          }
 					cb(
 						null
 						, objt
@@ -41,17 +34,6 @@ module.exports = function(Sensor, Event) {
 			});
 		});
 	};
-	Sensor.observe('after save', function(ctx, next) {
-
-		if (ctx.instance.status === 'OK') {
-			console.log('passé par sensor.js');
-      console.log(ctx);
-		}
-		next();
-		/*if (sensor.status === 'OK') {
-				Sensor.inCheck.emit('sensor:ok', sensor);
-			}*/
-	});
 
 	Sensor.remoteMethod('inCheck',
 		{
