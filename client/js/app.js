@@ -84,7 +84,6 @@
 
       Sensor.find().$promise.then(function (data){
         that.sensors = data;
-
       });
     })
 

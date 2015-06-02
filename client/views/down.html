@@ -1,23 +1,38 @@
 <div>
   <div ng-controller='ListCtrl as List'>
     <h1>Sondes en défaut</h1>
-    <div ng-repeat='sensor in List.sensors | filter: sensor.status = "Down"' class="list-group container">
-      <a ui-sref='sensorEdit({id: sensor.id})' class="list-group-item col-md-3">
-        <div>
-          <span>ID : {{sensor.id}}</span>
-          <br/>
-          <span>Key : {{sensor.key}}</span>
-          <br/>
-          <span>Nom : {{sensor.name}}</span>
-          <br/>
-          <span ng-class="{'label label-danger': sensor.status == 'NOK', 'label label-success': sensor.status == 'OK', 'label label-warning': sensor.status == 'Flapping' }">{{sensor.status}}</span>
+    <div class='row'>
+      <div ng-repeat='sensor in List.sensors | filter: sensor.status = "NOK"' class="col-lg-3">
+        <div ui-sref='consult({id: sensor.id})' class="panel panel-danger">
+          <div class='panel-heading'>
+            {{sensor.key}} - {{sensor.status}}
+          </div>
+          <div class='panel-body'>
+            <p>ID : {{sensor.id}} <br/> Nom : {{sensor.name}}</p>
+          </div>
+          <div class='panel-footer'>
+            Depuis : {{sensor.checkedAt | date:'short'}}
+          </div>
+        </div>    
+      </div>
+    </div>
+    <div class='row'>
+      <div ng-repeat='sensor in List.sensors | filter: sensor.status = "Missing"' class="col-lg-3">
+        <div ui-sref='consult({id: sensor.id})' class="panel panel-danger">
+          <div class='panel-heading'>
+            {{sensor.key}} - {{sensor.status}}
+          </div>
+          <div class='panel-body'>
+            <p>ID : {{sensor.id}} <br/> Nom : {{sensor.name}}</p>
+          </div>
+          <div class='panel-footer'>
+            Depuis : {{sensor.checkedAt | date:'short'}}
+          </div>
         </div>
-        <div id='since'>
-          <span>Depuis : </span><br/>
-          <span>{{sensor.checkedAt | date:'short'}}</span>
-        </div>
-      </a><br>
+      </div>
     </div>
   </div>
 </div>
+
+
 

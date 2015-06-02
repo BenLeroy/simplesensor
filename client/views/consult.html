@@ -1,6 +1,10 @@
-<h1>Consultation de la sonde</h1>
 <div ng-controller='EditCtrl as Edit'>
-	<div>
+  <h1>Consultation de la sonde
+    <a type="button" ui-sref='sensorEdit({id: Edit.sensor.id})' class="btn btn-warning">
+      <span class='glyphicon glyphicon-pencil' aria-hidden='true' title='Modifier'></span>
+    </a>
+  </h1>
+  <div>
     <label>ID : {{Edit.sensor.id}}</label>
     <br/>
    	<label>Key</label>
@@ -26,12 +30,13 @@
     <label>Commentaires</label>
     <p>{{Edit.sensor.comments}}</p>
   </div>
-   <div>
-   <label>Historique</label>
+  <div>
+    <label>Historique</label>
     <p ng-repeat='Lines in sensor.history | orderBy: "lastmodif":true'>
-      <label ng-class="{'label label-danger': Lines.status == 'NOK', 'label label-success': Lines.status == 'OK', 'label label-warning': Lines.status == 'Flapping', 'label label-info': Lines.status == 'Missing' }">
-      {{Lines.status}}</label>
+      <label ng-class="{'OK': 'label label-success', 'NOK': 'label label-danger', 'Missing': 'label label-danger', 'Flapping': 'label label-warning'}[sensor.status]" class='label label-default'> 
+        {{Lines.status}}
+      </label>
       <span>{{Lines.lastmodif | date:"yyyy-MM-dd HH:mm:ss"}}</span>
-      </p>
-   </div> 
+    </p>
+  </div>
 </div>

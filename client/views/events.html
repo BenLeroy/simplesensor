@@ -3,7 +3,7 @@
   <div ng-controller='EventCtrl as Event'>
     <ul>
       <li ng-repeat='event in Event.events | orderBy:"loggedAt":true'>
-        {{event.sensor.key}} is <span ng-class="{'label label-danger': event.status == 'NOK', 'label label-success': event.status == 'OK', 'label label-warning': event.status == 'Flapping', 'label label-info': event.status == 'Missing' }">{{event.status}}</span> since {{event.loggedAt | date: 'dd/MM/yyyy - HH:mm:ss'}}
+        {{event.sensor.key}} is <span ng-class="{'OK': 'label label-success', 'NOK': 'label label-danger', 'Missing': 'label label-danger', 'Flapping': 'label label-warning'}[event.status]" class='label label-default'>{{event.status}}</span> since {{event.loggedAt | date: 'dd/MM/yyyy - HH:mm:ss'}}
       </li>
     </ul>
   </div>
