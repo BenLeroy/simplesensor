@@ -46,6 +46,11 @@
           url: '/sensor/consult/:id'
           , templateUrl: 'views/consult.html'
           , controller: 'EditCtrl'
+        })
+        .state('notifs', {
+          url: '/notifs'
+          , templateUrl: 'views/notifs.html'
+          , controller: 'NotifCtrl'
         });
         $urlRouterProvider.otherwise('/list');
   }])
@@ -136,6 +141,20 @@
         that.events = data;
 
         });
+    })
+
+
+  .controller('NotifCtrl'
+    , function (Notification){
+
+      var that = this;
+
+      that.notifs = [];
+
+      Notification.find().$promise.then(function (data){
+        that.notifs = data;
+
+      });
     });
 
 

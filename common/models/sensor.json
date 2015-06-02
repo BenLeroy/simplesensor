@@ -33,6 +33,12 @@
       "type": "number",
       "required": true
     },
+    "phoneTo": {
+      "type": "string"
+    },
+    "mailTo": {
+      "type": "string"
+    },
     "comments": {
       "type": "string"
     }
@@ -42,6 +48,11 @@
     "logs": {
       "type": "hasMany",
       "model": "event",
+      "foreignKey": "sensorId"
+    },
+    "notifications": {
+      "type": "hasMany",
+      "model": "notification",
       "foreignKey": "sensorId"
     }
   },

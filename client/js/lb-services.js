@@ -1055,6 +1055,24 @@ module.factory(
           method: "PUT"
         },
 
+        // INTERNAL. Use Sensor.notifications.findById() instead.
+        "prototype$__findById__notifications": {
+          url: urlBase + "/sensors/:id/notifications/:fk",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Sensor.notifications.destroyById() instead.
+        "prototype$__destroyById__notifications": {
+          url: urlBase + "/sensors/:id/notifications/:fk",
+          method: "DELETE"
+        },
+
+        // INTERNAL. Use Sensor.notifications.updateById() instead.
+        "prototype$__updateById__notifications": {
+          url: urlBase + "/sensors/:id/notifications/:fk",
+          method: "PUT"
+        },
+
         // INTERNAL. Use Sensor.logs() instead.
         "prototype$__get__logs": {
           isArray: true,
@@ -1077,6 +1095,31 @@ module.factory(
         // INTERNAL. Use Sensor.logs.count() instead.
         "prototype$__count__logs": {
           url: urlBase + "/sensors/:id/logs/count",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Sensor.notifications() instead.
+        "prototype$__get__notifications": {
+          isArray: true,
+          url: urlBase + "/sensors/:id/notifications",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Sensor.notifications.create() instead.
+        "prototype$__create__notifications": {
+          url: urlBase + "/sensors/:id/notifications",
+          method: "POST"
+        },
+
+        // INTERNAL. Use Sensor.notifications.destroyAll() instead.
+        "prototype$__delete__notifications": {
+          url: urlBase + "/sensors/:id/notifications",
+          method: "DELETE"
+        },
+
+        // INTERNAL. Use Sensor.notifications.count() instead.
+        "prototype$__count__notifications": {
+          url: urlBase + "/sensors/:id/notifications/count",
           method: "GET"
         },
 
@@ -1425,14 +1468,12 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Sensor#newSensor
+         * @name lbServices.Sensor#inCheck
          * @methodOf lbServices.Sensor
          *
          * @description
          *
-         * <em>
-         * (The remote method definition does not provide any description.)
-         * </em>
+         * Update existing model instance or insert a new one if it doesn't exist
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1459,14 +1500,20 @@ module.factory(
          *
          *  - `sensor` – `{object=}` - 
          */
-        "newSensor": {
-          url: urlBase + "/sensors/newSensor",
+        "inCheck": {
+          url: urlBase + "/sensors/inCheck",
           method: "POST"
         },
 
         // INTERNAL. Use Event.sensor() instead.
         "::get::event::sensor": {
           url: urlBase + "/events/:id/sensor",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Notification.sensor() instead.
+        "::get::notification::sensor": {
+          url: urlBase + "/notifications/:id/sensor",
           method: "GET"
         },
       }
@@ -1866,6 +1913,269 @@ module.factory(
         R.logs.updateById = function() {
           var TargetResource = $injector.get("Event");
           var action = TargetResource["::updateById::sensor::logs"];
+          return action.apply(R, arguments);
+        };
+    /**
+     * @ngdoc object
+     * @name lbServices.Sensor.notifications
+     * @header lbServices.Sensor.notifications
+     * @object
+     * @description
+     *
+     * The object `Sensor.notifications` groups methods
+     * manipulating `Notification` instances related to `Sensor`.
+     *
+     * Call {@link lbServices.Sensor#notifications Sensor.notifications()}
+     * to query all related instances.
+     */
+
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Sensor#notifications
+         * @methodOf lbServices.Sensor
+         *
+         * @description
+         *
+         * Queries notifications of sensor.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `filter` – `{object=}` - 
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Notification` object.)
+         * </em>
+         */
+        R.notifications = function() {
+          var TargetResource = $injector.get("Notification");
+          var action = TargetResource["::get::sensor::notifications"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Sensor.notifications#count
+         * @methodOf lbServices.Sensor.notifications
+         *
+         * @description
+         *
+         * Counts notifications of sensor.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `count` – `{number=}` - 
+         */
+        R.notifications.count = function() {
+          var TargetResource = $injector.get("Notification");
+          var action = TargetResource["::count::sensor::notifications"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Sensor.notifications#create
+         * @methodOf lbServices.Sensor.notifications
+         *
+         * @description
+         *
+         * Creates a new instance in notifications of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Notification` object.)
+         * </em>
+         */
+        R.notifications.create = function() {
+          var TargetResource = $injector.get("Notification");
+          var action = TargetResource["::create::sensor::notifications"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Sensor.notifications#destroyAll
+         * @methodOf lbServices.Sensor.notifications
+         *
+         * @description
+         *
+         * Deletes all notifications of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        R.notifications.destroyAll = function() {
+          var TargetResource = $injector.get("Notification");
+          var action = TargetResource["::delete::sensor::notifications"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Sensor.notifications#destroyById
+         * @methodOf lbServices.Sensor.notifications
+         *
+         * @description
+         *
+         * Delete a related item by id for notifications.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `fk` – `{*}` - Foreign key for notifications
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        R.notifications.destroyById = function() {
+          var TargetResource = $injector.get("Notification");
+          var action = TargetResource["::destroyById::sensor::notifications"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Sensor.notifications#findById
+         * @methodOf lbServices.Sensor.notifications
+         *
+         * @description
+         *
+         * Find a related item by id for notifications.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `fk` – `{*}` - Foreign key for notifications
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Notification` object.)
+         * </em>
+         */
+        R.notifications.findById = function() {
+          var TargetResource = $injector.get("Notification");
+          var action = TargetResource["::findById::sensor::notifications"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Sensor.notifications#updateById
+         * @methodOf lbServices.Sensor.notifications
+         *
+         * @description
+         *
+         * Update a related item by id for notifications.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `fk` – `{*}` - Foreign key for notifications
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Notification` object.)
+         * </em>
+         */
+        R.notifications.updateById = function() {
+          var TargetResource = $injector.get("Notification");
+          var action = TargetResource["::updateById::sensor::notifications"];
           return action.apply(R, arguments);
         };
 
@@ -2458,6 +2768,598 @@ module.factory(
         R.sensor = function() {
           var TargetResource = $injector.get("Sensor");
           var action = TargetResource["::get::event::sensor"];
+          return action.apply(R, arguments);
+        };
+
+    return R;
+  }]);
+
+/**
+ * @ngdoc object
+ * @name lbServices.Notification
+ * @header lbServices.Notification
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `Notification` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+module.factory(
+  "Notification",
+  ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
+    var R = Resource(
+      urlBase + "/notifications/:id",
+      { 'id': '@id' },
+      {
+
+        // INTERNAL. Use Notification.sensor() instead.
+        "prototype$__get__sensor": {
+          url: urlBase + "/notifications/:id/sensor",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Notification#create
+         * @methodOf lbServices.Notification
+         *
+         * @description
+         *
+         * Create a new instance of the model and persist it into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Notification` object.)
+         * </em>
+         */
+        "create": {
+          url: urlBase + "/notifications",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Notification#upsert
+         * @methodOf lbServices.Notification
+         *
+         * @description
+         *
+         * Update an existing model instance or insert a new one into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Notification` object.)
+         * </em>
+         */
+        "upsert": {
+          url: urlBase + "/notifications",
+          method: "PUT"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Notification#exists
+         * @methodOf lbServices.Notification
+         *
+         * @description
+         *
+         * Check whether a model instance exists in the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `exists` – `{boolean=}` - 
+         */
+        "exists": {
+          url: urlBase + "/notifications/:id/exists",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Notification#findById
+         * @methodOf lbServices.Notification
+         *
+         * @description
+         *
+         * Find a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         *  - `filter` – `{object=}` - Filter defining fields and include
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Notification` object.)
+         * </em>
+         */
+        "findById": {
+          url: urlBase + "/notifications/:id",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Notification#find
+         * @methodOf lbServices.Notification
+         *
+         * @description
+         *
+         * Find all instances of the model matched by filter from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Notification` object.)
+         * </em>
+         */
+        "find": {
+          isArray: true,
+          url: urlBase + "/notifications",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Notification#findOne
+         * @methodOf lbServices.Notification
+         *
+         * @description
+         *
+         * Find first instance of the model matched by filter from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Notification` object.)
+         * </em>
+         */
+        "findOne": {
+          url: urlBase + "/notifications/findOne",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Notification#updateAll
+         * @methodOf lbServices.Notification
+         *
+         * @description
+         *
+         * Update instances of the model matched by where from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        "updateAll": {
+          url: urlBase + "/notifications/update",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Notification#deleteById
+         * @methodOf lbServices.Notification
+         *
+         * @description
+         *
+         * Delete a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        "deleteById": {
+          url: urlBase + "/notifications/:id",
+          method: "DELETE"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Notification#count
+         * @methodOf lbServices.Notification
+         *
+         * @description
+         *
+         * Count instances of the model matched by where from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `count` – `{number=}` - 
+         */
+        "count": {
+          url: urlBase + "/notifications/count",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Notification#prototype$updateAttributes
+         * @methodOf lbServices.Notification
+         *
+         * @description
+         *
+         * Update attributes for a model instance and persist it into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Notification` object.)
+         * </em>
+         */
+        "prototype$updateAttributes": {
+          url: urlBase + "/notifications/:id",
+          method: "PUT"
+        },
+
+        // INTERNAL. Use Sensor.notifications.findById() instead.
+        "::findById::sensor::notifications": {
+          url: urlBase + "/sensors/:id/notifications/:fk",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Sensor.notifications.destroyById() instead.
+        "::destroyById::sensor::notifications": {
+          url: urlBase + "/sensors/:id/notifications/:fk",
+          method: "DELETE"
+        },
+
+        // INTERNAL. Use Sensor.notifications.updateById() instead.
+        "::updateById::sensor::notifications": {
+          url: urlBase + "/sensors/:id/notifications/:fk",
+          method: "PUT"
+        },
+
+        // INTERNAL. Use Sensor.notifications() instead.
+        "::get::sensor::notifications": {
+          isArray: true,
+          url: urlBase + "/sensors/:id/notifications",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Sensor.notifications.create() instead.
+        "::create::sensor::notifications": {
+          url: urlBase + "/sensors/:id/notifications",
+          method: "POST"
+        },
+
+        // INTERNAL. Use Sensor.notifications.destroyAll() instead.
+        "::delete::sensor::notifications": {
+          url: urlBase + "/sensors/:id/notifications",
+          method: "DELETE"
+        },
+
+        // INTERNAL. Use Sensor.notifications.count() instead.
+        "::count::sensor::notifications": {
+          url: urlBase + "/sensors/:id/notifications/count",
+          method: "GET"
+        },
+      }
+    );
+
+
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Notification#updateOrCreate
+         * @methodOf lbServices.Notification
+         *
+         * @description
+         *
+         * Update an existing model instance or insert a new one into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Notification` object.)
+         * </em>
+         */
+        R["updateOrCreate"] = R["upsert"];
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Notification#update
+         * @methodOf lbServices.Notification
+         *
+         * @description
+         *
+         * Update instances of the model matched by where from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        R["update"] = R["updateAll"];
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Notification#destroyById
+         * @methodOf lbServices.Notification
+         *
+         * @description
+         *
+         * Delete a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        R["destroyById"] = R["deleteById"];
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Notification#removeById
+         * @methodOf lbServices.Notification
+         *
+         * @description
+         *
+         * Delete a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        R["removeById"] = R["deleteById"];
+
+
+    /**
+    * @ngdoc property
+    * @name lbServices.Notification#modelName
+    * @propertyOf lbServices.Notification
+    * @description
+    * The name of the model represented by this $resource,
+    * i.e. `Notification`.
+    */
+    R.modelName = "Notification";
+
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Notification#sensor
+         * @methodOf lbServices.Notification
+         *
+         * @description
+         *
+         * Fetches belongsTo relation sensor.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `refresh` – `{boolean=}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Sensor` object.)
+         * </em>
+         */
+        R.sensor = function() {
+          var TargetResource = $injector.get("Sensor");
+          var action = TargetResource["::get::notification::sensor"];
           return action.apply(R, arguments);
         };
 

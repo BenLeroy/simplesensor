@@ -1,26 +1,21 @@
 {
-  "name": "event",
-  "plural": "events",
+  "name": "notification",
+  "plural": "notifications",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
+    "mail": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
     "sensorId": {
       "type": "string",
       "required": true
-    },
-    "status": {
-      "type": "string",
-      "required": true
-    },
-    "loggedAt": {
-      "type": "date",
-      "required": true
-    },
-    "upTime": {
-      "type": "number"
     }
   },
   "validations": [],

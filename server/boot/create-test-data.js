@@ -12,6 +12,8 @@ var probes = [
     , "modifiedAt": new Date()
     , "checkedAt": new Date()
     , "comments": "I'm the first probe!"
+    , "phoneTo": "+33601234567"
+    , "mailTo": "bleroy@live.fr"
     , "frequency": 5
   }
  , {
@@ -22,16 +24,20 @@ var probes = [
     , "modifiedAt": "2015-02-10T23:02:05"
     , "checkedAt": new Date()
     , "comments": "I'm an offline probe"
+    , "phoneTo": "+33689101112"
+    , "mailTo": "benramin_fr@hotmail.com"
     , "frequency": 12
   }
   , {
     "name": "Sensor"
     , "key": "mnopqr"
-    , "status": "Flapping"
+    , "status": "Missing"
     , "createdAt": "2014-12-17T03:24:00"
     , "modifiedAt": new Date()
     , "checkedAt": new Date()
     , "comments": "I'll not give you informations"
+    , "phoneTo": "+33613141516"
+    , "mailTo": "benderd3v@gmail.com"
     , "frequency": 20
   }
 ];
@@ -42,6 +48,7 @@ dataSource.automigrate('sensor', function (er) {
   if (er) {throw er; }
   probes.forEach(function (probe) {
     Probe.create(probe, function (err, result) {
+      //Probe.emit('sensor:' + result.status);
       if (err) {return; }
       console.log('Record created:', result);
       count--;
