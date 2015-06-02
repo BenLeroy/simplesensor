@@ -1,9 +1,9 @@
 <div ng-controller='NotifCtrl as Notif'>
   <h1>Sondes</h1>
-  <div class='row'>
+  <div>
     <ul>
         <li ng-repeat='notif in Notif.notifs'>
-          {{Notif.sensorId}} : {{Notif.mail}} / {{Notif.phone}}
+          {{notif.sensorId}} : {{notif.mail}} / {{notif.phone}}
         </li>
     </ul>
   </div>
