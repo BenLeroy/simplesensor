@@ -38,7 +38,9 @@ li.navbar-text{
 	color: white !important;
 }
 
-
+div[ui-sref] {
+	cursor: pointer;
+}
 
 
 

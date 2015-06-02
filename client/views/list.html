@@ -1,10 +1,10 @@
 <div ng-controller='ListCtrl as List'>
   <h1>Sondes</h1>
   <div class='row'>
-    <div class="col-lg-3" ng-repeat='sensor in List.sensors | orderBy:"status"'>
+    <div class="col-lg-2 col-md-4 col-sm-6" ng-repeat='sensor in List.sensors | orderBy:"status"'>
       <div ui-sref='consult({id: sensor.id})' ng-class="{'OK': 'panel panel-success', 'NOK': 'panel panel-danger', 'Missing': 'panel panel-danger', 'Flapping': 'panel panel-warning'}[sensor.status]" class='panel panel-default'>
         <div class='panel-heading'>
-          {{sensor.key}} - {{sensor.status}}
+          {{sensor.key}} <span ng-class="{'OK': 'label label-success pull-right', 'NOK': 'label label-danger pull-right', 'Missing': 'label label-danger pull-right', 'Flapping': 'label label-warning pull-right'}[sensor.status]" class='label label-default pull-right'>{{sensor.status}}</span>
         </div>
         <div class='panel-body'>
           <p>ID : {{sensor.id}} <br/> Nom : {{sensor.name}}</p>
