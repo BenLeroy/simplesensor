@@ -3,7 +3,9 @@
   <div>
     <ul>
         <li ng-repeat='notif in Notif.notifs'>
-          {{notif.sensor.key}} : {{notif.mail}} / {{notif.phone}}
+          <p>{{sensor.key}} a généré</p> <!-- RELATION NOTIF -> SENSOR KO -->
+          <p>{{notif.nContent}}</p>
+          <p>à : {{notif.sendDate}}</p>
         </li>
     </ul>
   </div>

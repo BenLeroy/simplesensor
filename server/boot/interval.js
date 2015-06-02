@@ -1,12 +1,11 @@
 module.exports = function(app, cb) {
 
   var sensors = app.models.Sensor;
-  var events = app.models.Event;
-  //var notifs = app.models.Notification;
 
   var EventEmitter = require('events').EventEmitter;
   var emitter = new EventEmitter();
   var Checker = require('../../lib/passive-checker.js');
+  //var Notifier = require('../../lib/dispatch.js');
 
   app.on('started', function(){
 
@@ -28,39 +27,17 @@ module.exports = function(app, cb) {
     , sensors
     );
 
-    sensors.on('sensor:NOK', function (key) {
-      events.create({
-        sensorId: key.id
-        , status: key.status
-        , loggedAt: Date.now()
-        , upTime: 0
-      }
-      , function (err, created) {
-        console.log('event ' + key.status + ' logged');
-      });
-    });
-    sensors.on('sensor:OK', function (key) {
-      events.create({
-        sensorId: key.id
-        , status: key.status
-        , loggedAt: Date.now()
-        , upTime: 0
-      }
-      , function (err, created) {
-        console.log('event ' + key.status + ' logged');
-      });
-    });
-    Checker.on('sensor:Missing', function (key) {
-      events.create({
-        sensorId: key.id
-        , status: key.status
-        , loggedAt: Date.now()
-        , upTime: 0
-      }
-      , function (err, created) {
-        console.log('event ' + key.status + ' logged');
-      });
-    });
+    function dispatch(sensor) {
+      require('../../lib/events')(sensor, app);
+      require('../../lib/notifications')(sensor, app);
+      //require('../../lib/notifications-mails')(sensor, app);
+      //require('../../lib/notifications-sms')(sensor, app);
+    }
+
+    sensors.on('sensor:NOK', dispatch);
+    sensors.on('sensor:OK', dispatch);
+    Checker.on('sensor:Missing', dispatch);
+
   });
   cb(null);
 };

@@ -17,8 +17,7 @@
     },
     "status": {
       "type": "string",
-      "required": true,
-      "pattern": "/OK|NOK/"
+      "required": true
     },
     "createdAt": {
       "type": "date"
@@ -44,10 +43,10 @@
       "model": "event",
       "foreignKey": "sensorId"
     },
-    "notifications": {
+    "notifs": {
       "type": "hasMany",
       "model": "notification",
-      "foreignKey": "sensorId"
+      "foreignKey": "probeId"
     }
   },
   "acls": [],

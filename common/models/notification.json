@@ -13,21 +13,29 @@
     "phone": {
       "type": "string"
     },
+    "nContent": {
+      "type": "string"
+    },
     "sendDate": {
       "type": "date",
       "required": true
     },
-    "sensorId": {
+    "probeId": {
       "type": "string",
       "required": true
     }
   },
   "validations": [],
   "relations": {
-    "sensor": {
+    "probe": {
       "type": "belongsTo",
       "model": "sensor",
       "foreignKey": ""
+    },
+    "logs": {
+      "type": "hasMany",
+      "model": "event",
+      "foreignKey": "sensorId"
     }
   },
   "acls": [],

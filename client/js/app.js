@@ -156,7 +156,7 @@
 
       that.notifs = [];
 
-      Notification.find({ filter: {"include": 'sensor'}}).$promise.then(function (data){
+      Notification.find({ filter: {"include": 'probe'}}).$promise.then(function (data){
 
         that.notifs = data;
 

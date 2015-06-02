@@ -29,6 +29,11 @@
       "type": "belongsTo",
       "model": "sensor",
       "foreignKey": ""
+    },
+    "notif": {
+      "type": "belongsTo",
+      "model": "notification",
+      "foreignKey": ""
     }
   },
   "acls": [],
