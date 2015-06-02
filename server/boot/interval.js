@@ -2,7 +2,7 @@ module.exports = function(app, cb) {
 
   var sensors = app.models.Sensor;
   var events = app.models.Event;
-  var notifs = app.models.Notification;
+  //var notifs = app.models.Notification;
 
   var EventEmitter = require('events').EventEmitter;
   var emitter = new EventEmitter();
@@ -38,18 +38,6 @@ module.exports = function(app, cb) {
       , function (err, created) {
         console.log('event ' + key.status + ' logged');
       });
-      notifs.create({
-        sensorId: key.id
-        , phone: key.phoneTo
-        , mail: key.mailTo
-      }
-      , function (err, noted) {
-        console.log('notif sent to : ' + key.phoneTo
-                    + ' and ' + key.mailTo
-                    + ' for ' + key.name
-                    + ' with state ' + key.status
-                    );
-      });
     });
     sensors.on('sensor:OK', function (key) {
       events.create({
@@ -71,18 +59,6 @@ module.exports = function(app, cb) {
       }
       , function (err, created) {
         console.log('event ' + key.status + ' logged');
-      });
-      notifs.create({
-        sensorId: key.id
-        , phone: key.phoneTo
-        , mail: key.mailTo
-      }
-      , function (err, noted) {
-        console.log('notif sent to : ' + key.phoneTo
-                    + ' and ' + key.mailTo
-                    + ' for ' + key.name
-                    + ' with state ' + key.status
-                    );
       });
     });
   });

@@ -3,7 +3,7 @@
   <div>
     <ul>
         <li ng-repeat='notif in Notif.notifs'>
-          {{notif.sensorId}} : {{notif.mail}} / {{notif.phone}}
+          {{notif.sensor.key}} : {{notif.mail}} / {{notif.phone}}
         </li>
     </ul>
   </div>

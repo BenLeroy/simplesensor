@@ -137,7 +137,7 @@
       that.events = [];
 
       Event.find({ filter: {"include": 'sensor'}}).$promise.then(function (data){
-        console.log(data);
+
         that.events = data;
 
         });
@@ -151,7 +151,8 @@
 
       that.notifs = [];
 
-      Notification.find().$promise.then(function (data){
+      Notification.find({ filter: {"include": 'sensor'}}).$promise.then(function (data){
+
         that.notifs = data;
 
       });

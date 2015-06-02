@@ -12,8 +12,6 @@ var probes = [
     , "modifiedAt": new Date()
     , "checkedAt": new Date()
     , "comments": "I'm the first probe!"
-    , "phoneTo": "+33601234567"
-    , "mailTo": "bleroy@live.fr"
     , "frequency": 5
   }
  , {
@@ -24,8 +22,6 @@ var probes = [
     , "modifiedAt": "2015-02-10T23:02:05"
     , "checkedAt": new Date()
     , "comments": "I'm an offline probe"
-    , "phoneTo": "+33689101112"
-    , "mailTo": "benramin_fr@hotmail.com"
     , "frequency": 12
   }
   , {
@@ -36,8 +32,6 @@ var probes = [
     , "modifiedAt": new Date()
     , "checkedAt": new Date()
     , "comments": "I'll not give you informations"
-    , "phoneTo": "+33613141516"
-    , "mailTo": "benderd3v@gmail.com"
     , "frequency": 20
   }
 ];

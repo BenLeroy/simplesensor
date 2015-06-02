@@ -33,12 +33,6 @@
       "type": "number",
       "required": true
     },
-    "phoneTo": {
-      "type": "string"
-    },
-    "mailTo": {
-      "type": "string"
-    },
     "comments": {
       "type": "string"
     }
