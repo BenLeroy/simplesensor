@@ -60,7 +60,7 @@
 
       $scope.CountUp = 0
         , $scope.CountDown = 0
-        , $scope.CountFlap = 0;
+        , $scope.CountMiss = 0;
 
       Sensor.count({where: {status: "OK"}}).$promise.then(function (data) {
 
@@ -71,6 +71,12 @@
       Sensor.count({where: {status: "NOK"}}).$promise.then(function (data) {
 
         $scope.CountDown = data.count;
+
+      });
+
+      Sensor.count({where: {status: "Missing"}}).$promise.then(function (data) {
+
+        $scope.CountMiss = data.count;
 
       });
   })
