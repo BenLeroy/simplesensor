@@ -14,6 +14,7 @@
     "express": "^4.12.3",
     "loopback": "^2.14.0",
     "loopback-boot": "^2.6.5",
+    "loopback-connector-rest": "^1.9.0",
     "loopback-datasource-juggler": "^2.19.0",
     "serve-favicon": "^2.0.1"
   },

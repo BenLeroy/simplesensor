@@ -146,21 +146,6 @@
         that.events = data;
 
         });
-    })
-
-
-  .controller('NotifCtrl'
-    , function (Notification){
-
-      var that = this;
-
-      that.notifs = [];
-
-      Notification.find({ filter: {"include": 'probe'}}).$promise.then(function (data){
-
-        that.notifs = data;
-
-      });
     });
 
 

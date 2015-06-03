@@ -1037,89 +1037,46 @@ module.factory(
       { 'id': '@id' },
       {
 
-        // INTERNAL. Use Sensor.logs.findById() instead.
-        "prototype$__findById__logs": {
-          url: urlBase + "/sensors/:id/logs/:fk",
+        // INTERNAL. Use Sensor.events.findById() instead.
+        "prototype$__findById__events": {
+          url: urlBase + "/sensors/:id/events/:fk",
           method: "GET"
         },
 
-        // INTERNAL. Use Sensor.logs.destroyById() instead.
-        "prototype$__destroyById__logs": {
-          url: urlBase + "/sensors/:id/logs/:fk",
+        // INTERNAL. Use Sensor.events.destroyById() instead.
+        "prototype$__destroyById__events": {
+          url: urlBase + "/sensors/:id/events/:fk",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Sensor.logs.updateById() instead.
-        "prototype$__updateById__logs": {
-          url: urlBase + "/sensors/:id/logs/:fk",
+        // INTERNAL. Use Sensor.events.updateById() instead.
+        "prototype$__updateById__events": {
+          url: urlBase + "/sensors/:id/events/:fk",
           method: "PUT"
         },
 
-        // INTERNAL. Use Sensor.notifs.findById() instead.
-        "prototype$__findById__notifs": {
-          url: urlBase + "/sensors/:id/notifs/:fk",
-          method: "GET"
-        },
-
-        // INTERNAL. Use Sensor.notifs.destroyById() instead.
-        "prototype$__destroyById__notifs": {
-          url: urlBase + "/sensors/:id/notifs/:fk",
-          method: "DELETE"
-        },
-
-        // INTERNAL. Use Sensor.notifs.updateById() instead.
-        "prototype$__updateById__notifs": {
-          url: urlBase + "/sensors/:id/notifs/:fk",
-          method: "PUT"
-        },
-
-        // INTERNAL. Use Sensor.logs() instead.
-        "prototype$__get__logs": {
+        // INTERNAL. Use Sensor.events() instead.
+        "prototype$__get__events": {
           isArray: true,
-          url: urlBase + "/sensors/:id/logs",
+          url: urlBase + "/sensors/:id/events",
           method: "GET"
         },
 
-        // INTERNAL. Use Sensor.logs.create() instead.
-        "prototype$__create__logs": {
-          url: urlBase + "/sensors/:id/logs",
+        // INTERNAL. Use Sensor.events.create() instead.
+        "prototype$__create__events": {
+          url: urlBase + "/sensors/:id/events",
           method: "POST"
         },
 
-        // INTERNAL. Use Sensor.logs.destroyAll() instead.
-        "prototype$__delete__logs": {
-          url: urlBase + "/sensors/:id/logs",
+        // INTERNAL. Use Sensor.events.destroyAll() instead.
+        "prototype$__delete__events": {
+          url: urlBase + "/sensors/:id/events",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Sensor.logs.count() instead.
-        "prototype$__count__logs": {
-          url: urlBase + "/sensors/:id/logs/count",
-          method: "GET"
-        },
-
-        // INTERNAL. Use Sensor.notifs() instead.
-        "prototype$__get__notifs": {
-          isArray: true,
-          url: urlBase + "/sensors/:id/notifs",
-          method: "GET"
-        },
-
-        // INTERNAL. Use Sensor.notifs.create() instead.
-        "prototype$__create__notifs": {
-          url: urlBase + "/sensors/:id/notifs",
-          method: "POST"
-        },
-
-        // INTERNAL. Use Sensor.notifs.destroyAll() instead.
-        "prototype$__delete__notifs": {
-          url: urlBase + "/sensors/:id/notifs",
-          method: "DELETE"
-        },
-
-        // INTERNAL. Use Sensor.notifs.count() instead.
-        "prototype$__count__notifs": {
-          url: urlBase + "/sensors/:id/notifs/count",
+        // INTERNAL. Use Sensor.events.count() instead.
+        "prototype$__count__events": {
+          url: urlBase + "/sensors/:id/events/count",
           method: "GET"
         },
 
@@ -1510,12 +1467,6 @@ module.factory(
           url: urlBase + "/events/:id/sensor",
           method: "GET"
         },
-
-        // INTERNAL. Use Notification.probe() instead.
-        "::get::notification::probe": {
-          url: urlBase + "/notifications/:id/probe",
-          method: "GET"
-        },
       }
     );
 
@@ -1654,27 +1605,27 @@ module.factory(
 
     /**
      * @ngdoc object
-     * @name lbServices.Sensor.logs
-     * @header lbServices.Sensor.logs
+     * @name lbServices.Sensor.events
+     * @header lbServices.Sensor.events
      * @object
      * @description
      *
-     * The object `Sensor.logs` groups methods
+     * The object `Sensor.events` groups methods
      * manipulating `Event` instances related to `Sensor`.
      *
-     * Call {@link lbServices.Sensor#logs Sensor.logs()}
+     * Call {@link lbServices.Sensor#events Sensor.events()}
      * to query all related instances.
      */
 
 
         /**
          * @ngdoc method
-         * @name lbServices.Sensor#logs
+         * @name lbServices.Sensor#events
          * @methodOf lbServices.Sensor
          *
          * @description
          *
-         * Queries logs of sensor.
+         * Queries events of sensor.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1697,20 +1648,20 @@ module.factory(
          * This usually means the response is a `Event` object.)
          * </em>
          */
-        R.logs = function() {
+        R.events = function() {
           var TargetResource = $injector.get("Event");
-          var action = TargetResource["::get::sensor::logs"];
+          var action = TargetResource["::get::sensor::events"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Sensor.logs#count
-         * @methodOf lbServices.Sensor.logs
+         * @name lbServices.Sensor.events#count
+         * @methodOf lbServices.Sensor.events
          *
          * @description
          *
-         * Counts logs of sensor.
+         * Counts events of sensor.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1732,20 +1683,20 @@ module.factory(
          *
          *  - `count` – `{number=}` - 
          */
-        R.logs.count = function() {
+        R.events.count = function() {
           var TargetResource = $injector.get("Event");
-          var action = TargetResource["::count::sensor::logs"];
+          var action = TargetResource["::count::sensor::events"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Sensor.logs#create
-         * @methodOf lbServices.Sensor.logs
+         * @name lbServices.Sensor.events#create
+         * @methodOf lbServices.Sensor.events
          *
          * @description
          *
-         * Creates a new instance in logs of this model.
+         * Creates a new instance in events of this model.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1770,20 +1721,20 @@ module.factory(
          * This usually means the response is a `Event` object.)
          * </em>
          */
-        R.logs.create = function() {
+        R.events.create = function() {
           var TargetResource = $injector.get("Event");
-          var action = TargetResource["::create::sensor::logs"];
+          var action = TargetResource["::create::sensor::events"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Sensor.logs#destroyAll
-         * @methodOf lbServices.Sensor.logs
+         * @name lbServices.Sensor.events#destroyAll
+         * @methodOf lbServices.Sensor.events
          *
          * @description
          *
-         * Deletes all logs of this model.
+         * Deletes all events of this model.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1801,26 +1752,26 @@ module.factory(
          *
          * This method returns no data.
          */
-        R.logs.destroyAll = function() {
+        R.events.destroyAll = function() {
           var TargetResource = $injector.get("Event");
-          var action = TargetResource["::delete::sensor::logs"];
+          var action = TargetResource["::delete::sensor::events"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Sensor.logs#destroyById
-         * @methodOf lbServices.Sensor.logs
+         * @name lbServices.Sensor.events#destroyById
+         * @methodOf lbServices.Sensor.events
          *
          * @description
          *
-         * Delete a related item by id for logs.
+         * Delete a related item by id for events.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - PersistedModel id
          *
-         *  - `fk` – `{*}` - Foreign key for logs
+         *  - `fk` – `{*}` - Foreign key for events
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -1834,26 +1785,26 @@ module.factory(
          *
          * This method returns no data.
          */
-        R.logs.destroyById = function() {
+        R.events.destroyById = function() {
           var TargetResource = $injector.get("Event");
-          var action = TargetResource["::destroyById::sensor::logs"];
+          var action = TargetResource["::destroyById::sensor::events"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Sensor.logs#findById
-         * @methodOf lbServices.Sensor.logs
+         * @name lbServices.Sensor.events#findById
+         * @methodOf lbServices.Sensor.events
          *
          * @description
          *
-         * Find a related item by id for logs.
+         * Find a related item by id for events.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - PersistedModel id
          *
-         *  - `fk` – `{*}` - Foreign key for logs
+         *  - `fk` – `{*}` - Foreign key for events
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -1870,26 +1821,26 @@ module.factory(
          * This usually means the response is a `Event` object.)
          * </em>
          */
-        R.logs.findById = function() {
+        R.events.findById = function() {
           var TargetResource = $injector.get("Event");
-          var action = TargetResource["::findById::sensor::logs"];
+          var action = TargetResource["::findById::sensor::events"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Sensor.logs#updateById
-         * @methodOf lbServices.Sensor.logs
+         * @name lbServices.Sensor.events#updateById
+         * @methodOf lbServices.Sensor.events
          *
          * @description
          *
-         * Update a related item by id for logs.
+         * Update a related item by id for events.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - PersistedModel id
          *
-         *  - `fk` – `{*}` - Foreign key for logs
+         *  - `fk` – `{*}` - Foreign key for events
          *
          * @param {Object} postData Request data.
          *
@@ -1910,272 +1861,9 @@ module.factory(
          * This usually means the response is a `Event` object.)
          * </em>
          */
-        R.logs.updateById = function() {
+        R.events.updateById = function() {
           var TargetResource = $injector.get("Event");
-          var action = TargetResource["::updateById::sensor::logs"];
-          return action.apply(R, arguments);
-        };
-    /**
-     * @ngdoc object
-     * @name lbServices.Sensor.notifs
-     * @header lbServices.Sensor.notifs
-     * @object
-     * @description
-     *
-     * The object `Sensor.notifs` groups methods
-     * manipulating `Notification` instances related to `Sensor`.
-     *
-     * Call {@link lbServices.Sensor#notifs Sensor.notifs()}
-     * to query all related instances.
-     */
-
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Sensor#notifs
-         * @methodOf lbServices.Sensor
-         *
-         * @description
-         *
-         * Queries notifs of sensor.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         *  - `filter` – `{object=}` - 
-         *
-         * @param {function(Array.<Object>,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Array.<Object>} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Notification` object.)
-         * </em>
-         */
-        R.notifs = function() {
-          var TargetResource = $injector.get("Notification");
-          var action = TargetResource["::get::sensor::notifs"];
-          return action.apply(R, arguments);
-        };
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Sensor.notifs#count
-         * @methodOf lbServices.Sensor.notifs
-         *
-         * @description
-         *
-         * Counts notifs of sensor.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * Data properties:
-         *
-         *  - `count` – `{number=}` - 
-         */
-        R.notifs.count = function() {
-          var TargetResource = $injector.get("Notification");
-          var action = TargetResource["::count::sensor::notifs"];
-          return action.apply(R, arguments);
-        };
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Sensor.notifs#create
-         * @methodOf lbServices.Sensor.notifs
-         *
-         * @description
-         *
-         * Creates a new instance in notifs of this model.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Notification` object.)
-         * </em>
-         */
-        R.notifs.create = function() {
-          var TargetResource = $injector.get("Notification");
-          var action = TargetResource["::create::sensor::notifs"];
-          return action.apply(R, arguments);
-        };
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Sensor.notifs#destroyAll
-         * @methodOf lbServices.Sensor.notifs
-         *
-         * @description
-         *
-         * Deletes all notifs of this model.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        R.notifs.destroyAll = function() {
-          var TargetResource = $injector.get("Notification");
-          var action = TargetResource["::delete::sensor::notifs"];
-          return action.apply(R, arguments);
-        };
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Sensor.notifs#destroyById
-         * @methodOf lbServices.Sensor.notifs
-         *
-         * @description
-         *
-         * Delete a related item by id for notifs.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         *  - `fk` – `{*}` - Foreign key for notifs
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        R.notifs.destroyById = function() {
-          var TargetResource = $injector.get("Notification");
-          var action = TargetResource["::destroyById::sensor::notifs"];
-          return action.apply(R, arguments);
-        };
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Sensor.notifs#findById
-         * @methodOf lbServices.Sensor.notifs
-         *
-         * @description
-         *
-         * Find a related item by id for notifs.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         *  - `fk` – `{*}` - Foreign key for notifs
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Notification` object.)
-         * </em>
-         */
-        R.notifs.findById = function() {
-          var TargetResource = $injector.get("Notification");
-          var action = TargetResource["::findById::sensor::notifs"];
-          return action.apply(R, arguments);
-        };
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Sensor.notifs#updateById
-         * @methodOf lbServices.Sensor.notifs
-         *
-         * @description
-         *
-         * Update a related item by id for notifs.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         *  - `fk` – `{*}` - Foreign key for notifs
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Notification` object.)
-         * </em>
-         */
-        R.notifs.updateById = function() {
-          var TargetResource = $injector.get("Notification");
-          var action = TargetResource["::updateById::sensor::notifs"];
+          var action = TargetResource["::updateById::sensor::events"];
           return action.apply(R, arguments);
         };
 
@@ -2210,12 +1898,6 @@ module.factory(
         // INTERNAL. Use Event.sensor() instead.
         "prototype$__get__sensor": {
           url: urlBase + "/events/:id/sensor",
-          method: "GET"
-        },
-
-        // INTERNAL. Use Event.notif() instead.
-        "prototype$__get__notif": {
-          url: urlBase + "/events/:id/notif",
           method: "GET"
         },
 
@@ -2562,89 +2244,46 @@ module.factory(
           method: "PUT"
         },
 
-        // INTERNAL. Use Sensor.logs.findById() instead.
-        "::findById::sensor::logs": {
-          url: urlBase + "/sensors/:id/logs/:fk",
+        // INTERNAL. Use Sensor.events.findById() instead.
+        "::findById::sensor::events": {
+          url: urlBase + "/sensors/:id/events/:fk",
           method: "GET"
         },
 
-        // INTERNAL. Use Sensor.logs.destroyById() instead.
-        "::destroyById::sensor::logs": {
-          url: urlBase + "/sensors/:id/logs/:fk",
+        // INTERNAL. Use Sensor.events.destroyById() instead.
+        "::destroyById::sensor::events": {
+          url: urlBase + "/sensors/:id/events/:fk",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Sensor.logs.updateById() instead.
-        "::updateById::sensor::logs": {
-          url: urlBase + "/sensors/:id/logs/:fk",
+        // INTERNAL. Use Sensor.events.updateById() instead.
+        "::updateById::sensor::events": {
+          url: urlBase + "/sensors/:id/events/:fk",
           method: "PUT"
         },
 
-        // INTERNAL. Use Sensor.logs() instead.
-        "::get::sensor::logs": {
+        // INTERNAL. Use Sensor.events() instead.
+        "::get::sensor::events": {
           isArray: true,
-          url: urlBase + "/sensors/:id/logs",
+          url: urlBase + "/sensors/:id/events",
           method: "GET"
         },
 
-        // INTERNAL. Use Sensor.logs.create() instead.
-        "::create::sensor::logs": {
-          url: urlBase + "/sensors/:id/logs",
+        // INTERNAL. Use Sensor.events.create() instead.
+        "::create::sensor::events": {
+          url: urlBase + "/sensors/:id/events",
           method: "POST"
         },
 
-        // INTERNAL. Use Sensor.logs.destroyAll() instead.
-        "::delete::sensor::logs": {
-          url: urlBase + "/sensors/:id/logs",
+        // INTERNAL. Use Sensor.events.destroyAll() instead.
+        "::delete::sensor::events": {
+          url: urlBase + "/sensors/:id/events",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Sensor.logs.count() instead.
-        "::count::sensor::logs": {
-          url: urlBase + "/sensors/:id/logs/count",
-          method: "GET"
-        },
-
-        // INTERNAL. Use Notification.logs.findById() instead.
-        "::findById::notification::logs": {
-          url: urlBase + "/notifications/:id/logs/:fk",
-          method: "GET"
-        },
-
-        // INTERNAL. Use Notification.logs.destroyById() instead.
-        "::destroyById::notification::logs": {
-          url: urlBase + "/notifications/:id/logs/:fk",
-          method: "DELETE"
-        },
-
-        // INTERNAL. Use Notification.logs.updateById() instead.
-        "::updateById::notification::logs": {
-          url: urlBase + "/notifications/:id/logs/:fk",
-          method: "PUT"
-        },
-
-        // INTERNAL. Use Notification.logs() instead.
-        "::get::notification::logs": {
-          isArray: true,
-          url: urlBase + "/notifications/:id/logs",
-          method: "GET"
-        },
-
-        // INTERNAL. Use Notification.logs.create() instead.
-        "::create::notification::logs": {
-          url: urlBase + "/notifications/:id/logs",
-          method: "POST"
-        },
-
-        // INTERNAL. Use Notification.logs.destroyAll() instead.
-        "::delete::notification::logs": {
-          url: urlBase + "/notifications/:id/logs",
-          method: "DELETE"
-        },
-
-        // INTERNAL. Use Notification.logs.count() instead.
-        "::count::notification::logs": {
-          url: urlBase + "/notifications/:id/logs/count",
+        // INTERNAL. Use Sensor.events.count() instead.
+        "::count::sensor::events": {
+          url: urlBase + "/sensors/:id/events/count",
           method: "GET"
         },
       }
@@ -2820,54 +2459,18 @@ module.factory(
           return action.apply(R, arguments);
         };
 
-        /**
-         * @ngdoc method
-         * @name lbServices.Event#notif
-         * @methodOf lbServices.Event
-         *
-         * @description
-         *
-         * Fetches belongsTo relation notif.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         *  - `refresh` – `{boolean=}` - 
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Notification` object.)
-         * </em>
-         */
-        R.notif = function() {
-          var TargetResource = $injector.get("Notification");
-          var action = TargetResource["::get::event::notif"];
-          return action.apply(R, arguments);
-        };
-
     return R;
   }]);
 
 /**
  * @ngdoc object
- * @name lbServices.Notification
- * @header lbServices.Notification
+ * @name lbServices.Email
+ * @header lbServices.Email
  * @object
  *
  * @description
  *
- * A $resource object for interacting with the `Notification` model.
+ * A $resource object for interacting with the `Email` model.
  *
  * ## Example
  *
@@ -2877,888 +2480,28 @@ module.factory(
  *
  */
 module.factory(
-  "Notification",
+  "Email",
   ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
     var R = Resource(
-      urlBase + "/notifications/:id",
+      urlBase + "/Emails/:id",
       { 'id': '@id' },
       {
-
-        // INTERNAL. Use Notification.probe() instead.
-        "prototype$__get__probe": {
-          url: urlBase + "/notifications/:id/probe",
-          method: "GET"
-        },
-
-        // INTERNAL. Use Notification.logs.findById() instead.
-        "prototype$__findById__logs": {
-          url: urlBase + "/notifications/:id/logs/:fk",
-          method: "GET"
-        },
-
-        // INTERNAL. Use Notification.logs.destroyById() instead.
-        "prototype$__destroyById__logs": {
-          url: urlBase + "/notifications/:id/logs/:fk",
-          method: "DELETE"
-        },
-
-        // INTERNAL. Use Notification.logs.updateById() instead.
-        "prototype$__updateById__logs": {
-          url: urlBase + "/notifications/:id/logs/:fk",
-          method: "PUT"
-        },
-
-        // INTERNAL. Use Notification.logs() instead.
-        "prototype$__get__logs": {
-          isArray: true,
-          url: urlBase + "/notifications/:id/logs",
-          method: "GET"
-        },
-
-        // INTERNAL. Use Notification.logs.create() instead.
-        "prototype$__create__logs": {
-          url: urlBase + "/notifications/:id/logs",
-          method: "POST"
-        },
-
-        // INTERNAL. Use Notification.logs.destroyAll() instead.
-        "prototype$__delete__logs": {
-          url: urlBase + "/notifications/:id/logs",
-          method: "DELETE"
-        },
-
-        // INTERNAL. Use Notification.logs.count() instead.
-        "prototype$__count__logs": {
-          url: urlBase + "/notifications/:id/logs/count",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Notification#create
-         * @methodOf lbServices.Notification
-         *
-         * @description
-         *
-         * Create a new instance of the model and persist it into the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Notification` object.)
-         * </em>
-         */
-        "create": {
-          url: urlBase + "/notifications",
-          method: "POST"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Notification#upsert
-         * @methodOf lbServices.Notification
-         *
-         * @description
-         *
-         * Update an existing model instance or insert a new one into the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Notification` object.)
-         * </em>
-         */
-        "upsert": {
-          url: urlBase + "/notifications",
-          method: "PUT"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Notification#exists
-         * @methodOf lbServices.Notification
-         *
-         * @description
-         *
-         * Check whether a model instance exists in the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * Data properties:
-         *
-         *  - `exists` – `{boolean=}` - 
-         */
-        "exists": {
-          url: urlBase + "/notifications/:id/exists",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Notification#findById
-         * @methodOf lbServices.Notification
-         *
-         * @description
-         *
-         * Find a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         *  - `filter` – `{object=}` - Filter defining fields and include
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Notification` object.)
-         * </em>
-         */
-        "findById": {
-          url: urlBase + "/notifications/:id",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Notification#find
-         * @methodOf lbServices.Notification
-         *
-         * @description
-         *
-         * Find all instances of the model matched by filter from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
-         *
-         * @param {function(Array.<Object>,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Array.<Object>} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Notification` object.)
-         * </em>
-         */
-        "find": {
-          isArray: true,
-          url: urlBase + "/notifications",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Notification#findOne
-         * @methodOf lbServices.Notification
-         *
-         * @description
-         *
-         * Find first instance of the model matched by filter from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Notification` object.)
-         * </em>
-         */
-        "findOne": {
-          url: urlBase + "/notifications/findOne",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Notification#updateAll
-         * @methodOf lbServices.Notification
-         *
-         * @description
-         *
-         * Update instances of the model matched by where from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        "updateAll": {
-          url: urlBase + "/notifications/update",
-          method: "POST"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Notification#deleteById
-         * @methodOf lbServices.Notification
-         *
-         * @description
-         *
-         * Delete a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        "deleteById": {
-          url: urlBase + "/notifications/:id",
-          method: "DELETE"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Notification#count
-         * @methodOf lbServices.Notification
-         *
-         * @description
-         *
-         * Count instances of the model matched by where from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * Data properties:
-         *
-         *  - `count` – `{number=}` - 
-         */
-        "count": {
-          url: urlBase + "/notifications/count",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Notification#prototype$updateAttributes
-         * @methodOf lbServices.Notification
-         *
-         * @description
-         *
-         * Update attributes for a model instance and persist it into the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Notification` object.)
-         * </em>
-         */
-        "prototype$updateAttributes": {
-          url: urlBase + "/notifications/:id",
-          method: "PUT"
-        },
-
-        // INTERNAL. Use Sensor.notifs.findById() instead.
-        "::findById::sensor::notifs": {
-          url: urlBase + "/sensors/:id/notifs/:fk",
-          method: "GET"
-        },
-
-        // INTERNAL. Use Sensor.notifs.destroyById() instead.
-        "::destroyById::sensor::notifs": {
-          url: urlBase + "/sensors/:id/notifs/:fk",
-          method: "DELETE"
-        },
-
-        // INTERNAL. Use Sensor.notifs.updateById() instead.
-        "::updateById::sensor::notifs": {
-          url: urlBase + "/sensors/:id/notifs/:fk",
-          method: "PUT"
-        },
-
-        // INTERNAL. Use Sensor.notifs() instead.
-        "::get::sensor::notifs": {
-          isArray: true,
-          url: urlBase + "/sensors/:id/notifs",
-          method: "GET"
-        },
-
-        // INTERNAL. Use Sensor.notifs.create() instead.
-        "::create::sensor::notifs": {
-          url: urlBase + "/sensors/:id/notifs",
-          method: "POST"
-        },
-
-        // INTERNAL. Use Sensor.notifs.destroyAll() instead.
-        "::delete::sensor::notifs": {
-          url: urlBase + "/sensors/:id/notifs",
-          method: "DELETE"
-        },
-
-        // INTERNAL. Use Sensor.notifs.count() instead.
-        "::count::sensor::notifs": {
-          url: urlBase + "/sensors/:id/notifs/count",
-          method: "GET"
-        },
-
-        // INTERNAL. Use Event.notif() instead.
-        "::get::event::notif": {
-          url: urlBase + "/events/:id/notif",
-          method: "GET"
-        },
       }
     );
 
 
 
-        /**
-         * @ngdoc method
-         * @name lbServices.Notification#updateOrCreate
-         * @methodOf lbServices.Notification
-         *
-         * @description
-         *
-         * Update an existing model instance or insert a new one into the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Notification` object.)
-         * </em>
-         */
-        R["updateOrCreate"] = R["upsert"];
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Notification#update
-         * @methodOf lbServices.Notification
-         *
-         * @description
-         *
-         * Update instances of the model matched by where from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        R["update"] = R["updateAll"];
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Notification#destroyById
-         * @methodOf lbServices.Notification
-         *
-         * @description
-         *
-         * Delete a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        R["destroyById"] = R["deleteById"];
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Notification#removeById
-         * @methodOf lbServices.Notification
-         *
-         * @description
-         *
-         * Delete a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        R["removeById"] = R["deleteById"];
-
 
     /**
     * @ngdoc property
-    * @name lbServices.Notification#modelName
-    * @propertyOf lbServices.Notification
+    * @name lbServices.Email#modelName
+    * @propertyOf lbServices.Email
     * @description
     * The name of the model represented by this $resource,
-    * i.e. `Notification`.
+    * i.e. `Email`.
     */
-    R.modelName = "Notification";
+    R.modelName = "Email";
 
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Notification#probe
-         * @methodOf lbServices.Notification
-         *
-         * @description
-         *
-         * Fetches belongsTo relation probe.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         *  - `refresh` – `{boolean=}` - 
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Sensor` object.)
-         * </em>
-         */
-        R.probe = function() {
-          var TargetResource = $injector.get("Sensor");
-          var action = TargetResource["::get::notification::probe"];
-          return action.apply(R, arguments);
-        };
-    /**
-     * @ngdoc object
-     * @name lbServices.Notification.logs
-     * @header lbServices.Notification.logs
-     * @object
-     * @description
-     *
-     * The object `Notification.logs` groups methods
-     * manipulating `Event` instances related to `Notification`.
-     *
-     * Call {@link lbServices.Notification#logs Notification.logs()}
-     * to query all related instances.
-     */
-
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Notification#logs
-         * @methodOf lbServices.Notification
-         *
-         * @description
-         *
-         * Queries logs of notification.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         *  - `filter` – `{object=}` - 
-         *
-         * @param {function(Array.<Object>,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Array.<Object>} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Event` object.)
-         * </em>
-         */
-        R.logs = function() {
-          var TargetResource = $injector.get("Event");
-          var action = TargetResource["::get::notification::logs"];
-          return action.apply(R, arguments);
-        };
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Notification.logs#count
-         * @methodOf lbServices.Notification.logs
-         *
-         * @description
-         *
-         * Counts logs of notification.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * Data properties:
-         *
-         *  - `count` – `{number=}` - 
-         */
-        R.logs.count = function() {
-          var TargetResource = $injector.get("Event");
-          var action = TargetResource["::count::notification::logs"];
-          return action.apply(R, arguments);
-        };
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Notification.logs#create
-         * @methodOf lbServices.Notification.logs
-         *
-         * @description
-         *
-         * Creates a new instance in logs of this model.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Event` object.)
-         * </em>
-         */
-        R.logs.create = function() {
-          var TargetResource = $injector.get("Event");
-          var action = TargetResource["::create::notification::logs"];
-          return action.apply(R, arguments);
-        };
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Notification.logs#destroyAll
-         * @methodOf lbServices.Notification.logs
-         *
-         * @description
-         *
-         * Deletes all logs of this model.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        R.logs.destroyAll = function() {
-          var TargetResource = $injector.get("Event");
-          var action = TargetResource["::delete::notification::logs"];
-          return action.apply(R, arguments);
-        };
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Notification.logs#destroyById
-         * @methodOf lbServices.Notification.logs
-         *
-         * @description
-         *
-         * Delete a related item by id for logs.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         *  - `fk` – `{*}` - Foreign key for logs
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        R.logs.destroyById = function() {
-          var TargetResource = $injector.get("Event");
-          var action = TargetResource["::destroyById::notification::logs"];
-          return action.apply(R, arguments);
-        };
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Notification.logs#findById
-         * @methodOf lbServices.Notification.logs
-         *
-         * @description
-         *
-         * Find a related item by id for logs.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         *  - `fk` – `{*}` - Foreign key for logs
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Event` object.)
-         * </em>
-         */
-        R.logs.findById = function() {
-          var TargetResource = $injector.get("Event");
-          var action = TargetResource["::findById::notification::logs"];
-          return action.apply(R, arguments);
-        };
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Notification.logs#updateById
-         * @methodOf lbServices.Notification.logs
-         *
-         * @description
-         *
-         * Update a related item by id for logs.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         *  - `fk` – `{*}` - Foreign key for logs
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Event` object.)
-         * </em>
-         */
-        R.logs.updateById = function() {
-          var TargetResource = $injector.get("Event");
-          var action = TargetResource["::updateById::notification::logs"];
-          return action.apply(R, arguments);
-        };
 
     return R;
   }]);

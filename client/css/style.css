@@ -42,6 +42,10 @@ div[ui-sref] {
 	cursor: pointer;
 }
 
+div.panel:hover {
+	border-color: blue;
+}
+
 
 
 

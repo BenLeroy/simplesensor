@@ -31,22 +31,14 @@
     "frequency": {
       "type": "number",
       "required": true
-    },
-    "comments": {
-      "type": "string"
     }
   },
   "validations": [],
   "relations": {
-    "logs": {
+    "events": {
       "type": "hasMany",
       "model": "event",
       "foreignKey": "sensorId"
-    },
-    "notifs": {
-      "type": "hasMany",
-      "model": "notification",
-      "foreignKey": "probeId"
     }
   },
   "acls": [],

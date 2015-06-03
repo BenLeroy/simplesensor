@@ -18,9 +18,6 @@
     "loggedAt": {
       "type": "date",
       "required": true
-    },
-    "upTime": {
-      "type": "number"
     }
   },
   "validations": [],
@@ -28,11 +25,6 @@
     "sensor": {
       "type": "belongsTo",
       "model": "sensor",
-      "foreignKey": ""
-    },
-    "notif": {
-      "type": "belongsTo",
-      "model": "notification",
       "foreignKey": ""
     }
   },

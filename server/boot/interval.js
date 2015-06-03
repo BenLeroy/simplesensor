@@ -4,7 +4,7 @@ module.exports = function(app, cb) {
 
   var EventEmitter = require('events').EventEmitter;
   var emitter = new EventEmitter();
-  var Checker = require('../../lib/passive-checker.js');
+  var checker = require('../../lib/passive-checker.js');
   //var Notifier = require('../../lib/dispatch.js');
 
   app.on('started', function(){
@@ -19,7 +19,7 @@ module.exports = function(app, cb) {
       }
       , function (err, datatime){
 
-        Checker.areAlive(datatime);
+        checker.areAlive(datatime);
 
       });
     }
@@ -29,14 +29,14 @@ module.exports = function(app, cb) {
 
     function dispatch(sensor) {
       require('../../lib/events')(sensor, app);
-      require('../../lib/notifications')(sensor, app);
-      //require('../../lib/notifications-mails')(sensor, app);
+      require('../../plugins/send-mail')(sensor, app);
+      //require('../../lib/notifications')(sensor, app);
       //require('../../lib/notifications-sms')(sensor, app);
     }
 
     sensors.on('sensor:NOK', dispatch);
     sensors.on('sensor:OK', dispatch);
-    Checker.on('sensor:Missing', dispatch);
+    checker.on('sensor:Missing', dispatch);
 
   });
   cb(null);

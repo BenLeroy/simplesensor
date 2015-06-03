@@ -2,7 +2,7 @@
   <h1>Derniers évènements</h1>
   <div ng-controller='EventCtrl as Event'>
     <ul>
-      <li ng-repeat='event in Event.events | orderBy:"loggedAt":true'>
+      <li ng-repeat='event in Event.events | orderBy:"loggedAt":true | limitTo: 10'>
         {{event.sensor.key}} is <span ng-class="{'OK': 'label label-success', 'NOK': 'label label-danger', 'Missing': 'label label-danger', 'Flapping': 'label label-warning'}[event.status]" class='label label-default'>{{event.status}}</span> since {{event.loggedAt | date: 'dd/MM/yyyy - HH:mm:ss'}}
       </li>
     </ul>

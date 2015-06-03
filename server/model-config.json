@@ -34,8 +34,7 @@
     "dataSource": "db",
     "public": true
   },
-  "notification": {
-    "dataSource": "db",
-    "public": true
+  "Email": {
+    "dataSource": "mailer"
   }
 }

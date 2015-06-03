@@ -4,7 +4,7 @@
     <div class="col-lg-2 col-md-4 col-sm-6" ng-repeat='sensor in List.sensors | filter: sensor.status = "NOK"'>
       <div ui-sref='consult({id: sensor.id})' class="panel panel-danger">
         <div class='panel-heading'>
-          {{sensor.key}} <span class="label label-danger pull-right">{{sensor.status}}</span>{{sensor.status}}
+          {{sensor.key}} <span class="label label-danger pull-right">{{sensor.status}}</span>
         </div>
         <div class='panel-body'>
           <p>ID : {{sensor.id}} <br/> Nom : {{sensor.name}}</p>
