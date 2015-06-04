@@ -1,14 +1,13 @@
 var dsConfig = require('../server/datasources.json');
 
 module.exports = function(sensor, app) {
-  var yourEmailAddress = dsConfig.mailer.transports[0].auth.user;
+  var yourEmailAddress = "loopbacktester@gmail.com";
 
   app.models.Email.send({
     to: yourEmailAddress
-    , from: yourEmailAddress
+    , from: "noreply@denaroo.com"
     , subject: 'Changement d\'état pour la sonde ' + sensor.key
-    , html: sensor.key + " is now " + sensor.status + " since " + new Date()
-    , generateTextFromHTML: true
+    , text: sensor.key + " is now " + sensor.status + " since " + new Date()
   }
   , function(err) {
     if (err) throw err;

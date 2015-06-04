@@ -29,7 +29,7 @@ module.exports = function(app, cb) {
 
     function dispatch(sensor) {
       require('../../lib/events')(sensor, app);
-      require('../../plugins/send-mail')(sensor, app);
+      //require('../../plugins/send-mail')(sensor, app);
       //require('../../lib/notifications')(sensor, app);
       //require('../../lib/notifications-sms')(sensor, app);
     }

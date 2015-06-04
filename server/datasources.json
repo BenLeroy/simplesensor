@@ -9,15 +9,9 @@
     "transports": [
       {
         "type": "smtp",
-        "host": "smtp.gmail.com",
-        "secure": true,
-        "port": 465,
+        "host": "localhost",
         "tls": {
           "rejectUnauthorized": false
-        },
-        "auth": {
-          "user": "loopbacktester@gmail.com",
-          "pass": "loopback"
         }
       }
     ]
