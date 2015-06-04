@@ -4,6 +4,7 @@
 
   var app = angular.module('sensorList'
                           , ['lbServices'
+                          , 'scroll'
                           , 'ui.router']
                           );
 
@@ -135,18 +136,38 @@
     })
 
   .controller('EventCtrl'
-    , function (Event){
+    , function (Event, $scope){
 
-      var that = this;
+      $scope.events = [];
+      var counter = 0;
+      var needMore = true;
 
-      that.events = [];
+      $scope.loadMore = function(){
 
-      Event.find({ filter: {"include": 'sensor'}}).$promise.then(function (data){
+        $scope.loading = true;
 
-        that.events = data;
+        Event.find({
+          filter: {
+            include: 'sensor'
+            , limit: 50
+            , offset: counter
+            , order: 'loggedAt DESC'
+          }
+        }).$promise.then(function (data){
 
+            for (var i = 0; i < data.length; i++) {
+              $scope.events.push(data[i]);
+            }
+            $scope.loading = false;
+            counter += 50;
         });
+        if (counter > $scope.events.length) {
+          needMore = false;
+        }
+      };
+      if (needMore) {
+        $scope.loadMore();
+      }
     });
-
 
 })();

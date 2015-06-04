@@ -46,6 +46,15 @@ div.panel:hover {
 	border-color: blue;
 }
 
+#scrolling {
+    overflow: auto;
+    height: 700px;
+}
+
+#spinLoader {
+	margin-left: 10em;
+}
+
 
 
 
