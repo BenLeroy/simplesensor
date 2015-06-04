@@ -13,6 +13,7 @@ var probes = [
     , "checkedAt": new Date()
     , "comments": "I'm the first probe!"
     , "frequency": 5
+    , "lag": 5000
   }
  , {
     "name": "Probe2"
@@ -23,6 +24,7 @@ var probes = [
     , "checkedAt": new Date()
     , "comments": "I'm an offline probe"
     , "frequency": 12
+    , "lag": 4500
   }
   , {
     "name": "Sensor"
@@ -33,6 +35,7 @@ var probes = [
     , "checkedAt": new Date()
     , "comments": "I'll not give you informations"
     , "frequency": 20
+    , "lag": 4000
   }
 ];
 
