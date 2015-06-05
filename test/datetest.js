@@ -5,9 +5,9 @@ var loopback = require('loopback');
 var app = loopback();
 var app = require('../server/server.js')
 var Sensor = app.models('Sensor');
-Sensor.attachTo(app.memory());
+//Sensor.attachTo(app.memory());
 
-console.log(Sensor);
+//console.log(Sensor);
 
 /*var TestDataBuilder = require('loopback-testing').TestDataBuilder;
 var ref = TestDataBuilder.ref;
