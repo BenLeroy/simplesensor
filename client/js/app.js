@@ -57,29 +57,39 @@
   }])
 
   .controller('CountCtrl'
-    , function (Sensor, $scope) {
+    , function (Sensor, socket, $scope) {
 
-      $scope.CountUp = 0
-        , $scope.CountDown = 0
-        , $scope.CountMiss = 0;
+      $scope.count = [];
+      $scope.count['OK'] = 0;
+      $scope.count['NOK'] = 0;
+      $scope.count['Missing'] = 0;
+      
+      $scope.newEvent = "";
 
-      Sensor.count({where: {status: "OK"}}).$promise.then(function (data) {
+      socket.on('newEvent', function (object) {
 
-        $scope.CountUp = data.count;
+        $scope.newEvent = object.status;
+        countStatus("OK");
+        countStatus("NOK");
+        countStatus("Missing");
 
-      });
+       });
 
-      Sensor.count({where: {status: "NOK"}}).$promise.then(function (data) {
+      function countStatus (status) {
 
-        $scope.CountDown = data.count;
+        Sensor.count({where: {status: status}}).$promise.then(function (data) {
+          $scope.count[status] = data.count;
+        });
+      }
 
-      });
+      countStatus("OK");
+      countStatus("NOK");
+      countStatus("Missing");
 
-      Sensor.count({where: {status: "Missing"}}).$promise.then(function (data) {
-
-        $scope.CountMiss = data.count;
-
-      });
+      /*setInterval(
+        $scope.newEvent = ""
+        , 5000
+      );*/
   })
 
   .controller('ListCtrl'
@@ -192,5 +202,31 @@
         $scope.moreEvents();
       }
     });
+
+app.factory('socket', function ($rootScope) {
+  
+  var socket = io.connect();
+  
+  return {
+    on: function (eventName, callback) {
+      socket.on(eventName, function () {
+        var args = arguments;
+        $rootScope.$apply(function () {
+          callback.apply(socket, args);
+        });
+      });
+    },
+    emit: function (eventName, data, callback) {
+      socket.emit(eventName, data, function () {
+        var args = arguments;
+        $rootScope.$apply(function () {
+          if (callback) {
+            callback.apply(socket, args);
+          }
+        });
+      });
+    }
+  };
+});
 
 })();

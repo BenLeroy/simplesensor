@@ -55,6 +55,10 @@ div.panel:hover {
     height: 755px;
 }
 
+#newsFlash {
+	color: yellow;
+}
+
 #spinLoader {
 	margin-left: 10em;
 }
