@@ -63,12 +63,12 @@
       $scope.count['OK'] = 0;
       $scope.count['NOK'] = 0;
       $scope.count['Missing'] = 0;
-      
+
       $scope.newEvent = "";
 
       socket.on('newEvent', function (object) {
 
-        $scope.newEvent = object.status;
+        $scope.newEvent = "1 sensor is now " + object.status;
         countStatus("OK");
         countStatus("NOK");
         countStatus("Missing");
