@@ -10,7 +10,8 @@ module.exports = function(Sensor) {
 			, {key: key
 			, name: key + ' non configuré'
 			, createdAt: Date.now()
-			, frequency: 60}
+			, frequency: 60
+			, lag: 1500}
 			, function (err, instance){
 
         Sensor.upsert(instance, function (err, obj) {

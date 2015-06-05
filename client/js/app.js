@@ -83,15 +83,38 @@
   })
 
   .controller('ListCtrl'
-    , function (Sensor){
+    , function (Sensor, $scope){
 
-      var that = this;
+      $scope.sensors = [];
 
-      that.sensors = [];
+      var counter = 0;
+      var anyMore = true;
 
-      Sensor.find().$promise.then(function (data){
-        that.sensors = data;
-      });
+      $scope.moreSensors = function(){
+
+        $scope.loading = true;
+
+        Sensor.find({
+          filter: {
+            limit: 50
+            , offset: counter
+            , order: 'status ASC'
+          }
+        }).$promise.then(function (data){
+
+            for (var i = 0; i < data.length; i++) {
+              $scope.sensors.push(data[i]);
+            }
+            $scope.loading = false;
+            counter += 50;
+        });
+        if (counter > $scope.sensors.length) {
+          anyMore = false;
+        }
+      };
+      if (anyMore) {
+        $scope.moreSensors();
+      }
     })
 
   .controller('EditCtrl'
@@ -142,7 +165,7 @@
       var counter = 0;
       var needMore = true;
 
-      $scope.loadMore = function(){
+      $scope.moreEvents = function(){
 
         $scope.loading = true;
 
@@ -166,7 +189,7 @@
         }
       };
       if (needMore) {
-        $scope.loadMore();
+        $scope.moreEvents();
       }
     });
 
