@@ -24,6 +24,7 @@ describe('Passive checker', function () {
 			, status: 'OK'
 			, checkedAt: new Date(Date.now() - 5 * 1000)
 			, frequency: 60
+			, lag: 1000
 			, updateAttributes: function(args, callback) {
 return callback(null, {key: 'abc', status: 'Missing'});
 			}
@@ -41,6 +42,7 @@ return callback(null, {key: 'abc', status: 'Missing'});
 			, status: 'OK'
 			, checkedAt: new Date(Date.now() - 3600 * 1000)
 			, frequency: 60
+			, lag: 1000
 			, updateAttributes: function(args, callback) {
 				return callback(null, {key: 'abc', status: 'Missing'});
 			}
@@ -58,6 +60,7 @@ return callback(null, {key: 'abc', status: 'Missing'});
 			, status: 'OK'
 			, checkedAt: new Date(Date.now() - 3600 * 1000)
 			, frequency: 60
+			, lag: 1000
 			, updateAttributes: function(args, callback) {
 				return callback(null, {key: 'abc', status: 'Missing'});
 			}
@@ -75,6 +78,7 @@ return callback(null, {key: 'abc', status: 'Missing'});
 			, status: 'NOK'
 			, checkedAt: new Date(Date.now() - 3600 * 1000)
 			, frequency: 60
+			, lag: 1000
 			, updateAttributes: function(args, callback) {
 				return callback(null, {key: 'abc', status: 'Missing'});
 			}
