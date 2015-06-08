@@ -5,7 +5,8 @@
   var app = angular.module('sensorList'
                           , ['lbServices'
                           , 'scroll'
-                          , 'ui.router']
+                          , 'ui.router'
+                          , 'controllers']
                           );
 
   app.config(
@@ -56,7 +57,7 @@
         $urlRouterProvider.otherwise('/list');
   }])
 
-  .controller('CountCtrl'
+  /*.controller('CountCtrl'
     , function (Sensor, socket, $scope) {
 
       $scope.count = [];
@@ -89,7 +90,7 @@
       /*setInterval(
         $scope.newEvent = ""
         , 5000
-      );*/
+      );
   })
 
   .controller('ListCtrl'
@@ -201,7 +202,7 @@
       if (needMore) {
         $scope.moreEvents();
       }
-    });
+    })*/;
 
 app.factory('socket', function ($rootScope) {
   
