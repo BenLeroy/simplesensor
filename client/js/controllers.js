@@ -20,7 +20,7 @@ angular.module('controllers', [])
 
       socket.on('newEvent', function (object) {
 
-        $scope.newEvent = "1 sensor is now " + object.status;
+        $scope.newEvent = object.length + " new events since" + Date.now();
         countStatus("OK");
         countStatus("NOK");
         countStatus("Missing");
@@ -30,11 +30,6 @@ angular.module('controllers', [])
       countStatus("OK");
       countStatus("NOK");
       countStatus("Missing");
-
-      /*setInterval(
-        $scope.newEvent = ""
-        , 5000
-      );*/
   })
 
   .controller('ListCtrl', function (Sensor, $scope){
