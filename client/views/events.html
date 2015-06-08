@@ -3,7 +3,7 @@
   <div id="scrolling" when-scrolled='moreEvents()'>
   	<ul>
     	<li ng-repeat='event in events'>
-        {{event.sensor.key}} is <span ng-class="{'OK': 'label label-success', 'NOK': 'label label-danger', 'Missing': 'label label-danger', 'Flapping': 'label label-warning'}[event.status]" class='label label-default'>{{event.status}}</span> since {{event.loggedAt | date: 'dd/MM/yyyy - HH:mm:ss'}}
+        	{{event.sensor.key}} is <span ng-class="{'OK': 'label label-success', 'NOK': 'label label-danger', 'Missing': 'label label-danger', 'Flapping': 'label label-warning'}[event.status]" class='label label-default'>{{event.status}}</span> since {{event.loggedAt | date: 'dd/MM/yyyy - HH:mm:ss'}}
      	</li>
     </ul>
     <img id='spinLoader' src="assets/loading.gif" ng-show="loading">

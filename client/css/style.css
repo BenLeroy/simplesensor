@@ -42,6 +42,10 @@ div[ui-sref] {
 	cursor: pointer;
 }
 
+li[ui-sref] {
+	cursor: pointer;
+}
+
 div.panel {
 	margin-left: 2%;
 }
