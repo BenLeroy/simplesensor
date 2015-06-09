@@ -21,16 +21,27 @@ angular.module('controllers', [])
 
       socket.on('newEvent', function (object) {
 
-        $scope.newEvent = object.length + " new events since" + Date.now();
+        $scope.highDate = new Date(object[0].loggedAt).getTime();
+        $scope.eventTime = Date.now();
+        $scope.newEvents = object.length + " new events since ";
+        $scope.showEvents = true;
+
         countStatus("OK");
         countStatus("NOK");
         countStatus("Missing");
 
+        $timeout(function (){
+          $scope.showEvents = false;
+          $scope.newEvents = "";
+        }
+        , 10000
+        );
       });
 
       countStatus("OK");
       countStatus("NOK");
       countStatus("Missing");
+
   })
 
   .controller('ListCtrl', function (Sensor, $scope){
