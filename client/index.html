@@ -41,7 +41,9 @@
                 <a ui-sref="events" ui-sref-opts="{reload: true}">Events</a>
               </li>
               <li class="hidden-xs navimenu">
-                <a ui-sref="events" ui-sref-opts="{reload: true}"><span id="newsFlash">{{newEvent}}</span></a>
+                <a ui-sref="events" ui-sref-opts="{reload: true}">
+                  <span ng-show='showEvents' class='newsFlash' ng-model='newEvents'>{{newEvents}} {{eventTime | date: 'HH:mm:ss (dd/MM)'}}</span>
+                </a>
               </li>
             </ul>
           </div>

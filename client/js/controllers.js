@@ -2,14 +2,15 @@
 
 angular.module('controllers', [])
 
-  .controller('CountCtrl', function (Sensor, socket, $scope) {
+  .controller('CountCtrl', function (Sensor, socket, $scope, $timeout) {
 
       $scope.count = [];
       $scope.count['OK'] = 0;
       $scope.count['NOK'] = 0;
       $scope.count['Missing'] = 0;
 
-      $scope.newEvent = "";
+      $scope.showEvents = false;
+      $scope.newEvents = "";
 
       function countStatus (status) {
 
