@@ -2,7 +2,7 @@
   <h1>Derniers évènements</h1>
   <div id="scrolling" when-scrolled='moreEvents()'>
   	<ul>
-    	<li ng-repeat='event in events'>
+    	<li ng-repeat='event in events' ng-class="event.isNew ? 'highlighter' : 'nohigh'">
         	{{event.sensor.key}} is <span ng-class="{'OK': 'label label-success', 'NOK': 'label label-danger', 'Missing': 'label label-danger', 'Flapping': 'label label-warning'}[event.status]" class='label label-default'>{{event.status}}</span> since {{event.loggedAt | date: 'dd/MM/yyyy - HH:mm:ss'}}
      	</li>
     </ul>

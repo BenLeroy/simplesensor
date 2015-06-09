@@ -33,6 +33,14 @@ li.navbar-text{
 	width: 80%;
 }
 
+.highlighter {
+	background-color: #FFFF00;
+}
+
+.nohigh {
+	background-color: #FFFFFF;	
+}
+
 .navimenu > a:hover {
 	background-color: black !important;
 	color: white !important;

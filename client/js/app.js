@@ -40,7 +40,7 @@
           , controller: 'AddCtrl'
         })
         .state('events', {
-          url: '/events/'
+          url: '/events/?date'
           , templateUrl: 'views/events.html'
           , controller: 'EventCtrl'
         })

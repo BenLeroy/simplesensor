@@ -105,7 +105,7 @@ angular.module('controllers', [])
       };
     })
 
-  .controller('EventCtrl', function (Event, $scope){
+  .controller('EventCtrl', function (Event, $scope, $stateParams, socket){
 
       $scope.events = [];
       var counter = 0;
@@ -126,6 +126,10 @@ angular.module('controllers', [])
 
             for (var i = 0; i < data.length; i++) {
               $scope.events.push(data[i]);
+
+              if (new Date($scope.events[i].loggedAt).getTime() >= +$stateParams.date) {
+                $scope.events[i].isNew = true;
+              }
             }
             $scope.loading = false;
             counter += 50;
