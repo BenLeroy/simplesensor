@@ -117,11 +117,43 @@ angular.module('controllers', [])
       };
     })
 
-  .controller('EventCtrl', function (Event, $scope, $stateParams, socket){
+  .controller('EventCtrl', function (Event, $timeout, $scope, $stateParams, socket){
 
       $scope.events = [];
       var counter = 0;
       var needMore = true;
+
+      socket.on('newEvent', function (array){
+
+        var tab = array.map(function (elm) {
+          return elm.id;
+        });
+
+        Event.find({
+          filter: {
+            include: 'sensor'
+            , where: {id: {inq: tab}}
+            , order: 'loggedAt DESC'
+          }
+        }).$promise.then(function (obj) {
+
+          obj.map(function (value) {
+            value.isNew = true;
+            return value;
+          });
+
+          $scope.events = obj.concat($scope.events);
+          console.log($scope.events);
+          $timeout(function () {
+              obj.map(function (value){
+                value.isNew = false;
+              });
+            }
+            , 20000
+          );
+        });
+
+      });
 
       $scope.moreEvents = function(){
 
@@ -139,8 +171,14 @@ angular.module('controllers', [])
             for (var i = 0; i < data.length; i++) {
               $scope.events.push(data[i]);
 
-              if (new Date($scope.events[i].loggedAt).getTime() >= +$stateParams.date) {
+              if (new Date($scope.events[i].loggedAt).getTime() >= +$stateParams.date && $stateParams.date !== null) {
                 $scope.events[i].isNew = true;
+
+                $timeout(function () {
+                  $scope.events[i].isNew = false;
+                  }
+                  ,20000
+                );
               }
             }
             $scope.loading = false;

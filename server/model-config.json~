@@ -30,8 +30,11 @@
     "dataSource": "db",
     "public": true
   },
-  "Event": {
+  "event": {
     "dataSource": "db",
     "public": true
+  },
+  "Email": {
+    "dataSource": "mailer"
   }
 }
