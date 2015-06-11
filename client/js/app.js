@@ -55,9 +55,9 @@
           , controller: 'NotifCtrl'
         });
         $urlRouterProvider.otherwise('/list');
-  }]);
+  }])
 
-app.factory('socket', function ($rootScope) {
+  .factory('socket', function ($rootScope) {
 
   var socket = io.connect();
 
