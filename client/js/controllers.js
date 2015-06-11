@@ -33,8 +33,8 @@ angular.module('controllers', [])
         $timeout(function (){
           $scope.showEvents = false;
           $scope.newEvents = "";
-        }
-        , 10000
+          }
+          , 10000
         );
       });
 
@@ -73,6 +73,7 @@ angular.module('controllers', [])
           anyMore = false;
         }
       };
+
       if (anyMore) {
         $scope.moreSensors();
       }
