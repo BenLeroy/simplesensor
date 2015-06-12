@@ -44,9 +44,10 @@ angular.module('controllers', [])
 
   })
 
-  .controller('ListCtrl', function (Sensor, $scope){
+  .controller('ListCtrl', function (Sensor, $scope, $filter){
 
       $scope.sensors = [];
+      $scope.filteredItems = [];
 
       var counter = 0;
       var anyMore = true;
@@ -77,6 +78,25 @@ angular.module('controllers', [])
       if (anyMore) {
         $scope.moreSensors();
       }
+
+      var searchMatch = function (haystack, needle) {
+        if (!needle) {
+          return true;
+        }
+        return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
+      };
+
+      $scope.search = function () {
+        $scope.filteredItems = $filter('filter')($scope.filteredItems, function (item) {
+          for(var attr in item) {
+            if (searchMatch(item[attr], $scope.searchText)) {
+              return true;
+            }
+          }
+          return false;
+        });
+        $scope.sensors = $scope.filteredItems;
+      };
     })
 
   .controller('EditCtrl', function (Sensor, $stateParams, $scope) {

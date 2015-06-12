@@ -49,6 +49,9 @@
           </div>
           <div class='hidden-xs navbar-header navbar-right'>
             <ul class="nav navbar-nav">
+              <li class='navbar-form' data-ng-show="$state.current.name == 'index'">
+                <input type="text" ng-model='searchText' ng-change='search()' role='search' placeholder="Search">
+              </li>
               <li class='navbar-text'>
                 <p class='h4 text-success'>Up 
                   <span>
