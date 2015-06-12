@@ -36,9 +36,9 @@ Run : `$ npm start` from project's root (`$ cd simplesensor`)
 
 Then go with your favorite browser at [http://localhost:3000/](http://localhost:3000/)
 
-You can eventually set a custom port using `$ PORT=xxxx npm start`
+You can eventually set a custom port using `$ PORT=[xxxx] npm start`
 
-
+To receive mail notifications, use `$ MAIL_ALERT=[yourMailAdress] npm start`
 
 
 
