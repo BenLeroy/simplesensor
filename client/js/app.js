@@ -75,6 +75,7 @@
   };
 })
 
+  // Needed to link search between controllers
   .run(function ($state, $rootScope) {
     $rootScope.$state = $state;
   });
