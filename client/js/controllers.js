@@ -21,21 +21,42 @@ angular.module('controllers', [])
 
       socket.on('newEvent', function (object) {
 
-        $scope.highDate = new Date(object[0].loggedAt).getTime();
-        $scope.eventTime = Date.now();
-        $scope.newEvents = object.length + " new events since ";
+        console.log(object);
+        // PROBLEME DE STACK!!
+        /*object.map(function (data) {
+          if (!show) {
+            stack.push(data);
+          }
+        });
+        console.log(stack);
+
+        $interval(function () {
+          if (show) {
+            stack = [];
+          }
+          show = false;
+        }
+        , 10000
+        );*/
         $scope.showEvents = true;
+
+        $scope.highDate = new Date(object[0].loggedAt).getTime();
+        $scope.eventTime = new Date(object[0].loggedAt);
+        $scope.newEvents = object.length + " new events since ";
 
         countStatus("OK");
         countStatus("NOK");
         countStatus("Missing");
 
-        $timeout(function (){
-          $scope.showEvents = false;
-          $scope.newEvents = "";
+        if ($scope.showEvents) {
+          $timeout(function (){
+            object = [];
+            $scope.showEvents = false;
+            $scope.newEvents = "";
           }
           , 10000
-        );
+          );
+        }
       });
 
       countStatus("OK");
