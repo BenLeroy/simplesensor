@@ -1,27 +1,27 @@
-<div ng-controller='EditCtrl as Edit'>
+<div>
   <h1>Modifier la sonde</h1>
   <div ng-form='formMod' class='fm'>
     <div class="form-group">
-      <label for="id">ID : {{Edit.sensor.id}}</label>
+      <label for="id">ID : {{sensor.id}}</label>
       <br/>
    	  <label for="key">Key</label>
-      <input type="text" class="form-control" id='key' ng-model='Edit.sensor.key'>
+      <input type="text" class="form-control" id='key' ng-model='sensor.key'>
     </div>
     <div class="form-group">
       <label for="name">Nom</label>
-      <input type="text" class="form-control" id='name' ng-model='Edit.sensor.name'>
+      <input type="text" class="form-control" id='name' ng-model='sensor.name'>
     </div>
     <div class="form-group">
       <label for="status">Etat actuel</label>
-      <input type='text' id="status" class="form-control" ng-model='Edit.sensor.status' readonly>
+      <input type='text' id="status" class="form-control" ng-model='sensor.status' readonly>
     </div>
     <div class="form-group">
       <label for="frequency">Fréquence d'actualisation</label>
-      <input type='number' id='frequency' ng-model='Edit.sensor.frequency'>
+      <input type='number' id='frequency' ng-model='sensor.frequency'>
     </div>
     <div class="form-group">
       <label for="lag">Fréquence d'actualisation</label>
-      <input type='number' id='lag' ng-model='Edit.sensor.lag'>
+      <input type='number' id='lag' ng-model='sensor.lag'>
     </div>
       <a type="button" ng-click='SaveMod()' ui-sref='index' class="btn btn-success">
         <span class='glyphicon glyphicon-ok' aria-hidden='true' title='Valider'></span>
@@ -32,8 +32,8 @@
   </div>
   <div class='pull-right'>
     <label>Date de création</label>
-    <p>{{Edit.sensor.createdAt | date:"yyyy-MM-dd HH:mm:ss"}}</p>
+    <p>{{sensor.createdAt | date:"yyyy-MM-dd - HH:mm:ss"}}</p>
     <label>Date de dernière modification</label>
-    <p>{{Edit.sensor.modifiedAt | date: "yyyy-MM-dd HH:mm:ss"}}</p>
+    <p>{{sensor.modifiedAt | date: "yyyy-MM-dd - HH:mm:ss"}}</p>
   </div>
 </div>

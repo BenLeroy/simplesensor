@@ -54,10 +54,6 @@ li[ui-sref] {
 	cursor: pointer;
 }
 
-div.panel {
-	margin-left: 2%;
-}
-
 div.panel:hover {
 	border-color: blue;
 }

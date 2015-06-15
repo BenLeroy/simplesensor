@@ -14,48 +14,40 @@
       , '$urlRouterProvider'
       , function ($stateProvider, $urlRouterProvider) {
 
-        $stateProvider.state('index', {
-          url: '/list'
-          , templateUrl: 'views/list.html'
-          , controller: 'ListCtrl'
-        })
-        .state('down', {
-          url: '/down'
-          , templateUrl: 'views/down.html'
-          , controller: 'ListCtrl'
-        })
-        .state('sensorEdit', {
-          url: '/sensor/edit/:id'
-          , templateUrl: 'views/edit.html'
-          , controller: 'EditCtrl'
-        })
-        .state('sensorDel', {
-          url: '/sensor/del/:id'
-          , templateUrl: 'views/delete.html'
-          , controller: 'DelCtrl'
-        })
-        .state('sensorNew', {
-          url: '/sensor/add'
-          , templateUrl: 'views/add.html'
-          , controller: 'AddCtrl'
-        })
-        .state('events', {
-          url: '/events/?:date'
-          , templateUrl: 'views/events.html'
-          , controller: 'EventCtrl'
-        })
-        .state('consult', {
-          url: '/sensor/consult/:id'
-          , templateUrl: 'views/consult.html'
-          , controller: 'EditCtrl'
-        })
-        .state('notifs', {
-          url: '/notifs'
-          , templateUrl: 'views/notifs.html'
-          , controller: 'NotifCtrl'
-        });
+        $stateProvider
+          .state('index', {
+            url: '/list/?:status'
+            , templateUrl: 'views/list.html'
+            , controller: 'ListCtrl'
+          })
+          .state('sensorEdit', {
+            url: '/sensor/edit/:id'
+            , templateUrl: 'views/edit.html'
+            , controller: 'EditCtrl'
+          })
+          .state('sensorDel', {
+            url: '/sensor/del/:id'
+            , templateUrl: 'views/delete.html'
+            , controller: 'DelCtrl'
+          })
+          .state('sensorNew', {
+            url: '/sensor/add'
+            , templateUrl: 'views/add.html'
+            , controller: 'AddCtrl'
+          })
+          .state('events', {
+            url: '/events/?:date'
+            , templateUrl: 'views/events.html'
+            , controller: 'EventCtrl'
+          })
+          .state('consult', {
+            url: '/sensor/consult/:id'
+            , templateUrl: 'views/consult.html'
+            , controller: 'EditCtrl'
+          });
         $urlRouterProvider.otherwise('/list');
   }])
+
 
   .factory('socket', function ($rootScope) {
 

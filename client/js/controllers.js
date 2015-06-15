@@ -44,70 +44,77 @@ angular.module('controllers', [])
 
   })
 
-  .controller('ListCtrl', function (Sensor, $scope, $filter){
+  .controller('ListCtrl', function (Sensor, $scope, $stateParams, $filter){
 
-      $scope.sensors = [];
-      $scope.filteredItems = [];
+    $scope.sensors = [];
+    $scope.filteredItems = [];
 
-      var counter = 0;
-      var anyMore = true;
+    var counter = 0;
+    var anyMore = true;
 
-      $scope.moreSensors = function(){
 
-        $scope.loading = true;
+    $scope.moreSensors = function(){
 
-        Sensor.find({
-          filter: {
-            limit: 50
-            , offset: counter
-            , order: 'status ASC'
-          }
-        }).$promise.then(function (data){
+      $scope.loading = true;
 
-            for (var i = 0; i < data.length; i++) {
-              $scope.sensors.push(data[i]);
-            }
-            $scope.loading = false;
-            counter += 50;
-        });
-        if (counter > $scope.sensors.length) {
-          anyMore = false;
+      Sensor.find({
+        filter: {
+          limit: 50
+          , offset: counter
+          , order: 'status ASC'
         }
-      };
+      }).$promise.then(function (data){
 
-      if (anyMore) {
-        $scope.moreSensors();
+          for (var i = 0; i < data.length; i++) {
+            $scope.sensors.push(data[i]);
+          }
+          $scope.loading = false;
+          counter += 50;
+      });
+      if (counter > $scope.sensors.length) {
+        anyMore = false;
       }
+    };
 
-      var searchMatch = function (haystack, needle) {
-        if (!needle) {
-          return true;
-        }
-        return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
-      };
+    if (anyMore) {
+      $scope.moreSensors();
+    }
 
-      $scope.search = function () {
-        $scope.filteredItems = $filter('filter')($scope.filteredItems, function (item) {
-          for(var attr in item) {
-            if (searchMatch(item[attr], $scope.searchText)) {
-              return true;
-            }
+    var searchMatch = function (haystack, needle) {
+      if (!needle) {
+        return true;
+      }
+      return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
+    };
+
+    $scope.search = function () {
+      $scope.filteredItems = $filter('filter')($scope.filteredItems, function (item) {
+        for(var attr in item) {
+          if (searchMatch(item[attr], $scope.searchText)) {
+            return true;
           }
-          return false;
-        });
-        $scope.sensors = $scope.filteredItems;
-      };
-    })
+        }
+        return false;
+      });
+      $scope.sensors = $scope.filteredItems;
+    };
+  })
 
   .controller('EditCtrl', function (Sensor, $stateParams, $scope) {
-      var that = this;
-      Sensor.findById({id: $stateParams.id}
-        , function (data) {
-          that.sensor = data;
-        });
+
+      Sensor.find({
+        filter: {
+          include: 'events'
+          , where: {id: $stateParams.id}
+        }
+      }).$promise.then(function (data) {
+        $scope.sensor = data[0];
+        console.log($scope.sensor.events);
+      });
+
       $scope.SaveMod = function () {
-        that.sensor.modifiedAt = Date.now();
-        that.sensor.$save();
+        $scope.sensor.modifiedAt = Date.now();
+        $scope.sensor.$save();
       };
     })
 
@@ -163,7 +170,7 @@ angular.module('controllers', [])
           });
 
           $scope.events = obj.concat($scope.events);
-          console.log($scope.events);
+
           $timeout(function () {
               obj.map(function (value){
                 value.isNew = false;

@@ -1,42 +1,42 @@
-<div ng-controller='EditCtrl as Edit'>
+<div>
   <h1>Consultation de la sonde
-    <a type="button" ui-sref='sensorEdit({id: Edit.sensor.id})' class="btn btn-warning">
+    <a type="button" ui-sref='sensorEdit({id: sensor.id})' class="btn btn-warning">
       <span class='glyphicon glyphicon-pencil' aria-hidden='true' title='Modifier'></span>
     </a>
   </h1>
-  <div>
-    <label>ID : {{Edit.sensor.id}}</label>
+  <div class="form-group">
+    <label>ID : {{sensor.id}}</label>
     <br/>
    	<label>Key</label>
-    <p>{{Edit.sensor.key}}</p>
+    <p>{{sensor.key}}</p>
   </div>
-  <div>
+   <div class="form-group">
     <label>Nom</label>
-    <p>{{Edit.sensor.name}}</p>
+    <p>{{sensor.name}}</p>
   </div>
-  <div>
+   <div class="form-group">
     <label>Etat</label>
-    <p>{{Edit.sensor.status}}</p>
+    <p>{{sensor.status}}</p>
   </div>
-  <div>
+   <div class="form-group">
     <label>Date de création</label>
-    <p>{{Edit.sensor.createdAt | date:"yyyy-MM-dd HH:mm:ss"}}</p>
+    <p>{{sensor.createdAt | date:"yyyy-MM-dd HH:mm:ss"}}</p>
   </div>
-  <div>
+   <div class="form-group">
     <label>Date de dernière modification</label>
-    <p>{{Edit.sensor.modifiedAt | date: "yyyy-MM-dd HH:mm:ss"}}</p>
+    <p>{{sensor.modifiedAt | date: "yyyy-MM-dd HH:mm:ss"}}</p>
   </div>
-  <div>
+   <div class="form-group">
     <label>Commentaires</label>
-    <p>{{Edit.sensor.comments}}</p>
+    <p>{{sensor.comments}}</p>
   </div>
-  <div>
+   <div class="form-group">
     <label>Historique</label>
-    <p ng-repeat='Lines in sensor.history | orderBy: "lastmodif":true'>
-      <label ng-class="{'OK': 'label label-success', 'NOK': 'label label-danger', 'Missing': 'label label-danger', 'Flapping': 'label label-warning'}[sensor.status]" class='label label-default'> 
-        {{Lines.status}}
-      </label>
-      <span>{{Lines.lastmodif | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+    <p ng-repeat='events in sensor.events | orderBy: "loggedAt":true'>
+      <span ng-class="{'OK': 'label label-success', 'NOK': 'label label-danger', 'Missing': 'label label-danger', 'Flapping': 'label label-warning'}[events.status]" class='label label-default'>
+	     {{events.status}}
+      </span>
+      <span>{{events.loggedAt | date:"@ HH:mm:ss dd-MM-yyyy"}}</span>
     </p>
   </div>
 </div>
