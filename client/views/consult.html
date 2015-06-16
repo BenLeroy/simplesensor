@@ -1,5 +1,5 @@
 <div>
-  <h1>Consultation de la sonde
+  <h1>Informations about {{sensor.key}}
     <a type="button" ui-sref='sensorEdit({id: sensor.id})' class="btn btn-warning">
       <span class='glyphicon glyphicon-pencil' aria-hidden='true' title='Modifier'></span>
     </a>
@@ -11,32 +11,28 @@
     <p>{{sensor.key}}</p>
   </div>
    <div class="form-group">
-    <label>Nom</label>
+    <label>Name</label>
     <p>{{sensor.name}}</p>
   </div>
    <div class="form-group">
-    <label>Etat</label>
+    <label>Current status</label>
     <p>{{sensor.status}}</p>
   </div>
    <div class="form-group">
-    <label>Date de création</label>
-    <p>{{sensor.createdAt | date:"yyyy-MM-dd HH:mm:ss"}}</p>
+    <label>Created</label>
+    <p>{{sensor.createdAt | date:"HH:mm:ss (dd-MM-yyyy)"}}</p>
   </div>
    <div class="form-group">
-    <label>Date de dernière modification</label>
-    <p>{{sensor.modifiedAt | date: "yyyy-MM-dd HH:mm:ss"}}</p>
+    <label>Last modification date</label>
+    <p>{{sensor.modifiedAt | date: "HH:mm:ss (dd-MM-yyyy)"}}</p>
   </div>
    <div class="form-group">
-    <label>Commentaires</label>
-    <p>{{sensor.comments}}</p>
-  </div>
-   <div class="form-group">
-    <label>Historique</label>
+    <label>History</label>
     <p ng-repeat='events in sensor.events | orderBy: "loggedAt":true'>
       <span ng-class="{'OK': 'label label-success', 'NOK': 'label label-danger', 'Missing': 'label label-danger', 'Flapping': 'label label-warning'}[events.status]" class='label label-default'>
 	     {{events.status}}
       </span>
-      <span>{{events.loggedAt | date:"@ HH:mm:ss dd-MM-yyyy"}}</span>
+      <span>{{events.loggedAt | date:"@ HH:mm:ss (dd-MM-yyyy)"}}</span>
     </p>
   </div>
 </div>

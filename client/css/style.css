@@ -80,7 +80,7 @@ div.panel:hover {
     position: absolute;
     top: 50px;
     left: 2em;
-    right: 0px;
+    right: 1.01em;
     bottom: 0px;
 }
 

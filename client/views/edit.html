@@ -1,5 +1,11 @@
 <div>
-  <h1>Modifier la sonde</h1>
+  <div class='pull-right'>
+    <label>Created</label>
+    <p>{{sensor.createdAt | date:"HH:mm:ss (dd-MM-yyyy)"}}</p>
+    <label>Last modification</label>
+    <p>{{sensor.modifiedAt | date: "HH:mm:ss (dd-MM-yyyy)"}}</p>
+  </div>
+  <h2>Change {{sensor.key}} informations</h2>
   <div ng-form='formMod' class='fm'>
     <div class="form-group">
       <label for="id">ID : {{sensor.id}}</label>
@@ -8,32 +14,29 @@
       <input type="text" class="form-control" id='key' ng-model='sensor.key'>
     </div>
     <div class="form-group">
-      <label for="name">Nom</label>
+      <label for="name">Name</label>
       <input type="text" class="form-control" id='name' ng-model='sensor.name'>
     </div>
     <div class="form-group">
-      <label for="status">Etat actuel</label>
+      <label for="status">Current state</label>
       <input type='text' id="status" class="form-control" ng-model='sensor.status' readonly>
     </div>
     <div class="form-group">
-      <label for="frequency">Fréquence d'actualisation</label>
+      <label for="frequency">Polling frequency</label>
       <input type='number' id='frequency' ng-model='sensor.frequency'>
     </div>
     <div class="form-group">
-      <label for="lag">Fréquence d'actualisation</label>
+      <label for="lag">Expected lag</label>
       <input type='number' id='lag' ng-model='sensor.lag'>
     </div>
       <a type="button" ng-click='SaveMod()' ui-sref='index' class="btn btn-success">
-        <span class='glyphicon glyphicon-ok' aria-hidden='true' title='Valider'></span>
+        <span class='glyphicon glyphicon-ok' aria-hidden='true' title='Confirm'></span>
       </a>
-      <a type="button" ui-sref='index' class="btn btn-danger">
-        <span class='glyphicon glyphicon-stop' aria-hidden='true' title='Annuler'></span>
+      <a type="button" ui-sref='index' class="btn btn-info">
+        <span class='glyphicon glyphicon-stop' aria-hidden='true' title='Cancel'></span>
       </a>
-  </div>
-  <div class='pull-right'>
-    <label>Date de création</label>
-    <p>{{sensor.createdAt | date:"yyyy-MM-dd - HH:mm:ss"}}</p>
-    <label>Date de dernière modification</label>
-    <p>{{sensor.modifiedAt | date: "yyyy-MM-dd - HH:mm:ss"}}</p>
+      <a type="button" ng-click='delAlert()' class="pull-right btn btn-danger">
+        <span class='glyphicon glyphicon-trash' aria-hidden='true' title='Delete'></span>
+      </a>
   </div>
 </div>

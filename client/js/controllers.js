@@ -66,25 +66,29 @@ angular.module('controllers', [])
     var counter = 0;
     var anyMore = true;
 
-
     $scope.moreSensors = function(){
+
+      var filtering = { filter: {limit: 50, offset: counter, order: 'status ASC'}};
+
+      if (typeof $stateParams.status === 'string') {
+        $stateParams.status = [$stateParams.status];
+      }
+
+      if (typeof $stateParams.status === 'object') {
+       filtering.filter.where = {status: {inq: $stateParams.status}};
+      }
 
       $scope.loading = true;
 
-      Sensor.find({
-        filter: {
-          limit: 50
-          , offset: counter
-          , order: 'status ASC'
-        }
-      }).$promise.then(function (data){
+      Sensor.find(filtering).$promise.then(function (data){
 
-          for (var i = 0; i < data.length; i++) {
-            $scope.sensors.push(data[i]);
-          }
-          $scope.loading = false;
-          counter += 50;
+        for (var i = 0; i < data.length; i++) {
+          $scope.sensors.push(data[i]);
+        }
+        $scope.loading = false;
+        counter += 50;
       });
+
       if (counter > $scope.sensors.length) {
         anyMore = false;
       }
