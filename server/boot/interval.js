@@ -5,7 +5,6 @@ module.exports = function(app, cb) {
   var EventEmitter = require('events').EventEmitter;
   var emitter = new EventEmitter();
   var checker = require('../../lib/passive-checker.js');
-  //var Notifier = require('../../lib/dispatch.js');
 
   app.on('started', function(){
 

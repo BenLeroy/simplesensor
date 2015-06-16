@@ -45,7 +45,6 @@ dataSource.automigrate('sensor', function (er) {
   if (er) {throw er; }
   probes.forEach(function (probe) {
     Probe.create(probe, function (err, result) {
-      //Probe.emit('sensor:' + result.status);
       if (err) {return; }
       console.log('Record created:', result);
       count--;

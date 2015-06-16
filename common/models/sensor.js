@@ -5,7 +5,6 @@ module.exports = function(Sensor) {
 		if(key === undefined | key === "") {
 			return cb('Key cannot be blank');
 		}
-
 		Sensor.findOrCreate({where: {key: key}}
 			, {key: key
 			, name: key + ' non configuré'

@@ -118,7 +118,7 @@ angular.module('controllers', [])
     };
   })
 
-  .controller('EditCtrl', function (Sensor, $stateParams, $scope) {
+  .controller('EditCtrl', function (Sensor, $stateParams, $scope, $state) {
 
       Sensor.find({
         filter: {
@@ -127,38 +127,21 @@ angular.module('controllers', [])
         }
       }).$promise.then(function (data) {
         $scope.sensor = data[0];
-        console.log($scope.sensor.events);
       });
 
       $scope.SaveMod = function () {
         $scope.sensor.modifiedAt = Date.now();
         $scope.sensor.$save();
       };
-    })
 
-  .controller('DelCtrl', function (Sensor, $stateParams, $scope, $location) {
-
-      var that = this;
-
-      Sensor.findById({id: $stateParams.id}
-        , function (data) {
-
-        that.sensor = data;
-      });
+      $scope.delAlert = function () {
+        if(confirm('Are you sure you want to delete this sensor?') === true) {
+          $scope.deleteSensor();
+        }
+      };
 
       $scope.deleteSensor = function () {
-
-        that.sensor.$delete(null, $location.path('/list'));
-      };
-    })
-
-  .controller('AddCtrl', function (Sensor, $scope, $location) {
-
-      $scope.newSensor = function(){
-
-        Sensor.create($scope.sensor, function () {
-          $location.path('/list');
-        });
+        $scope.sensor.$delete({id: $scope.sensor.id}, $state.go('index'));
       };
     })
 

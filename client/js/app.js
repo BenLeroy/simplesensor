@@ -25,16 +25,6 @@
             , templateUrl: 'views/edit.html'
             , controller: 'EditCtrl'
           })
-          .state('sensorDel', {
-            url: '/sensor/del/:id'
-            , templateUrl: 'views/delete.html'
-            , controller: 'DelCtrl'
-          })
-          .state('sensorNew', {
-            url: '/sensor/add'
-            , templateUrl: 'views/add.html'
-            , controller: 'AddCtrl'
-          })
           .state('events', {
             url: '/events/?:date'
             , templateUrl: 'views/events.html'
