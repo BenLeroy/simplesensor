@@ -1,9 +1,9 @@
 <div>
-  <h1>Derniers évènements</h1>
   <div id="scrolling" when-scrolled='moreEvents()'>
+  	<h1>Last events</h1>
   	<ul>
     	<li ng-repeat='event in events' ng-class="event.isNew ? 'highlighter' : 'nohigh'">
-        	{{event.sensor.key}} is <span ng-class="{'OK': 'label label-success', 'NOK': 'label label-danger', 'Missing': 'label label-danger', 'Flapping': 'label label-warning'}[event.status]" class='label label-default'>{{event.status}}</span> since {{event.loggedAt | date: 'dd/MM/yyyy - HH:mm:ss'}}
+        	{{event.loggedAt | date: '(dd-MM)'}} {{event.sensor.key}} is <span ng-class="{'OK': 'label label-success', 'NOK': 'label label-danger', 'Missing': 'label label-danger', 'Flapping': 'label label-warning'}[event.status]" class='label label-default'>{{event.status}}</span> since {{event.loggedAt | date: 'HH:mm:ss (dd-MM-yyyy)'}}
      	</li>
     </ul>
     <img id='spinLoader' src="assets/loading.gif" ng-show="loading">

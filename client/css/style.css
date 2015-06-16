@@ -29,12 +29,12 @@ li.navbar-text{
 }
 
 .fm{
-	margin-left: 10%;
 	width: 80%;
 }
 
 .highlighter {
-	background-color: #FFFF00;
+	background-color: #FDFD28;
+	margin-right: 5em;
 }
 
 .nohigh {
@@ -58,13 +58,17 @@ div.panel:hover {
 	border-color: blue;
 }
 
-#scrolling {
-    overflow: auto;
-    height: 755px;
+.newsFlash {
+	color: #FDFD28;
 }
 
-.newsFlash {
-	color: yellow;
+#scrolling {
+    overflow: auto;
+    position: absolute;
+	top: 50px;
+    left: 2em;
+    right: 0px;
+    bottom: 10px;
 }
 
 #spinLoader {
@@ -73,7 +77,11 @@ div.panel:hover {
 
 #scroller {
     overflow: auto;
-    height: 735px;
+    position: absolute;
+    top: 50px;
+    left: 2em;
+    right: 0px;
+    bottom: 0px;
 }
 
 #spinLoad {

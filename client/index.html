@@ -41,7 +41,7 @@
               </li>
               <li class="hidden-xs">
                 <a ui-sref="events({date: highDate})" ui-sref-opts="{reload: true}">
-                  <span ng-show='showEvents' class='newsFlash' ng-model='newEvents'>{{newEvents}} {{eventTime | date: 'HH:mm:ss (dd/MM)'}}</span>
+                  <span ng-show='showEvents' class='newsFlash' ng-model='newEvents'>{{newEvents}} {{eventTime | date: 'HH:mm'}}</span>
                 </a>
               </li>
             </ul>
@@ -51,15 +51,15 @@
               <li class='navbar-form' data-ng-show="$state.includes('index')">
                 <input type="text" ng-model='searchText' ng-change='search()' role='search' placeholder="Search">
               </li>
-              <li class='navbar-text' ui-sref="index({status: OK})" ui-sref-opts="{reload: true}">
-                <p class='h4 text-success'>Up 
+              <li class='navbar-text' ui-sref="index({status: ['OK']})" ui-sref-opts="{reload: true}">
+                <p class='h4 text-success'>OK 
                   <span>
                     <strong class='h4 text-success'>{{count.OK}}</strong>
                   </span>
                 </p>
               </li>
-              <li class='navbar-text' ui-sref="index({status: down})" ui-sref-opts="{reload: true}">
-                <p class='h4 text-danger'>Down 
+              <li class='navbar-text' ui-sref="index({status: ['NOK', 'Missing']})" ui-sref-opts="{reload: true}">
+                <p class='h4 text-danger'>NOK 
                   <span>
                     <strong class='h4 text-danger'>{{count.NOK + count.Missing}}</strong>
                   </span>

@@ -9,6 +9,9 @@ angular.module('controllers', [])
       $scope.count['NOK'] = 0;
       $scope.count['Missing'] = 0;
 
+      var stack = [];
+      var show = false;
+
       $scope.showEvents = false;
       $scope.newEvents = "";
 
@@ -21,40 +24,30 @@ angular.module('controllers', [])
 
       socket.on('newEvent', function (object) {
 
-        console.log(object);
-        // PROBLEME DE STACK!!
-        /*object.map(function (data) {
-          if (!show) {
-            stack.push(data);
-          }
-        });
-        console.log(stack);
+        stack.push(object);
 
-        $interval(function () {
-          if (show) {
-            stack = [];
-          }
-          show = false;
-        }
-        , 10000
-        );*/
         $scope.showEvents = true;
+        $scope.newEvents = stack.length + " new events since ";
 
-        $scope.highDate = new Date(object[0].loggedAt).getTime();
-        $scope.eventTime = new Date(object[0].loggedAt);
-        $scope.newEvents = object.length + " new events since ";
+        if (!show) {
+          show = true;
+          $scope.highDate = new Date(stack[0].loggedAt).getTime();
+          $scope.eventTime = new Date(stack[0].loggedAt);
+          $timeout.cancel(stopDisp);
+        }
 
         countStatus("OK");
         countStatus("NOK");
         countStatus("Missing");
 
         if ($scope.showEvents) {
-          $timeout(function (){
-            object = [];
+          var stopDisp = $timeout(function (){
+            stack = [];
+            show = false;
             $scope.showEvents = false;
             $scope.newEvents = "";
           }
-          , 10000
+          , 15000
           );
         }
       });
@@ -171,36 +164,28 @@ angular.module('controllers', [])
       var counter = 0;
       var needMore = true;
 
-      socket.on('newEvent', function (array){
-
-        var tab = array.map(function (elm) {
-          return elm.id;
-        });
+      socket.on('newEvent', function (obj){
 
         Event.find({
           filter: {
             include: 'sensor'
-            , where: {id: {inq: tab}}
+            , where: {id: obj.id}
             , order: 'loggedAt DESC'
           }
-        }).$promise.then(function (obj) {
+        }).$promise.then(function (object) {
 
-          obj.map(function (value) {
+          object.map(function (value) {
+
             value.isNew = true;
-            return value;
-          });
+            $scope.events.unshift(value);
 
-          $scope.events = obj.concat($scope.events);
-
-          $timeout(function () {
-              obj.map(function (value){
-                value.isNew = false;
-              });
+            $timeout(function () {
+              value.isNew = false;
             }
-            , 20000
-          );
+            , 15000
+            );
+          });
         });
-
       });
 
       $scope.moreEvents = function(){
