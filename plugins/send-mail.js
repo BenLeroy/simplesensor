@@ -18,7 +18,4 @@ module.exports = function(content, app) {
       console.log('> email sent successfully');
     });
   }
-  else {
-    console.log('No email sent since mail adress (ENV MAIL_ALERT) is not set');
-  }
 };

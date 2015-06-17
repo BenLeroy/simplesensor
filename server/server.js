@@ -9,6 +9,9 @@ app.start = function() {
   return app.listen(function() {
     app.emit('started');
     console.log('Web server listening at: %s', app.get('url'));
+    if (!process.env.MAIL_ALERT) {
+      console.log('No mails will be sent until mail adress is set (env MAIL_ALERT)');
+    }
   });
 };
 
