@@ -19,10 +19,9 @@
     <p>{{sensor.status}}</p>
   </div>
   <div class="form-group">
-    <div>
-      <label>Mail notifications for status changes</label>
-      <p>{{sensor.mailNotif}}</p>
-    </div>
+      <label>Send mail notifications</label>
+      <p ng-if="sensor.mailNotif"><span class='label label-success'>Enabled</span></p>
+      <p ng-if="!sensor.mailNotif"><span class='label label-danger'>Disabled</span></p>
   </div>
    <div class="form-group">
     <label>Created</label>

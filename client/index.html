@@ -32,12 +32,15 @@
           <div class='collapse navbar-collapse navbar-left' id="navbar-collapse-1">
             <ul class="nav navbar-nav ">
               <li class="navimenu">
-                <a ng-href="#/list/" target="_self">Sensors
+                <a ui-sref='index' ui-sref-opts="{reload: true, inherit: false}">
+                  Sensors
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="navimenu">
-                <a ng-href="#/events/" ui-sref-opts="{reload: true}">Events</a>
+                <a ui-sref="events" ui-sref-opts="{reload: true}">
+                Events
+                </a>
               </li>
               <li class="hidden-xs">
                 <a ui-sref="events({date: highDate})" ui-sref-opts="{reload: true}">
