@@ -1,5 +1,6 @@
 var loopback = require('loopback');
 var boot = require('loopback-boot');
+var morgan = require('morgan');
 
 var app = module.exports = loopback();
 
@@ -20,6 +21,7 @@ boot(app, __dirname, function(err) {
   if (require.main === module) {
     //app.start();
     app.io = require('socket.io')(app.start());
+    app.use(morgan('tiny'));
 
   }
 });
