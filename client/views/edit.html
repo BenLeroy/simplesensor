@@ -18,8 +18,12 @@
       <input type="text" class="form-control" id='name' ng-model='sensor.name'>
     </div>
     <div class="form-group">
-      <label for="status">Current state</label>
+      <label for="status">Current status</label>
       <input type='text' id="status" class="form-control" ng-model='sensor.status' readonly>
+    </div>
+    <div class="form-group">
+      <label for="mailNotif">Receive mail notifications</label>
+      <input type="checkbox" id="mailNotif" ng-model="sensor.mailNotif">
     </div>
     <div class="form-group">
       <label for="frequency">Polling frequency</label>

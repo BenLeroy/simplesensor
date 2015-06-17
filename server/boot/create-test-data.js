@@ -14,6 +14,7 @@ var probes = [
     , "comments": "I'm the first probe!"
     , "frequency": 5
     , "lag": 5000
+    , "mailNotif": true
   }
  , {
     "name": "Probe2"
@@ -24,6 +25,7 @@ var probes = [
     , "checkedAt": new Date()
     , "comments": "I'm an offline probe"
     , "frequency": 12
+    , "mailNotif": false
     , "lag": 4500
   }
   , {

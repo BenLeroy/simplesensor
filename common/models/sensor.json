@@ -35,6 +35,10 @@
     "lag": {
       "type": "number",
       "required": true
+    },
+    "mailNotif": {
+      "type": "boolean",
+      "default": false
     }
   },
   "validations": [],
