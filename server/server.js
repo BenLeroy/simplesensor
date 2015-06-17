@@ -4,6 +4,8 @@ var morgan = require('morgan');
 
 var app = module.exports = loopback();
 
+app.use(morgan('tiny'));
+
 app.start = function() {
   // start the web server
   return app.listen(function() {
@@ -24,7 +26,6 @@ boot(app, __dirname, function(err) {
   if (require.main === module) {
     //app.start();
     app.io = require('socket.io')(app.start());
-    app.use(morgan('tiny'));
 
   }
 });
