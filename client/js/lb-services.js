@@ -1055,6 +1055,24 @@ module.factory(
           method: "PUT"
         },
 
+        // INTERNAL. Use Sensor.outages.findById() instead.
+        "prototype$__findById__outages": {
+          url: urlBase + "/sensors/:id/outages/:fk",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Sensor.outages.destroyById() instead.
+        "prototype$__destroyById__outages": {
+          url: urlBase + "/sensors/:id/outages/:fk",
+          method: "DELETE"
+        },
+
+        // INTERNAL. Use Sensor.outages.updateById() instead.
+        "prototype$__updateById__outages": {
+          url: urlBase + "/sensors/:id/outages/:fk",
+          method: "PUT"
+        },
+
         // INTERNAL. Use Sensor.events() instead.
         "prototype$__get__events": {
           isArray: true,
@@ -1077,6 +1095,31 @@ module.factory(
         // INTERNAL. Use Sensor.events.count() instead.
         "prototype$__count__events": {
           url: urlBase + "/sensors/:id/events/count",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Sensor.outages() instead.
+        "prototype$__get__outages": {
+          isArray: true,
+          url: urlBase + "/sensors/:id/outages",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Sensor.outages.create() instead.
+        "prototype$__create__outages": {
+          url: urlBase + "/sensors/:id/outages",
+          method: "POST"
+        },
+
+        // INTERNAL. Use Sensor.outages.destroyAll() instead.
+        "prototype$__delete__outages": {
+          url: urlBase + "/sensors/:id/outages",
+          method: "DELETE"
+        },
+
+        // INTERNAL. Use Sensor.outages.count() instead.
+        "prototype$__count__outages": {
+          url: urlBase + "/sensors/:id/outages/count",
           method: "GET"
         },
 
@@ -1465,6 +1508,12 @@ module.factory(
         // INTERNAL. Use Event.sensor() instead.
         "::get::event::sensor": {
           url: urlBase + "/events/:id/sensor",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Outage.probe() instead.
+        "::get::outage::probe": {
+          url: urlBase + "/outages/:id/probe",
           method: "GET"
         },
       }
@@ -1864,6 +1913,269 @@ module.factory(
         R.events.updateById = function() {
           var TargetResource = $injector.get("Event");
           var action = TargetResource["::updateById::sensor::events"];
+          return action.apply(R, arguments);
+        };
+    /**
+     * @ngdoc object
+     * @name lbServices.Sensor.outages
+     * @header lbServices.Sensor.outages
+     * @object
+     * @description
+     *
+     * The object `Sensor.outages` groups methods
+     * manipulating `Outage` instances related to `Sensor`.
+     *
+     * Call {@link lbServices.Sensor#outages Sensor.outages()}
+     * to query all related instances.
+     */
+
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Sensor#outages
+         * @methodOf lbServices.Sensor
+         *
+         * @description
+         *
+         * Queries outages of sensor.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `filter` – `{object=}` - 
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Outage` object.)
+         * </em>
+         */
+        R.outages = function() {
+          var TargetResource = $injector.get("Outage");
+          var action = TargetResource["::get::sensor::outages"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Sensor.outages#count
+         * @methodOf lbServices.Sensor.outages
+         *
+         * @description
+         *
+         * Counts outages of sensor.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `count` – `{number=}` - 
+         */
+        R.outages.count = function() {
+          var TargetResource = $injector.get("Outage");
+          var action = TargetResource["::count::sensor::outages"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Sensor.outages#create
+         * @methodOf lbServices.Sensor.outages
+         *
+         * @description
+         *
+         * Creates a new instance in outages of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Outage` object.)
+         * </em>
+         */
+        R.outages.create = function() {
+          var TargetResource = $injector.get("Outage");
+          var action = TargetResource["::create::sensor::outages"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Sensor.outages#destroyAll
+         * @methodOf lbServices.Sensor.outages
+         *
+         * @description
+         *
+         * Deletes all outages of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        R.outages.destroyAll = function() {
+          var TargetResource = $injector.get("Outage");
+          var action = TargetResource["::delete::sensor::outages"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Sensor.outages#destroyById
+         * @methodOf lbServices.Sensor.outages
+         *
+         * @description
+         *
+         * Delete a related item by id for outages.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `fk` – `{*}` - Foreign key for outages
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        R.outages.destroyById = function() {
+          var TargetResource = $injector.get("Outage");
+          var action = TargetResource["::destroyById::sensor::outages"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Sensor.outages#findById
+         * @methodOf lbServices.Sensor.outages
+         *
+         * @description
+         *
+         * Find a related item by id for outages.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `fk` – `{*}` - Foreign key for outages
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Outage` object.)
+         * </em>
+         */
+        R.outages.findById = function() {
+          var TargetResource = $injector.get("Outage");
+          var action = TargetResource["::findById::sensor::outages"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Sensor.outages#updateById
+         * @methodOf lbServices.Sensor.outages
+         *
+         * @description
+         *
+         * Update a related item by id for outages.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `fk` – `{*}` - Foreign key for outages
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Outage` object.)
+         * </em>
+         */
+        R.outages.updateById = function() {
+          var TargetResource = $injector.get("Outage");
+          var action = TargetResource["::updateById::sensor::outages"];
           return action.apply(R, arguments);
         };
 
@@ -2502,6 +2814,598 @@ module.factory(
     */
     R.modelName = "Email";
 
+
+    return R;
+  }]);
+
+/**
+ * @ngdoc object
+ * @name lbServices.Outage
+ * @header lbServices.Outage
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `Outage` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+module.factory(
+  "Outage",
+  ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
+    var R = Resource(
+      urlBase + "/outages/:id",
+      { 'id': '@id' },
+      {
+
+        // INTERNAL. Use Outage.probe() instead.
+        "prototype$__get__probe": {
+          url: urlBase + "/outages/:id/probe",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Outage#create
+         * @methodOf lbServices.Outage
+         *
+         * @description
+         *
+         * Create a new instance of the model and persist it into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Outage` object.)
+         * </em>
+         */
+        "create": {
+          url: urlBase + "/outages",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Outage#upsert
+         * @methodOf lbServices.Outage
+         *
+         * @description
+         *
+         * Update an existing model instance or insert a new one into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Outage` object.)
+         * </em>
+         */
+        "upsert": {
+          url: urlBase + "/outages",
+          method: "PUT"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Outage#exists
+         * @methodOf lbServices.Outage
+         *
+         * @description
+         *
+         * Check whether a model instance exists in the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `exists` – `{boolean=}` - 
+         */
+        "exists": {
+          url: urlBase + "/outages/:id/exists",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Outage#findById
+         * @methodOf lbServices.Outage
+         *
+         * @description
+         *
+         * Find a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         *  - `filter` – `{object=}` - Filter defining fields and include
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Outage` object.)
+         * </em>
+         */
+        "findById": {
+          url: urlBase + "/outages/:id",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Outage#find
+         * @methodOf lbServices.Outage
+         *
+         * @description
+         *
+         * Find all instances of the model matched by filter from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Outage` object.)
+         * </em>
+         */
+        "find": {
+          isArray: true,
+          url: urlBase + "/outages",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Outage#findOne
+         * @methodOf lbServices.Outage
+         *
+         * @description
+         *
+         * Find first instance of the model matched by filter from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Outage` object.)
+         * </em>
+         */
+        "findOne": {
+          url: urlBase + "/outages/findOne",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Outage#updateAll
+         * @methodOf lbServices.Outage
+         *
+         * @description
+         *
+         * Update instances of the model matched by where from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        "updateAll": {
+          url: urlBase + "/outages/update",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Outage#deleteById
+         * @methodOf lbServices.Outage
+         *
+         * @description
+         *
+         * Delete a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        "deleteById": {
+          url: urlBase + "/outages/:id",
+          method: "DELETE"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Outage#count
+         * @methodOf lbServices.Outage
+         *
+         * @description
+         *
+         * Count instances of the model matched by where from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `count` – `{number=}` - 
+         */
+        "count": {
+          url: urlBase + "/outages/count",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Outage#prototype$updateAttributes
+         * @methodOf lbServices.Outage
+         *
+         * @description
+         *
+         * Update attributes for a model instance and persist it into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Outage` object.)
+         * </em>
+         */
+        "prototype$updateAttributes": {
+          url: urlBase + "/outages/:id",
+          method: "PUT"
+        },
+
+        // INTERNAL. Use Sensor.outages.findById() instead.
+        "::findById::sensor::outages": {
+          url: urlBase + "/sensors/:id/outages/:fk",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Sensor.outages.destroyById() instead.
+        "::destroyById::sensor::outages": {
+          url: urlBase + "/sensors/:id/outages/:fk",
+          method: "DELETE"
+        },
+
+        // INTERNAL. Use Sensor.outages.updateById() instead.
+        "::updateById::sensor::outages": {
+          url: urlBase + "/sensors/:id/outages/:fk",
+          method: "PUT"
+        },
+
+        // INTERNAL. Use Sensor.outages() instead.
+        "::get::sensor::outages": {
+          isArray: true,
+          url: urlBase + "/sensors/:id/outages",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Sensor.outages.create() instead.
+        "::create::sensor::outages": {
+          url: urlBase + "/sensors/:id/outages",
+          method: "POST"
+        },
+
+        // INTERNAL. Use Sensor.outages.destroyAll() instead.
+        "::delete::sensor::outages": {
+          url: urlBase + "/sensors/:id/outages",
+          method: "DELETE"
+        },
+
+        // INTERNAL. Use Sensor.outages.count() instead.
+        "::count::sensor::outages": {
+          url: urlBase + "/sensors/:id/outages/count",
+          method: "GET"
+        },
+      }
+    );
+
+
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Outage#updateOrCreate
+         * @methodOf lbServices.Outage
+         *
+         * @description
+         *
+         * Update an existing model instance or insert a new one into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Outage` object.)
+         * </em>
+         */
+        R["updateOrCreate"] = R["upsert"];
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Outage#update
+         * @methodOf lbServices.Outage
+         *
+         * @description
+         *
+         * Update instances of the model matched by where from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        R["update"] = R["updateAll"];
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Outage#destroyById
+         * @methodOf lbServices.Outage
+         *
+         * @description
+         *
+         * Delete a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        R["destroyById"] = R["deleteById"];
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Outage#removeById
+         * @methodOf lbServices.Outage
+         *
+         * @description
+         *
+         * Delete a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        R["removeById"] = R["deleteById"];
+
+
+    /**
+    * @ngdoc property
+    * @name lbServices.Outage#modelName
+    * @propertyOf lbServices.Outage
+    * @description
+    * The name of the model represented by this $resource,
+    * i.e. `Outage`.
+    */
+    R.modelName = "Outage";
+
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Outage#probe
+         * @methodOf lbServices.Outage
+         *
+         * @description
+         *
+         * Fetches belongsTo relation probe.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `refresh` – `{boolean=}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Sensor` object.)
+         * </em>
+         */
+        R.probe = function() {
+          var TargetResource = $injector.get("Sensor");
+          var action = TargetResource["::get::outage::probe"];
+          return action.apply(R, arguments);
+        };
 
     return R;
   }]);

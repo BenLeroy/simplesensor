@@ -36,5 +36,9 @@
   },
   "Email": {
     "dataSource": "mailer"
+  },
+  "outage": {
+    "dataSource": "db",
+    "public": true
   }
 }

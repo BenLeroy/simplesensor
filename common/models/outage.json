@@ -1,0 +1,35 @@
+{
+  "name": "outage",
+  "plural": "outages",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "probeId": {
+      "type": "string",
+      "required": true
+    },
+    "start": {
+      "type": "date",
+      "required": true
+    },
+    "end": {
+      "type": "date"
+    },
+    "duration": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "probe": {
+      "type": "belongsTo",
+      "model": "sensor",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": []
+}

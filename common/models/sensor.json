@@ -47,6 +47,11 @@
       "type": "hasMany",
       "model": "event",
       "foreignKey": "sensorId"
+    },
+    "outages": {
+      "type": "hasMany",
+      "model": "outage",
+      "foreignKey": "probeId"
     }
   },
   "acls": [],
