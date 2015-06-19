@@ -9,16 +9,18 @@ describe('Visitor comes to homepage', function() {
 
   before(function (done) {
     this.server = app.listen(3001);
-    this.browser = new Browser({site: 'http://localhost:3001/'});
-    this.browser.visit('/#/list', done);
+    this.browser = new Browser({debug: true, site: 'http://localhost:3001/'});
+    this.browser.visit('#/list', done);
   });
 
   it('should display homepage & sensor list', function (){
     this.browser.assert.success();
-    this.browser.assert.text('h1', 'Sondes');
+    this.browser.assert.text('h1', 'Sensors');
     this.browser.assert.elements("div#scroller");
     this.browser.assert.elements("img[ng-show='loading']");
-    this.browser.assert.elements("div[ui-sref='consult({id: sensor.id})']", {atLeast: 3});
+    this.browser.assert.elements("div[ui-sref='consult({id: sensor.id})']"
+      , {atLeast: 3}
+    );
 
   });
 
@@ -30,7 +32,7 @@ describe('Visitor comes to homepage', function() {
     });
 
     it('should show an event list', function () {
-		this.browser.assert.text('h1', 'Derniers évènements');
+		this.browser.assert.text('h1', 'Last events');
     this.browser.assert.elements("div#scrolling");
     this.browser.assert.elements("img[ng-show='loading']");
     });
