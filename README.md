@@ -1,5 +1,7 @@
 # Simplesensor
 
+[![Build Status](https://travis-ci.org/BenLeroy/simplesensor.svg?branch=master)](https://travis-ci.org/BenLeroy/simplesensor)
+
 ## Sensor monitoring
 
 Create a simple interface to manage sensors informations
