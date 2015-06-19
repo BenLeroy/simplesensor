@@ -47,6 +47,9 @@
                   <span ng-show='showEvents' class='newsFlash' ng-model='newEvents'>{{newEvents}} {{eventTime | date: 'HH:mm'}}</span>
                 </a>
               </li>
+              <li ng-show='socketAlert' class='navbar-text'>
+                <span>Real time update is not available</span>
+              </li>
             </ul>
           </div>
           <div class='hidden-xs navbar-header navbar-right'>

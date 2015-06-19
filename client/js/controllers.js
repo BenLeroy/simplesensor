@@ -22,6 +22,10 @@ angular.module('controllers', [])
         });
       }
 
+      if (socket.disabled) {
+        $scope.socketAlert = true;
+      }
+
       socket.on('newEvent', function (object) {
 
         stack.push(object);
