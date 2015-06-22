@@ -39,6 +39,10 @@
     "mailNotif": {
       "type": "boolean",
       "default": false
+    },
+    "downtime": {
+      "type": "number",
+      "default": 0
     }
   },
   "validations": [],

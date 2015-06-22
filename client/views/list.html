@@ -10,7 +10,7 @@
           <p>ID : {{sensor.id}} <br/> Name : {{sensor.name}}</p>
         </div>
         <div class='panel-footer'>
-          Last check @ {{sensor.checkedAt | date: 'HH:mm:ss (dd-MM-yy)'}}
+          Last check @ {{sensor.checkedAt | date: 'HH:mm:ss (dd-MM-yy)'}} - Availability : {{sensor.availability | number: 3}}%
         </div>
       </div>
     </div>

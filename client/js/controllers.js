@@ -87,8 +87,17 @@ angular.module('controllers', [])
       Sensor.find(filtering).$promise.then(function (data){
 
         for (var i = 0; i < data.length; i++) {
+          data[i].availability = (
+            (
+              new Date() - new Date(data[i].createdAt)
+            ) / (
+              new Date() - new Date(data[i].createdAt) + data[i].downtime
+            )
+          ) * 100;
+
           $scope.sensors.push(data[i]);
         }
+
         $scope.loading = false;
         counter += 50;
       });
