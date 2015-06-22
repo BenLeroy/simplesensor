@@ -72,7 +72,12 @@ angular.module('controllers', [])
 
     $scope.moreSensors = function(){
 
-      var filtering = { filter: {limit: 50, offset: counter, order: 'status ASC'}};
+      var filtering = { filter:
+        {limit: 50
+        , offset: counter
+        , order: 'status ASC'
+        }
+      };
 
       if (typeof $stateParams.status === 'string') {
         $stateParams.status = [$stateParams.status];
