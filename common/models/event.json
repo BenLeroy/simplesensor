@@ -2,6 +2,7 @@
   "name": "event",
   "plural": "events",
   "base": "PersistedModel",
+  "dataSource": "simplesensor",
   "idInjection": true,
   "options": {
     "validateUpsert": true

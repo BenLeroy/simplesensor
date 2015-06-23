@@ -99,7 +99,6 @@ angular.module('controllers', [])
               new Date() - new Date(data[i].createdAt) + data[i].downtime
             )
           ) * 100;
-
           $scope.sensors.push(data[i]);
         }
 

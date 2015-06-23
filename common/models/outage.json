@@ -1,6 +1,7 @@
 {
   "name": "outage",
   "plural": "outages",
+  "dataSource": "simplesensor",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {

@@ -1,8 +1,4 @@
 {
-  "db": {
-    "name": "db",
-    "connector": "memory"
-  },
   "mailer": {
     "name": "mailer",
     "connector": "mail",
@@ -19,5 +15,11 @@
   "sms-sender": {
     "name": "sms-sender",
     "connector": "rest"
+  },
+  "simplesensor": {
+    "name": "simplesensor",
+    "connector": "mysql",
+    "database": "simplesensor",
+    "host": "localhost"
   }
 }

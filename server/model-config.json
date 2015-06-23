@@ -8,37 +8,37 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "simplesensor"
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "simplesensor",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "simplesensor",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "simplesensor",
     "public": false
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "simplesensor",
     "public": false
   },
   "sensor": {
-    "dataSource": "db",
+    "dataSource": "simplesensor",
     "public": true
   },
   "event": {
-    "dataSource": "db",
+    "dataSource": "simplesensor",
     "public": true
   },
   "Email": {
     "dataSource": "mailer"
   },
   "outage": {
-    "dataSource": "db",
+    "dataSource": "simplesensor",
     "public": true
   }
 }

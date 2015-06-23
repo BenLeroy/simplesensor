@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 var server = require('../server');
 var dataSource = server.dataSources.db;
@@ -8,10 +8,9 @@ var probes = [
     "name": "Probe1"
     , "key": "abcdef"
     , "status": "OK"
-    , "createdAt": "2015-05-10T13:24:20"
+    , "createdAt": new Date()
     , "modifiedAt": new Date()
     , "checkedAt": new Date()
-    , "comments": "I'm the first probe!"
     , "frequency": 5
     , "lag": 5000
     , "mailNotif": true
@@ -20,10 +19,9 @@ var probes = [
     "name": "Probe2"
     , "key": "ghijkl"
     , "status": "NOK"
-    , "createdAt": "2015-01-10T23:02:05"
-    , "modifiedAt": "2015-02-10T23:02:05"
+    , "createdAt": new Date()
+    , "modifiedAt": new Date()
     , "checkedAt": new Date()
-    , "comments": "I'm an offline probe"
     , "frequency": 12
     , "mailNotif": false
     , "lag": 4500
@@ -32,10 +30,9 @@ var probes = [
     "name": "Sensor"
     , "key": "mnopqr"
     , "status": "Missing"
-    , "createdAt": "2014-12-17T03:24:00"
+    , "createdAt": new Date()
     , "modifiedAt": new Date()
     , "checkedAt": new Date()
-    , "comments": "I'll not give you informations"
     , "frequency": 20
     , "lag": 4000
   }
@@ -55,5 +52,4 @@ dataSource.automigrate('sensor', function (er) {
       }
     });
   });
-});
-
+});*/

@@ -2,6 +2,7 @@
   "name": "sensor",
   "plural": "sensors",
   "base": "PersistedModel",
+  "dataSource": "simplesensor",
   "idInjection": true,
   "options": {
     "validateUpsert": true
