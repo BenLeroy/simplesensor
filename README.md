@@ -54,15 +54,16 @@ Then go with your favorite browser at [http://localhost:3000/](http://localhost:
 
 ### Environment variables :
 
-	- Required :
+#### Required :
 
-	You must define MySQL connection by using : `$ DB_USER=[username] DB_password=[password] ...`
+You must define MySQL connection by using : `$ DB_USER=[username] DB_password=[password] ...`
 
 
-	- Optionnal :
+#### Optionnal :
 
-	To set a custom port use `$ PORT=[xxxx] ...`
-	To receive mail notifications, use `$ MAIL_ALERT=["yourMailAdress"] ...`
+To set a custom port use `$ PORT=[xxxx] ...`
+
+To receive mail notifications, use `$ MAIL_ALERT=["yourMailAdress"] ...`
 
 
 ### Beware :
