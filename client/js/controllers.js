@@ -137,30 +137,30 @@ angular.module('controllers', [])
 
   .controller('EditCtrl', function (Sensor, $stateParams, $scope, $state) {
 
-      Sensor.find({
-        filter: {
-          include: 'events'
-          , where: {id: $stateParams.id}
-        }
-      }).$promise.then(function (data) {
-        $scope.sensor = data[0];
-      });
+    $scope.modalShown = false;
 
-      $scope.SaveMod = function () {
-        $scope.sensor.modifiedAt = Date.now();
-        $scope.sensor.$save();
-      };
+    Sensor.find({
+      filter: {
+        include: 'events'
+        , where: {id: $stateParams.id}
+      }
+    }).$promise.then(function (data) {
+      $scope.sensor = data[0];
+    });
 
-      $scope.delAlert = function () {
-        if(confirm('Are you sure you want to delete this sensor?') === true) {
-          $scope.deleteSensor();
-        }
-      };
+    $scope.SaveMod = function () {
+      $scope.sensor.modifiedAt = Date.now();
+      $scope.sensor.$save();
+    };
 
-      $scope.deleteSensor = function () {
-        $scope.sensor.$delete({id: $scope.sensor.id}, $state.go('index'));
-      };
-    })
+    $scope.toggleModal = function() {
+      $scope.modalShown = !$scope.modalShown;
+    };
+
+    $scope.deleteSensor = function () {
+      $scope.sensor.$delete({id: $scope.sensor.id}, $state.go('index'));
+    };
+  })
 
   .controller('EventCtrl', function (Event, $timeout, $scope, $stateParams, socket){
 
