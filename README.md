@@ -41,8 +41,6 @@ mysql> CREATE USER "[USERNAME]"@"localhost";
 mysql> SET password FOR "[USERNAME]"@"localhost" = password('[PASSWORD]');
 ```
 
-Open [datasources.json](https://github.com/BenLeroy/simplesensor)
-
 You need to create database for MySQL using : `$ NODE_ENV=DEV node server/create_database.js`
 
 
@@ -59,7 +57,7 @@ Then go with your favorite browser at [http://localhost:3000/](http://localhost:
 	- Required :
 
 		You must define MySQL connection by using : `$ DB_USER=[username] DB_password=[password] ...`
-		
+
 
 	- Optionnal :
 
