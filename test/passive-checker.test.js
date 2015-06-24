@@ -26,7 +26,7 @@ describe('Passive checker', function () {
 			, frequency: 60
 			, lag: 1000
 			, updateAttributes: function(args, callback) {
-return callback(null, {key: 'abc', status: 'Missing'});
+				return callback(null, {key: 'abc', status: 'Missing'});
 			}
 		});
 	});

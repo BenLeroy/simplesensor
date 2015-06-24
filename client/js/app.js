@@ -35,7 +35,15 @@
             , templateUrl: 'views/consult.html'
             , controller: 'EditCtrl'
           });
-        $urlRouterProvider.otherwise('/list/');
+        $urlRouterProvider.otherwise(function($injector, $location) {
+            var $state = $injector.get("$state");
+            if($location.url() === '/') {
+               return '/list/';
+            }
+            else {
+              $state.go('index');
+            }
+        });
   }])
 
 

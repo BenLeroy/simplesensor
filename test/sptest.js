@@ -27,9 +27,9 @@ describe('GET /list', function () {
 			.set('Accept', 'application/json')
 			.expect('Content-Type', /json/)
 			.expect(200)
-			.expect(/Probe1/)
-			.expect(/Probe2/)
-			.expect(/Sensor/)
+			.expect(/key/)
+			.expect(/status/)
+			.expect(/name/)
 			.end(function (err, res) {
 				if(err) return done(err);
 				done();
@@ -134,13 +134,13 @@ describe('DELETE /sensors/{id}', function (done) {
 });
 
 describe('Status change', function (done) {
-	it('should show only down status after a given time', function (done) {
+	it('should show only Missing status after a given time', function (done) {
 		request(app)
 			.get('/api/sensors/')
 			.set('Accept', 'application/json')
 			.expect('Content-Type', /json/)
 			.expect(200)
-			.expect(/NOK/)
+			.expect(/Missing/)
 			.end(function (err, res) {
 				if(err) return done(err);
 				done();
