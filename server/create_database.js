@@ -9,6 +9,7 @@ if (process.env.NODE_ENV === "DEV") {
         console.log(props);
       });
     */
+    process.exit(0);
   });
 }
 else {

@@ -41,7 +41,7 @@ mysql> CREATE USER "[USERNAME]"@"localhost";
 mysql> SET password FOR "[USERNAME]"@"localhost" = password('[PASSWORD]');
 ```
 
-You need to create database for MySQL using : `$ NODE_ENV=DEV node server/create_database.js`
+You need to create database for MySQL using : `$ NODE_ENV=DEV DB_USER=[username] DB_PASSWORD=[password] node server/create_database.js`
 
 
 ## How to use :
@@ -56,7 +56,7 @@ Then go with your favorite browser at [http://localhost:3000/](http://localhost:
 
 #### Required :
 
-You must define MySQL connection by using : `$ DB_USER=[username] DB_password=[password] ...`
+You must define MySQL connection by using : `$ DB_USER=[username] DB_PASSWORD=[password] ...`
 
 
 #### Optionnal :
