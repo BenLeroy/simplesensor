@@ -68,6 +68,7 @@ To receive mail notifications, use `$ MAIL_ALERT=["yourMailAdress"] ...`
 
 ### Beware :
 
+To make modifications to models : `$ npm install -g strongloop`
 
 Any modifications made to the models implies that you run : `$ lb-ng server/server.js client/js/lb-services.js`
 

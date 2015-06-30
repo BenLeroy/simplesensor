@@ -1,6 +1,6 @@
 (function(window, angular, undefined) {'use strict';
 
-var urlBase = "/api";
+var urlBase = "api";
 var authHeader = 'authorization';
 
 /**
@@ -71,6 +71,9 @@ module.factory(
          * </em>
          */
         "prototype$__findById__accessTokens": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/Users/:id/accessTokens/:fk",
           method: "GET"
         },
@@ -103,6 +106,9 @@ module.factory(
          * This method returns no data.
          */
         "prototype$__destroyById__accessTokens": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/Users/:id/accessTokens/:fk",
           method: "DELETE"
         },
@@ -142,6 +148,9 @@ module.factory(
          * </em>
          */
         "prototype$__updateById__accessTokens": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/Users/:id/accessTokens/:fk",
           method: "PUT"
         },
@@ -317,6 +326,45 @@ module.factory(
          * </em>
          */
         "create": {
+          url: urlBase + "/Users",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.User#createMany
+         * @methodOf lbServices.User
+         *
+         * @description
+         *
+         * Create a new instance of the model and persist it into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `User` object.)
+         * </em>
+         */
+        "createMany": {
+          isArray: true,
           url: urlBase + "/Users",
           method: "POST"
         },
@@ -1039,36 +1087,54 @@ module.factory(
 
         // INTERNAL. Use Sensor.events.findById() instead.
         "prototype$__findById__events": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/sensors/:id/events/:fk",
           method: "GET"
         },
 
         // INTERNAL. Use Sensor.events.destroyById() instead.
         "prototype$__destroyById__events": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/sensors/:id/events/:fk",
           method: "DELETE"
         },
 
         // INTERNAL. Use Sensor.events.updateById() instead.
         "prototype$__updateById__events": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/sensors/:id/events/:fk",
           method: "PUT"
         },
 
         // INTERNAL. Use Sensor.outages.findById() instead.
         "prototype$__findById__outages": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/sensors/:id/outages/:fk",
           method: "GET"
         },
 
         // INTERNAL. Use Sensor.outages.destroyById() instead.
         "prototype$__destroyById__outages": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/sensors/:id/outages/:fk",
           method: "DELETE"
         },
 
         // INTERNAL. Use Sensor.outages.updateById() instead.
         "prototype$__updateById__outages": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/sensors/:id/outages/:fk",
           method: "PUT"
         },
@@ -1157,6 +1223,45 @@ module.factory(
          * </em>
          */
         "create": {
+          url: urlBase + "/sensors",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Sensor#createMany
+         * @methodOf lbServices.Sensor
+         *
+         * @description
+         *
+         * Create a new instance of the model and persist it into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Sensor` object.)
+         * </em>
+         */
+        "createMany": {
+          isArray: true,
           url: urlBase + "/sensors",
           method: "POST"
         },
@@ -1778,6 +1883,44 @@ module.factory(
 
         /**
          * @ngdoc method
+         * @name lbServices.Sensor.events#createMany
+         * @methodOf lbServices.Sensor.events
+         *
+         * @description
+         *
+         * Creates a new instance in events of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Event` object.)
+         * </em>
+         */
+        R.events.createMany = function() {
+          var TargetResource = $injector.get("Event");
+          var action = TargetResource["::createMany::sensor::events"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
          * @name lbServices.Sensor.events#destroyAll
          * @methodOf lbServices.Sensor.events
          *
@@ -2041,6 +2184,44 @@ module.factory(
 
         /**
          * @ngdoc method
+         * @name lbServices.Sensor.outages#createMany
+         * @methodOf lbServices.Sensor.outages
+         *
+         * @description
+         *
+         * Creates a new instance in outages of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Outage` object.)
+         * </em>
+         */
+        R.outages.createMany = function() {
+          var TargetResource = $injector.get("Outage");
+          var action = TargetResource["::createMany::sensor::outages"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
          * @name lbServices.Sensor.outages#destroyAll
          * @methodOf lbServices.Sensor.outages
          *
@@ -2247,6 +2428,45 @@ module.factory(
          * </em>
          */
         "create": {
+          url: urlBase + "/events",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Event#createMany
+         * @methodOf lbServices.Event
+         *
+         * @description
+         *
+         * Create a new instance of the model and persist it into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Event` object.)
+         * </em>
+         */
+        "createMany": {
+          isArray: true,
           url: urlBase + "/events",
           method: "POST"
         },
@@ -2530,7 +2750,8 @@ module.factory(
          *
          * @param {Object=} parameters Request parameters.
          *
-         *  - `id` – `{*}` - PersistedModel id
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
          *
          * @param {Object} postData Request data.
          *
@@ -2558,18 +2779,27 @@ module.factory(
 
         // INTERNAL. Use Sensor.events.findById() instead.
         "::findById::sensor::events": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/sensors/:id/events/:fk",
           method: "GET"
         },
 
         // INTERNAL. Use Sensor.events.destroyById() instead.
         "::destroyById::sensor::events": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/sensors/:id/events/:fk",
           method: "DELETE"
         },
 
         // INTERNAL. Use Sensor.events.updateById() instead.
         "::updateById::sensor::events": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/sensors/:id/events/:fk",
           method: "PUT"
         },
@@ -2583,6 +2813,13 @@ module.factory(
 
         // INTERNAL. Use Sensor.events.create() instead.
         "::create::sensor::events": {
+          url: urlBase + "/sensors/:id/events",
+          method: "POST"
+        },
+
+        // INTERNAL. Use Sensor.events.createMany() instead.
+        "::createMany::sensor::events": {
+          isArray: true,
           url: urlBase + "/sensors/:id/events",
           method: "POST"
         },
@@ -2889,6 +3126,45 @@ module.factory(
 
         /**
          * @ngdoc method
+         * @name lbServices.Outage#createMany
+         * @methodOf lbServices.Outage
+         *
+         * @description
+         *
+         * Create a new instance of the model and persist it into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Outage` object.)
+         * </em>
+         */
+        "createMany": {
+          isArray: true,
+          url: urlBase + "/outages",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
          * @name lbServices.Outage#upsert
          * @methodOf lbServices.Outage
          *
@@ -3166,7 +3442,8 @@ module.factory(
          *
          * @param {Object=} parameters Request parameters.
          *
-         *  - `id` – `{*}` - PersistedModel id
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
          *
          * @param {Object} postData Request data.
          *
@@ -3194,18 +3471,27 @@ module.factory(
 
         // INTERNAL. Use Sensor.outages.findById() instead.
         "::findById::sensor::outages": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/sensors/:id/outages/:fk",
           method: "GET"
         },
 
         // INTERNAL. Use Sensor.outages.destroyById() instead.
         "::destroyById::sensor::outages": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/sensors/:id/outages/:fk",
           method: "DELETE"
         },
 
         // INTERNAL. Use Sensor.outages.updateById() instead.
         "::updateById::sensor::outages": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/sensors/:id/outages/:fk",
           method: "PUT"
         },
@@ -3219,6 +3505,13 @@ module.factory(
 
         // INTERNAL. Use Sensor.outages.create() instead.
         "::create::sensor::outages": {
+          url: urlBase + "/sensors/:id/outages",
+          method: "POST"
+        },
+
+        // INTERNAL. Use Sensor.outages.createMany() instead.
+        "::createMany::sensor::outages": {
+          isArray: true,
           url: urlBase + "/sensors/:id/outages",
           method: "POST"
         },
