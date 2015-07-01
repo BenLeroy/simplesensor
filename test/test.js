@@ -3,7 +3,47 @@ process.env.NODE_ENV = 'test';
 
 var app = require('../server/server.js');
 var Browser = require('zombie');
+var request = require('supertest');
 
+describe('Creating test data', function() {
+
+  it('Adding sensors using /inCheck', function (done) {
+    request(app)
+      .post('/api/sensors/inCheck')
+      .type('form')
+      .send({key: "abcdef"})
+      .send({status: 'NOK'})
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .expect(/NOK/)
+      .end(function (err, res) {
+        if(err) return done(err);
+        request(app)
+          .post('/api/sensors/inCheck')
+          .type('form')
+          .send({key: "ghijkl"})
+          .send({status: 'NOK'})
+          .expect('Content-Type', /json/)
+          .expect(200)
+          .expect(/NOK/)
+          .end(function (err, res) {
+            if(err) return done(err);
+            request(app)
+              .post('/api/sensors/inCheck')
+              .type('form')
+              .send({key: "mnopqr"})
+              .send({status: 'NOK'})
+              .expect('Content-Type', /json/)
+              .expect(200)
+              .expect(/NOK/)
+              .end(function (err, res) {
+                if(err) return done(err);
+                done();
+              });
+          });
+      });
+  });
+});
 
 describe('Visitor comes to homepage', function() {
 

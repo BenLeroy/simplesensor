@@ -4,6 +4,13 @@ process.env.NODE_ENV = 'test';
 var app = require('../server/server.js')
 , request = require('supertest');
 
+
+var DataSource = require('loopback-datasource-juggler').DataSource;
+ 
+var dataSource = new DataSource('memory');
+
+
+
 function makekey()
 {
     var text = "key_";
@@ -18,24 +25,6 @@ function makekey()
 var mykey = makekey();
 var keydef = new RegExp(mykey);
 
-
-describe('GET /list', function () {
-
-	it('respond with json', function (done){
-		request(app)
-			.get('/api/sensors')
-			.set('Accept', 'application/json')
-			.expect('Content-Type', /json/)
-			.expect(200)
-			.expect(/key/)
-			.expect(/status/)
-			.expect(/name/)
-			.end(function (err, res) {
-				if(err) return done(err);
-				done();
-			});
-	});
-});
 
 describe('POST /inCheck', function () {
 
@@ -82,7 +71,7 @@ describe('POST /inCheck', function () {
 	it('should send an error if key arg is not sent', function (done) {
 		request(app)
 			.post('/api/sensors/inCheck')
-			.send({status: 'Up'})
+			.send({status: 'OK'})
 			.expect('Content-Type', /json/)
 			.expect(500)
 			.expect(/Key cannot be blank/)
@@ -105,7 +94,6 @@ describe('POST /inCheck', function () {
 			});
 	});
 });
-
 
 describe('DELETE /sensors/{id}', function (done) {
 
@@ -133,18 +121,20 @@ describe('DELETE /sensors/{id}', function (done) {
 	});
 });
 
-describe('Status change', function (done) {
-	it('should show only Missing status after a given time', function (done) {
+describe('GET /list', function () {
+
+	it('respond with json', function (done){
 		request(app)
-			.get('/api/sensors/')
+			.get('/api/sensors')
 			.set('Accept', 'application/json')
 			.expect('Content-Type', /json/)
 			.expect(200)
-			.expect(/Missing/)
+			.expect(/key/)
+			.expect(/status/)
+			.expect(/name/)
 			.end(function (err, res) {
 				if(err) return done(err);
 				done();
 			});
 	});
 });
-
