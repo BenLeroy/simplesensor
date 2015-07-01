@@ -21,11 +21,11 @@ app.start = function() {
   });
 };
 
-if (!process.env.DB_USER && require.main === module && process.env.NODE_ENV !== 'test') {
+if (!process.env.DB_USER && require.main === module) {
   console.log('You must define your MySQL username and password!');
   console.log('Please run with `DB_USER=[username] DB_PASSWORD=[password]`.');
   console.log('Process will now exit.');
-  process.exit(0);
+  process.exit(1);
 }
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.

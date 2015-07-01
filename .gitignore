@@ -18,5 +18,5 @@ coverage
 node_modules
 npm-debug.log
 bower_components
-client/vendor
+client/vendor/*
 testevents.txt
