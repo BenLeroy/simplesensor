@@ -2,6 +2,9 @@
 
 [![Build Status](https://travis-ci.org/BenLeroy/simplesensor.svg?branch=master)](https://travis-ci.org/BenLeroy/simplesensor)
 
+[![Coverage Status](https://coveralls.io/repos/BenLeroy/simplesensor/badge.svg)](https://coveralls.io/r/BenLeroy/simplesensor)
+
+
 ## Sensor monitoring
 
 Create a simple interface to manage sensors informations
