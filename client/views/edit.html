@@ -33,19 +33,23 @@
       <label for="lag">Expected lag</label>
       <input type='number' id='lag' ng-model='sensor.lag'>
     </div>
-      <a type="button" ng-click='SaveMod()' ui-sref='index' class="btn btn-success">
-        <span class='glyphicon glyphicon-ok' aria-hidden='true' title='Confirm'></span>
-      </a>
-      <a type="button" ui-sref='index' class="btn btn-info">
-        <span class='glyphicon glyphicon-stop' aria-hidden='true' title='Cancel'></span>
-      </a>
-      <a type="button" ng-click='toggleModal()' class="pull-right btn btn-danger" data-target="#delModal">
-        <span class='glyphicon glyphicon-trash' aria-hidden='true' title='Delete'></span>
-      </a>
+    <div class="form-group">
+      <label for="isMonitored">Enable monitoring</label>
+      <input type='checkbox' id='isMonitored' ng-model='isMonitored'>
+    </div>
+    <a type="button" ng-click='SaveMod()' ui-sref='index' class="btn btn-success">
+      <span class='glyphicon glyphicon-ok' aria-hidden='true' title='Confirm'></span>
+    </a>
+    <a type="button" ui-sref='index' class="btn btn-info">
+      <span class='glyphicon glyphicon-stop' aria-hidden='true' title='Cancel'></span>
+    </a>
+    <a type="button" data-toggle='modal' class="pull-right btn btn-danger" data-target="#delModal">
+      <span class='glyphicon glyphicon-trash' aria-hidden='true' title='Delete'></span>
+    </a>
   </div>
 </div>
-<div ng-if='modalShown' class='modal fade' id="delModal">
-    <div class="modal-dialog modal-sm">
+<div class='modal fade' id="delModal" tabindex="-1" role="dialog" aria-labelledby="DeleteModal" aria-hidden="true" >
+    <div class="modal-dialog modal-sm" role="document">
       <div class="modal-content">
         <div class='modal-header'>
           <h3 class='modal-title'>
@@ -56,8 +60,8 @@
           <p>Are you sur you want to delete {{sensor.key}}?</p>  
         </div>
         <div class='modal-footer'>
-          <button ng-click='deleteSensor()' class="btn btn-danger">Confirm</button>
-          <button class="btn btn-info" ng-click='toggleModal()'>Cancel</button>
+          <button ng-click='deleteSensor()' data-dismiss="modal" class="btn btn-danger">Confirm</button>
+          <button class="btn btn-info" data-dismiss="modal">Cancel</button>
         </div>
       </div>
     </div>

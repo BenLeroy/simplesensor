@@ -34,7 +34,7 @@
    <div class="form-group">
     <label>History</label>
     <p ng-repeat='events in sensor.events | orderBy: "loggedAt":true'>
-      <span ng-class="{'OK': 'label label-success', 'NOK': 'label label-danger', 'Missing': 'label label-danger', 'Flapping': 'label label-warning'}[events.status]" class='label label-default'>
+      <span ng-class="{'OK': 'label label-success', 'NOK': 'label label-danger', 'Missing': 'label label-danger', 'OFF': 'label label-warning'}[events.status]" class='label label-default'>
 	     {{events.status}}
       </span>
       <span>{{events.loggedAt | date:"@ HH:mm:ss (dd-MM-yyyy)"}}</span>

@@ -8,6 +8,7 @@ angular.module('controllers', [])
       $scope.count['OK'] = 0;
       $scope.count['NOK'] = 0;
       $scope.count['Missing'] = 0;
+      $scope.count['OFF'] = 0;
 
       var stack = [];
       var show = false;
@@ -43,6 +44,7 @@ angular.module('controllers', [])
         countStatus("OK");
         countStatus("NOK");
         countStatus("Missing");
+        countStatus("OFF");
 
         if ($scope.showEvents) {
           var stopDisp = $timeout(function (){
@@ -59,6 +61,7 @@ angular.module('controllers', [])
       countStatus("OK");
       countStatus("NOK");
       countStatus("Missing");
+      countStatus("OFF");
 
   })
 
@@ -138,6 +141,7 @@ angular.module('controllers', [])
   .controller('EditCtrl', function (Sensor, $stateParams, $scope, $state) {
 
     $scope.modalShown = false;
+    $scope.isMonitored;    
 
     Sensor.find({
       filter: {
@@ -146,19 +150,33 @@ angular.module('controllers', [])
       }
     }).$promise.then(function (data) {
       $scope.sensor = data[0];
+
+      if ($scope.sensor.status !== 'OFF') {
+        $scope.isMonitored = true;
+      }
+      else {
+        $scope.isMonitored = false;
+      }
     });
 
     $scope.SaveMod = function () {
+
+      if ($scope.isMonitored === false) {
+        $scope.sensor.status = 'OFF'
+      }
+      else {
+      	$scope.sensor.status = 'Missing'
+      }
+      
       $scope.sensor.modifiedAt = Date.now();
       $scope.sensor.$save();
     };
 
-    $scope.toggleModal = function() {
-      $scope.modalShown = !$scope.modalShown;
-    };
-
     $scope.deleteSensor = function () {
-      $scope.sensor.$delete({id: $scope.sensor.id}, $state.go('index'));
+      $('#delModal').modal('hide');
+      $scope.sensor.$delete({id: $scope.sensor.id}, function() {
+        $state.go('index');
+      });
     };
   })
 
