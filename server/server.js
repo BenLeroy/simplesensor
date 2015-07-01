@@ -21,7 +21,7 @@ app.start = function() {
   });
 };
 
-if (!process.env.DB_USER && require.main === module) {
+if (!process.env.DB_USER && require.main === module && process.env.NODE_ENV !== 'test') {
   console.log('You must define your MySQL username and password!');
   console.log('Please run with `DB_USER=[username] DB_PASSWORD=[password]`.');
   console.log('Process will now exit.');
