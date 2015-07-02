@@ -1,8 +1,6 @@
 # Simplesensor
 
-[![Build Status](https://travis-ci.org/BenLeroy/simplesensor.svg?branch=master)](https://travis-ci.org/BenLeroy/simplesensor)
-
-[![Coverage Status](https://coveralls.io/repos/BenLeroy/simplesensor/badge.svg)](https://coveralls.io/r/BenLeroy/simplesensor)
+[![Build Status](https://travis-ci.org/BenLeroy/simplesensor.svg?branch=master)](https://travis-ci.org/BenLeroy/simplesensor) [![Coverage Status](https://coveralls.io/repos/BenLeroy/simplesensor/badge.svg)](https://coveralls.io/r/BenLeroy/simplesensor)
 
 
 ## Sensor monitoring
@@ -44,27 +42,19 @@ mysql> CREATE USER "[USERNAME]"@"localhost";
 mysql> SET password FOR "[USERNAME]"@"localhost" = password('[PASSWORD]');
 ```
 
-You need to create database for MySQL using : `$ NODE_ENV=DEV DB_USER=[username] DB_PASSWORD=[password] node server/create_database.js`
-
 
 ## How to use :
-
-
-Run : `$ [ENV_VARS] npm start` from project's root (`$ cd simplesensor`)
-
-Then go with your favorite browser at [http://localhost:3000/](http://localhost:3000/)
-
 
 ### Environment variables :
 
 #### Required :
 
-You must define MySQL connection by using : `$ DB_USER=[username] DB_PASSWORD=[password] ...`
+You need to create database for MySQL using : `$ NODE_ENV=DEV DB_USER=[username] DB_PASSWORD=[password] node server/create_database.js`
 
 
 #### Optionnal :
 
-To set a custom port use `$ PORT=[xxxx] ...`
+To set a custom port use `$ PORT=[xxxx] ...` (default port is 3000)
 
 To receive mail notifications, use `$ MAIL_ALERT=["yourMailAdress"] ...`
 
@@ -76,6 +66,11 @@ To make modifications to models : `$ npm install -g strongloop`
 Any modifications made to the models implies that you run : `$ lb-ng server/server.js client/js/lb-services.js`
 
 Be sure to have compatible versions for "loopback-datasource-juggler"(v2.3+) and "loopback-connector-mysql"(v2.1+).
+
+
+Run : `$ [ENV_VARS] npm start` from project's root (`$ cd simplesensor`)
+
+Then go with your favorite browser at [http://localhost:3000/](http://localhost:3000/)
 
 
 
