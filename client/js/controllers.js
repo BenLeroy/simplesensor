@@ -173,7 +173,11 @@ angular.module('controllers', [])
     };
 
     $scope.deleteSensor = function () {
-      $('#delModal').modal('hide');
+    	
+			$('#delModal').modal('hide');
+			$('body').removeClass('modal-open');
+			$('.modal-backdrop').remove();
+
       $scope.sensor.$delete({id: $scope.sensor.id}, function() {
         $state.go('index');
       });
