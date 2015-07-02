@@ -6,7 +6,7 @@ env:
 	global:
 		- secure: "LnZuEhgdwk9N5njnhrl4W1EafPw8yqaKONVmXVrTFF0Z6X15eDSqcKXYE5Pv/Ggtfqf320N5rRo5EtXXOMw5q8wuacAoJyz6jJ1oB7qbcJxgydEcr2yF3C7dOhf22Py4kbI6dod9WxU3bqcvQmo7Mvf+sNftIDAsS2Fq3g4zvCqUYq9sq4A+pZkQN8BB/QxgmfYUiz7kSfgEymIKWNpLr4Xe0U+FL/V4I3C/2vw45ZJVp1TcnmBpHJK1pkl6yXU4YL/hGKVUzAO+JALujcYc/5f4KyEadclOeLf7pGzGMuxln/F44oLSEqDzmLRqgmRT5WxjuVG+S/MQdZ+hKiLf69Lk3TgqL1MQEZjyh+3vMflhVF4C0vG50PC3jQ/c3Y6dj+8vuTdXsa+9muQqfPgahYIF8NBH7Ik9/k9sE3PiJQyhSu7wway+SmSsFGictruBC+/NmSVY7UMek0p2hAj3ilEekuM3NP5ABtO63eiVigHqud/FFFmwF2irZCbzHEkfBA2kp+Y2x8BTc88ajccJXzQSQ74qensAgabDmet1m6+GMpqhFKBvtYhz9/qhiAsTIeoJ+D9qzBdUCkksZBJyomt4+1ddSzC9Mn/lqIKlhXY3NbgEs3FXpZ2n5S7Zqk/K81/yVGhFPeH4n09RrtN56f7KClumTzQCD5npimyz/7k="
 before_script:
-	- echo "repo_token="$repo_token > .coveralls.yml
+	- echo "repo_token="repo_token > .coveralls.yml
   - npm install -g bower
   - bower install
 script:
