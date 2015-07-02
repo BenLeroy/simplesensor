@@ -20,3 +20,4 @@ npm-debug.log
 bower_components
 client/vendor/*
 testevents.txt
+.coveralls.yml
