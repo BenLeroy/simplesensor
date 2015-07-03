@@ -61,7 +61,6 @@ describe('Visitor comes to homepage', function() {
     this.browser.assert.elements("div[ui-sref='consult({id: sensor.id})']"
       , {atLeast: 3}
     );
-
   });
 
 
@@ -72,9 +71,9 @@ describe('Visitor comes to homepage', function() {
     });
 
     it('should show an event list', function () {
-		this.browser.assert.text('h1', 'Last events');
-    this.browser.assert.elements("div#scrolling");
-    this.browser.assert.elements("img[ng-show='loading']");
+  		this.browser.assert.text('h1', 'Last events');
+      this.browser.assert.elements("div#scrolling");
+      this.browser.assert.elements("img[ng-show='loading']");
     });
   });
 });
