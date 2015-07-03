@@ -49,7 +49,7 @@
   </div>
 </div>
 <div class='modal fade' id="delModal" tabindex="-1" role="dialog" aria-labelledby="DeleteModal" aria-hidden="true" >
-    <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-dialog modal-md" role="document">
       <div class="modal-content">
         <div class='modal-header'>
           <h3 class='modal-title'>
@@ -58,6 +58,7 @@
         </div>
         <div class='modal-body'>
           <p>Are you sur you want to delete {{sensor.key}}?</p>  
+          <p>All related events and outages will be deleted too</p>
         </div>
         <div class='modal-footer'>
           <button ng-click='deleteSensor()' class="btn btn-danger">Confirm</button>

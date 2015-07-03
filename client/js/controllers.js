@@ -178,21 +178,6 @@ angular.module('controllers', [])
 			$('body').removeClass('modal-open');
 			$('.modal-backdrop').remove();
 
-      /*Event.find({where: {sensorId: $stateParams.id}}).$promise.then(function (events) {
-        console.log(events);
-        
-        events.map(function (obj){
-        
-          obj.$delete({sensorId: $scope.sensor.id}, function () {
-            console.log('je suis passé ici!');
-          });
-        });
-      });
-      
-      Outage.find({where: {probeId: $scope.sensor.id}}).$promise.then(function (outages){
-        console.log(outages);
-      });*/
-
       Sensor.outages.destroyAll({id: $scope.sensor.id}, function (outs, res) {}
         , function (hrep) {});
       Sensor.events.destroyAll({id: $scope.sensor.id}, function (evs, rep) {}
