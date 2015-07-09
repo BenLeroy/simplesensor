@@ -4,11 +4,11 @@ angular.module('controllers', [])
 
   .controller('CountCtrl', function (Sensor, socket, $scope, $timeout) {
 
-    $scope.count = [];
-    $scope.count['OK'] = 0;
-    $scope.count['NOK'] = 0;
-    $scope.count['Missing'] = 0;
-    $scope.count['OFF'] = 0;
+    $scope.count = {};
+    $scope.count.OK = 0;
+    $scope.count.NOK  = 0;
+    $scope.count.Missing = 0;
+    $scope.count.OFF = 0;
 
     var stack = [];
     var show = false;
@@ -16,7 +16,7 @@ angular.module('controllers', [])
     $scope.showEvents = false;
     $scope.newEvents = "";
 
-    function countStatus (status) {
+    function countStatus(status) {
 
       Sensor.count({where: {status: status}}).$promise.then(function (data) {
         $scope.count[status] = data.count;
@@ -34,13 +34,14 @@ angular.module('controllers', [])
       $scope.showEvents = true;
       $scope.newEvents = stack.length + " new events since ";
 
-      var stopDisp = $timeout(function (){
-        stack = [];
-        show = false;
-        $scope.showEvents = false;
-        $scope.newEvents = "";
-      }
-      , 15000
+      var stopDisp = $timeout(
+        function () {
+          stack = [];
+          show = false;
+          $scope.showEvents = false;
+          $scope.newEvents = "";
+        }
+        , 15000
       );
 
       if (!show) {
@@ -63,7 +64,7 @@ angular.module('controllers', [])
 
   })
 
-  .controller('ListCtrl', function (Sensor, $scope, $stateParams, $filter){
+  .controller('ListCtrl', function (Sensor, $scope, $stateParams, $filter) {
 
     $scope.sensors = [];
     $scope.filteredItems = [];
@@ -71,7 +72,7 @@ angular.module('controllers', [])
     var counter = 0;
     var anyMore = true;
 
-    $scope.moreSensors = function(){
+    $scope.moreSensors = function () {
 
       var filtering = { filter:
         {limit: 50
@@ -159,18 +160,18 @@ angular.module('controllers', [])
     $scope.SaveMod = function () {
 
       if ($scope.isMonitored === false) {
-        $scope.sensor.status = 'OFF'
+        $scope.sensor.status = 'OFF';
       }
       else {
-      	$scope.sensor.status = 'Missing'
+      	$scope.sensor.status = 'Missing';
       }
-      
+
       $scope.sensor.modifiedAt = Date.now();
       $scope.sensor.$save();
     };
 
     $scope.deleteSensor = function () {
-    	
+
 			$('#delModal').modal('hide');
 			$('body').removeClass('modal-open');
 			$('.modal-backdrop').remove();
@@ -180,75 +181,79 @@ angular.module('controllers', [])
 
       $scope.sensor.$delete({id: $scope.sensor.id}, function() {
 
-        $state.go('index');    
+        $state.go('index');
       });
     };
   })
 
   .controller('EventCtrl', function (Event, $timeout, $scope, $stateParams, socket){
 
-      $scope.events = [];
-      var counter = 0;
-      var needMore = true;
+    $scope.events = [];
+    var counter = 0;
+    var needMore = true;
 
-      socket.on('newEvent', function (obj){
+    socket.on('newEvent', function (obj){
 
-        Event.find({
-          filter: {
-            include: 'sensor'
-            , where: {id: obj.id}
-            , order: 'loggedAt DESC'
+      Event.find({
+        filter: {
+          include: 'sensor'
+          , where: {id: obj.id}
+          , order: 'loggedAt DESC'
+        }
+      }).$promise.then(function (object) {
+
+        object.map(function (value) {
+
+          value.isNew = true;
+          $scope.events.unshift(value);
+
+          $timeout(function () {
+            value.isNew = false;
           }
-        }).$promise.then(function (object) {
-
-          object.map(function (value) {
-
-            value.isNew = true;
-            $scope.events.unshift(value);
-
-            $timeout(function () {
-              value.isNew = false;
-            }
-            , 15000
-            );
-          });
+          , 15000
+          );
         });
       });
+    });
 
-      $scope.moreEvents = function(){
+    $scope.moreEvents = function(){
 
-        $scope.loading = true;
+      $scope.loading = true;
 
-        Event.find({
-          filter: {
-            include: 'sensor'
-            , limit: 50
-            , offset: counter
-            , order: 'loggedAt DESC'
+      var flasher = function (obj) {
+        $timeout(
+          function (obj) {
+            obj = false;
           }
-        }).$promise.then(function (data){
-
-            for (var i = 0; i < data.length; i++) {
-              $scope.events.push(data[i]);
-
-              if (new Date($scope.events[i].loggedAt).getTime() >= +$stateParams.date && $stateParams.date !== null) {
-                $scope.events[i].isNew = true;
-
-                $timeout(function () {
-                  $scope.events[i].isNew = false;
-                  }
-                  ,20000
-                );
-              }
-            }
-            $scope.loading = false;
-            counter += 50;
-        });
-        if (counter > $scope.events.length) {
-          needMore = false;
-        }
+          , 20000
+        );
       };
-      if (needMore) {
-        $scope.moreEvents();
+
+      Event.find({
+        filter: {
+          include: 'sensor'
+          , limit: 50
+          , offset: counter
+          , order: 'loggedAt DESC'
+        }
+      }).$promise.then(function (data){
+
+          for (var i = 0; i < data.length; i++) {
+            $scope.events.push(data[i]);
+            console.log(i);
+            if (new Date($scope.events[i].loggedAt).getTime() >= +$stateParams.date && $stateParams.date !== null) {
+              $scope.events[i].isNew = true;
+              flasher($scope.events[i].isNew);
+            }
+          }
+          $scope.loading = false;
+          counter += 50;
+      });
+      if (counter > $scope.events.length) {
+        needMore = false;
       }
+    };
+    if (needMore) {
+      $scope.moreEvents();
+    }
   });
