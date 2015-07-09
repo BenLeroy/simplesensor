@@ -2,7 +2,7 @@ module.exports = function(Sensor) {
 
 	Sensor.inCheck = function (key, status, cb) {
 
-		if(key === undefined | key === "") {
+		if(key === undefined || key === "") {
 			return cb('Key cannot be blank');
 		}
 		Sensor.findOrCreate({where: {key: key}}
