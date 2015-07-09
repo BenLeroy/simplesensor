@@ -34,6 +34,17 @@ angular.module('controllers', [])
         $scope.showEvents = true;
         $scope.newEvents = stack.length + " new events since ";
 
+        if ($scope.showEvents) {
+          var stopDisp = $timeout(function (){
+            stack = [];
+            show = false;
+            $scope.showEvents = false;
+            $scope.newEvents = "";
+          }
+          , 15000
+          );
+        }
+
         if (!show) {
           show = true;
           $scope.highDate = new Date(stack[0].loggedAt).getTime();
@@ -45,17 +56,6 @@ angular.module('controllers', [])
         countStatus("NOK");
         countStatus("Missing");
         countStatus("OFF");
-
-        if ($scope.showEvents) {
-          var stopDisp = $timeout(function (){
-            stack = [];
-            show = false;
-            $scope.showEvents = false;
-            $scope.newEvents = "";
-          }
-          , 15000
-          );
-        }
       });
 
       countStatus("OK");
