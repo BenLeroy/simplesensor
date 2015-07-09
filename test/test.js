@@ -16,7 +16,7 @@ describe('Creating test data', function() {
       .expect('Content-Type', /json/)
       .expect(200)
       .expect(/NOK/)
-      .end(function (err, res) {
+      .end(function (err) {
         if(err) return done(err);
         request(app)
           .post('/api/sensors/inCheck')
@@ -26,7 +26,7 @@ describe('Creating test data', function() {
           .expect('Content-Type', /json/)
           .expect(200)
           .expect(/NOK/)
-          .end(function (err, res) {
+          .end(function (err) {
             if(err) return done(err);
             request(app)
               .post('/api/sensors/inCheck')
@@ -36,7 +36,7 @@ describe('Creating test data', function() {
               .expect('Content-Type', /json/)
               .expect(200)
               .expect(/NOK/)
-              .end(function (err, res) {
+              .end(function (err) {
                 if(err) return done(err);
                 done();
               });
