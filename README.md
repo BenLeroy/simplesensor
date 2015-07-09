@@ -1,6 +1,6 @@
 # Simplesensor
 
-[![Build Status](https://travis-ci.org/BenLeroy/simplesensor.svg?branch=master)](https://travis-ci.org/BenLeroy/simplesensor) [![Coverage Status](https://coveralls.io/repos/BenLeroy/simplesensor/badge.svg)](https://coveralls.io/r/BenLeroy/simplesensor)
+[![Build Status](https://travis-ci.org/BenLeroy/simplesensor.svg?branch=master)](https://travis-ci.org/BenLeroy/simplesensor) [![Coverage Status](https://coveralls.io/repos/BenLeroy/simplesensor/badge.svg)](https://coveralls.io/r/BenLeroy/simplesensor) [![Codacy Badge](https://www.codacy.com/project/badge/91ad89be1078489dbb6829ae714538b1)](https://www.codacy.com/app/bleroy/simplesensor)
 
 
 ## Sensor monitoring

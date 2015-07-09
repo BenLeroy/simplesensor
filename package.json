@@ -6,10 +6,12 @@
     "start": "node .",
     "test": "./node_modules/.bin/mocha test/",
     "cover": "./node_modules/istanbul/lib/cli.js cover --report html ./node_modules/mocha/bin/_mocha -- test/*.js -R spec -t 5000",
-    "coveralls": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha --report lcovonly -- test/*.js -R spec -t 5000 && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "coveralls": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha --report lcovonly -- test/*.js -R spec -t 5000 && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js | ./node_modules/codacy-coverage/bin/codacy-coverage.js 
+    && rm -rf ./coverage",
     "pretest-disable": "jshint ."
   },
   "dependencies": {
+    "codacy-coverage": "^1.1.2",
     "compression": "^1.0.3",
     "cors": "^2.5.2",
     "errorhandler": "^1.1.1",
