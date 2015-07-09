@@ -141,7 +141,6 @@ angular.module('controllers', [])
   .controller('EditCtrl', function (Sensor, $stateParams, $scope, $state) {
 
     $scope.modalShown = false;
-    $scope.isMonitored;    
 
     Sensor.find({
       filter: {
