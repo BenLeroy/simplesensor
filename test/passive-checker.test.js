@@ -10,13 +10,13 @@ describe('Passive checker', function () {
 	});
 
 	it('send nothing', function (){
-		checker.on('sensor:Missing', function (sensor) {
+		checker.on('sensor:Missing', function () {
 			assert.fail('never enter here (missed)');
 		});
-		checker.on('sensor:OK', function (sensor) {
+		checker.on('sensor:OK', function () {
 			assert.fail('never enter here (up)');
 		});
-		checker.on('sensor:NOK', function (sensor) {
+		checker.on('sensor:NOK', function () {
 			assert.fail('never enter here (down)');
 		});
 		checker.isAlive({
