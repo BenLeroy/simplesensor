@@ -5,9 +5,9 @@ var app = require('../server/server.js')
 , request = require('supertest');
 
 
-var DataSource = require('loopback-datasource-juggler').DataSource;
+//var DataSource = require('loopback-datasource-juggler').DataSource;
  
-var dataSource = new DataSource('memory');
+//var dataSource = new DataSource('memory');
 
 
 
@@ -38,7 +38,7 @@ describe('POST /inCheck', function () {
 			.expect(200)
 			.expect(keydef)
 			.expect(/NOK/)
-			.end(function (err, res) {
+			.end(function (err) {
 				if(err) return done(err);
 				done();
 			});
@@ -48,7 +48,7 @@ describe('POST /inCheck', function () {
 		request(app)
 			.get('/api/sensors/findOne?filter={"where":{"key":"' + mykey + '"}}')
 			.expect(keydef)
-			.end(function (err, res) {
+			.end(function (err) {
 				if(err) return done(err);
 				done();
 			});
@@ -62,7 +62,7 @@ describe('POST /inCheck', function () {
 			.expect('Content-Type', /json/)
 			.expect(200)
 			.expect(/OK/)
-			.end(function (err, res) {
+			.end(function (err) {
 				if(err) return done(err);
 				done();
 			});
@@ -75,7 +75,7 @@ describe('POST /inCheck', function () {
 			.expect('Content-Type', /json/)
 			.expect(500)
 			.expect(/Key cannot be blank/)
-			.end(function (err, res) {
+			.end(function (err) {
 				if(err) return done(err);
 				done();
 			});
@@ -88,14 +88,14 @@ describe('POST /inCheck', function () {
 			.expect('Content-Type', /json/)
 			.expect(500)
 			.expect(/Key cannot be blank/)
-			.end(function (err, res) {
+			.end(function (err) {
 				if(err) return done(err);
 				done();
 			});
 	});
 });
 
-describe('DELETE /sensors/{id}', function (done) {
+describe('DELETE /sensors/{id}', function () {
 
 	it('should delete new sensor', function (done) {
 		request(app)
@@ -103,7 +103,7 @@ describe('DELETE /sensors/{id}', function (done) {
 			.send({id: 4})
 			.expect('Content-Type', /json/)
 			.expect(204)
-			.end(function (err, res) {
+			.end(function (err) {
 				if(err) return done(err);
 				done();
 			});
@@ -114,7 +114,7 @@ describe('DELETE /sensors/{id}', function (done) {
 			.get('/api/sensors/4')
 			.expect(404)
 			.expect(/MODEL_NOT_FOUND/)
-			.end(function (err, res) {
+			.end(function (err) {
 				if(err) return done(err);
 				done();
 			});
@@ -132,7 +132,7 @@ describe('GET /list', function () {
 			.expect(/key/)
 			.expect(/status/)
 			.expect(/name/)
-			.end(function (err, res) {
+			.end(function (err) {
 				if(err) return done(err);
 				done();
 			});
