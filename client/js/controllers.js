@@ -178,10 +178,8 @@ angular.module('controllers', [])
 			$('body').removeClass('modal-open');
 			$('.modal-backdrop').remove();
 
-      Sensor.outages.destroyAll({id: $scope.sensor.id}, function (outs, res) {}
-        , function (hrep) {});
-      Sensor.events.destroyAll({id: $scope.sensor.id}, function (evs, rep) {}
-        , function (hres) {});
+      Sensor.outages.destroyAll({id: $scope.sensor.id}, function (outs, res) {});
+      Sensor.events.destroyAll({id: $scope.sensor.id}, function (evs, rep) {});
 
       $scope.sensor.$delete({id: $scope.sensor.id}, function() {
 

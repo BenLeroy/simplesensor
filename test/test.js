@@ -17,7 +17,9 @@ describe('Creating test data', function() {
       .expect(200)
       .expect(/NOK/)
       .end(function (err) {
-        if(err) return done(err);
+        if(err) {
+        	return done(err);	
+        } 
         request(app)
           .post('/api/sensors/inCheck')
           .type('form')
@@ -27,7 +29,9 @@ describe('Creating test data', function() {
           .expect(200)
           .expect(/NOK/)
           .end(function (err) {
-            if(err) return done(err);
+            if(err) {
+        			return done(err);	
+        		}
             request(app)
               .post('/api/sensors/inCheck')
               .type('form')
@@ -37,7 +41,9 @@ describe('Creating test data', function() {
               .expect(200)
               .expect(/NOK/)
               .end(function (err) {
-                if(err) return done(err);
+                if(err) {
+        					return done(err);	
+        				}
                 done();
               });
           });

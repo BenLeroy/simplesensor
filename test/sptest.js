@@ -4,22 +4,14 @@ process.env.NODE_ENV = 'test';
 var app = require('../server/server.js')
 , request = require('supertest');
 
+function makekey() {
+  var text = "key_";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-//var DataSource = require('loopback-datasource-juggler').DataSource;
- 
-//var dataSource = new DataSource('memory');
-
-
-
-function makekey()
-{
-    var text = "key_";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-    for( var i = 0; i < 10; i++ )
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-    return text;
+  for( var i = 0; i < 10; i++ ) {
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return text;
 }
 
 var mykey = makekey();
@@ -39,7 +31,9 @@ describe('POST /inCheck', function () {
 			.expect(keydef)
 			.expect(/NOK/)
 			.end(function (err) {
-				if(err) return done(err);
+				if(err) {
+					return done(err);
+				}
 				done();
 			});
 	});
@@ -49,7 +43,9 @@ describe('POST /inCheck', function () {
 			.get('/api/sensors/findOne?filter={"where":{"key":"' + mykey + '"}}')
 			.expect(keydef)
 			.end(function (err) {
-				if(err) return done(err);
+				if(err) {
+					return done(err);
+				}
 				done();
 			});
 	});
@@ -63,7 +59,9 @@ describe('POST /inCheck', function () {
 			.expect(200)
 			.expect(/OK/)
 			.end(function (err) {
-				if(err) return done(err);
+				if(err) {
+					return done(err);
+				}
 				done();
 			});
 	});
@@ -76,7 +74,9 @@ describe('POST /inCheck', function () {
 			.expect(500)
 			.expect(/Key cannot be blank/)
 			.end(function (err) {
-				if(err) return done(err);
+				if(err) {
+					return done(err);
+				}
 				done();
 			});
 	});
@@ -89,7 +89,9 @@ describe('POST /inCheck', function () {
 			.expect(500)
 			.expect(/Key cannot be blank/)
 			.end(function (err) {
-				if(err) return done(err);
+				if(err) {
+					return done(err);
+				}
 				done();
 			});
 	});
@@ -104,7 +106,9 @@ describe('DELETE /sensors/{id}', function () {
 			.expect('Content-Type', /json/)
 			.expect(204)
 			.end(function (err) {
-				if(err) return done(err);
+				if(err) {
+					return done(err);
+				}
 				done();
 			});
 	});
@@ -115,7 +119,9 @@ describe('DELETE /sensors/{id}', function () {
 			.expect(404)
 			.expect(/MODEL_NOT_FOUND/)
 			.end(function (err) {
-				if(err) return done(err);
+				if(err) {
+					return done(err);
+				}
 				done();
 			});
 	});
@@ -133,7 +139,9 @@ describe('GET /list', function () {
 			.expect(/status/)
 			.expect(/name/)
 			.end(function (err) {
-				if(err) return done(err);
+				if(err) {
+					return done(err);
+				}
 				done();
 			});
 	});
