@@ -4,11 +4,7 @@ var ds = server.dataSources.simplesensor;
 if (process.env.NODE_ENV === "DEV") {
 
   console.info("Check ok. WARNINGe are in DEV environnement. Creating database");
-  ds.automigrate(function (err, result) {
-    /*ds.discoverModelProperties('accessToken', function (err, props) {
-        console.log(props);
-      });
-    */
+  ds.automigrate(function (err) {
     process.exit(0);
   });
 }

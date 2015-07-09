@@ -1,4 +1,5 @@
 module.exports = function(Sensor) {
+	var haveChanged = false;
 
 	Sensor.inCheck = function (key, status, cb) {
 
@@ -20,7 +21,7 @@ module.exports = function(Sensor) {
 
         if (instance.status !== status) {
           obj.status = status;
-          var haveChanged = true;
+          haveChanged = true;
         }
 				obj.save({}, function (ert, objt) {
           if (haveChanged) {

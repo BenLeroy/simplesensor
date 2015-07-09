@@ -3,7 +3,7 @@ module.exports = function(app, cb) {
   var sensors = app.models.Sensor;
 
   var EventEmitter = require('events').EventEmitter;
-  var emitter = new EventEmitter();
+  //var emitter = new EventEmitter();
   var checker = require('../../lib/passive-checker.js');
 
   app.on('started', function(){

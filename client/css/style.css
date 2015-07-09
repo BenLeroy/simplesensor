@@ -6,7 +6,7 @@
 	color: #3B5EA9 !important;
 }
 
-li.navbar-text{
+.navbar-text{
 	margin-top: 5px;
 	margin-bottom: 0px;
 }
@@ -54,7 +54,7 @@ li[ui-sref] {
 	cursor: pointer;
 }
 
-div.panel:hover {
+.panel:hover {
 	border-color: blue;
 }
 
