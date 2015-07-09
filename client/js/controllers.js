@@ -4,64 +4,62 @@ angular.module('controllers', [])
 
   .controller('CountCtrl', function (Sensor, socket, $scope, $timeout) {
 
-      $scope.count = [];
-      $scope.count['OK'] = 0;
-      $scope.count['NOK'] = 0;
-      $scope.count['Missing'] = 0;
-      $scope.count['OFF'] = 0;
+    $scope.count = [];
+    $scope.count['OK'] = 0;
+    $scope.count['NOK'] = 0;
+    $scope.count['Missing'] = 0;
+    $scope.count['OFF'] = 0;
 
-      var stack = [];
-      var show = false;
+    var stack = [];
+    var show = false;
 
-      $scope.showEvents = false;
-      $scope.newEvents = "";
+    $scope.showEvents = false;
+    $scope.newEvents = "";
 
-      function countStatus (status) {
+    function countStatus (status) {
 
-        Sensor.count({where: {status: status}}).$promise.then(function (data) {
-          $scope.count[status] = data.count;
-        });
-      }
-
-      if (socket.disabled) {
-        $scope.socketAlert = true;
-      }
-
-      socket.on('newEvent', function (object) {
-
-        stack.push(object);
-
-        $scope.showEvents = true;
-        $scope.newEvents = stack.length + " new events since ";
-
-        if ($scope.showEvents) {
-          var stopDisp = $timeout(function (){
-            stack = [];
-            show = false;
-            $scope.showEvents = false;
-            $scope.newEvents = "";
-          }
-          , 15000
-          );
-        }
-
-        if (!show) {
-          show = true;
-          $scope.highDate = new Date(stack[0].loggedAt).getTime();
-          $scope.eventTime = new Date(stack[0].loggedAt);
-          $timeout.cancel(stopDisp);
-        }
-
-        countStatus("OK");
-        countStatus("NOK");
-        countStatus("Missing");
-        countStatus("OFF");
+      Sensor.count({where: {status: status}}).$promise.then(function (data) {
+        $scope.count[status] = data.count;
       });
+    }
+
+    if (socket.disabled) {
+      $scope.socketAlert = true;
+    }
+
+    socket.on('newEvent', function (object) {
+
+      stack.push(object);
+
+      $scope.showEvents = true;
+      $scope.newEvents = stack.length + " new events since ";
+
+      var stopDisp = $timeout(function (){
+        stack = [];
+        show = false;
+        $scope.showEvents = false;
+        $scope.newEvents = "";
+      }
+      , 15000
+      );
+
+      if (!show) {
+        show = true;
+        $scope.highDate = new Date(stack[0].loggedAt).getTime();
+        $scope.eventTime = new Date(stack[0].loggedAt);
+        $timeout.cancel(stopDisp);
+      }
 
       countStatus("OK");
       countStatus("NOK");
       countStatus("Missing");
       countStatus("OFF");
+    });
+
+    countStatus("OK");
+    countStatus("NOK");
+    countStatus("Missing");
+    countStatus("OFF");
 
   })
 

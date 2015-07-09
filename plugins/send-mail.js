@@ -1,4 +1,4 @@
-var dsConfig = require('../server/datasources.json');
+'use strict';
 
 module.exports = function(content, app) {
 

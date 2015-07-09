@@ -5,6 +5,11 @@ if (process.env.NODE_ENV === "DEV") {
 
   console.info("Check ok. WARNINGe are in DEV environnement. Creating database");
   ds.automigrate(function (err) {
+
+  	if (err) {
+  		console.error(err);
+  		process.exit(1);
+  	}
     process.exit(0);
   });
 }
