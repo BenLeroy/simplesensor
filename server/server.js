@@ -4,6 +4,7 @@ var loopback = require('loopback');
 var boot = require('loopback-boot');
 var morgan = require('morgan');
 
+
 var app = module.exports = loopback();
 
 app.use(morgan('tiny'));
@@ -21,11 +22,14 @@ app.start = function() {
   });
 };
 
-if (!process.env.DB_USER && require.main === module) {
-  console.log('You must define your MySQL username and password!');
-  console.log('Please run with `DB_USER=[username] DB_PASSWORD=[password]`.');
-  console.log('Process will now exit.');
-  process.exit(1);
+if (require.main === module) {
+  require('./server.DB-checker')(process.env.DB_USER, function (err) {
+  if (err) {
+    console.log(err);
+    process.exit(1);
+  }
+});
+
 }
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.
