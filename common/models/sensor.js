@@ -14,26 +14,27 @@ module.exports = function(Sensor) {
 			, lag: 1500}
 			, function (err, instance){
 
-        Sensor.upsert(instance, function (err, obj) {
+		        Sensor.upsert(instance, function (err, obj) {
 
-				obj.modifiedAt = Date.now();
-				obj.checkedAt = Date.now();
+					obj.modifiedAt = Date.now();
+					obj.checkedAt = Date.now();
 
-        if (instance.status !== status) {
-          obj.status = status;
-          haveChanged = true;
-        }
-				obj.save({}, function (ert, objt) {
-          if (haveChanged) {
-            Sensor.emit('sensor:' + status, obj);
-          }
-					cb(
-						null
-						, objt
-					);
+			        if (instance.status !== status) {
+			          obj.status = status;
+			          haveChanged = true;
+			        }
+					obj.save({}, function (ert, objt) {
+			          if (haveChanged) {
+			            Sensor.emit('sensor:' + status, obj);
+			          }
+						cb(
+							null
+							, objt
+						);
+					});
 				});
-			});
-		});
+			}
+		);
 	};
 
 	Sensor.remoteMethod('inCheck',
