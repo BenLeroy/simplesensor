@@ -240,7 +240,6 @@ angular.module('controllers', [])
 
           for (var i = 0; i < data.length; i++) {
             $scope.events.push(data[i]);
-            console.log(i);
             if (new Date($scope.events[i].loggedAt).getTime() >= +$stateParams.date && $stateParams.date !== null) {
               $scope.events[i].isNew = true;
               flasher($scope.events[i].isNew);
