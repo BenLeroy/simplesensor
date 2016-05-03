@@ -104,7 +104,7 @@ describe('DELETE /sensors/{id}', function () {
 			.delete('/api/sensors/4')
 			.send({id: 4})
 			.expect('Content-Type', /json/)
-			.expect(204)
+			.expect(200)
 			.end(function (err) {
 				if(err) {
 					return done(err);
