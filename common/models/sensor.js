@@ -19,7 +19,7 @@ module.exports = function(Sensor) {
 					obj.modifiedAt = Date.now();
 					obj.checkedAt = Date.now();
 
-			        if (instance.status !== status) {
+			        if (instance.__data.status !== status) {
 			          obj.status = status;
 			          haveChanged = true;
 			        }
