@@ -20,6 +20,12 @@
             , templateUrl: 'views/list.html'
             , controller: 'ListCtrl'
           })
+          .state('missnok', {
+            url: '/NOK'
+            , controller: function ($state) {
+              $state.go('index', {status: ['NOK','Missing']});
+            }
+          })
           .state('sensorEdit', {
             url: '/sensor/edit/:id'
             , templateUrl: 'views/edit.html'
