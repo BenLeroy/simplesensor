@@ -1,11 +1,13 @@
 module.exports = function(Sensor) {
-	var haveChanged = false;
 
 	Sensor.inCheck = function (key, status, cb) {
+
+		var haveChanged = false;
 
 		if(key === undefined || key === "") {
 			return cb('Key cannot be blank');
 		}
+
 		Sensor.findOrCreate({where: {key: key}}
 			, {key: key
 			, name: key + ' non configuré'
