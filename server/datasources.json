@@ -20,6 +20,7 @@
     "name": "simplesensor",
     "connector": "mysql",
     "database": "simplesensor",
-    "host": "localhost"
+    "host": "localhost",
+    "port": 3306
   }
 }
