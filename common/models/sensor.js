@@ -14,7 +14,7 @@ module.exports = function(Sensor) {
       , status: status
       , createdAt: Date.now()
       , frequency: 60
-      , lag: 1500}
+      , lag: 15000}
       , function (err, instance){
 
         Sensor.upsert(instance, function (err, obj) {
