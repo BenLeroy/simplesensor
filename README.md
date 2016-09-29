@@ -58,6 +58,10 @@ To set a custom port use `$ PORT=[xxxx] ...` (default port is 3000)
 
 To receive mail notifications, use `$ MAIL_ALERT=["yourMailAdress"] ...`
 
+##### [Dashing](http://dashing.io/) & [RabbitMQ](https://www.rabbitmq.com/)
+
+To update dashboard, set `$ RABBIT_URL=[RabbitMQ_url] ...`
+
 
 ### Beware :
 
