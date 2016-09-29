@@ -10,6 +10,7 @@
     "pretest-disable": "jshint ."
   },
   "dependencies": {
+    "amqplib": "^0.4.2",
     "codacy-coverage": "^1.1.2",
     "compression": "^1.0.3",
     "cors": "^2.5.2",

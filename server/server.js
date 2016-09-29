@@ -19,6 +19,9 @@ app.start = function() {
     if (!process.env.MAIL_ALERT) {
       console.log('No mails will be sent until mail adress is set (env MAIL_ALERT)');
     }
+    if (!process.env.RABBIT_URL) {
+      console.log('No events will be sent until RabbitMQ server url is set (env RABBIT_URL)');
+    }
   });
 };
 
